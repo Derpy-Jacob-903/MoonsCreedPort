@@ -1,0 +1,17 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+/.godot
+/.idea
+/MoonsCreedPort/images/card_portraits/beta
+/MoonsCreedPort/images/card_portraits/New folder
+*.import
+/MoonsCreedPort/images/charui/energy_counters/regent
+*.py
+MoonsCreedPort/images/charui/spine/SpineAtlasDowngrade.exe
+MoonsCreedPort/images/charui/spine/SpineSkeletonDataConverter.exe
+/MoonsCreedPort/images/charui/energy/New folder
+/MoonsCreedPort/images/events
+/MoonsCreedPort/images/powers/beta

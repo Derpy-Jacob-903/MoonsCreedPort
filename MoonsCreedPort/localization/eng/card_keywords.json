@@ -1,0 +1,10 @@
+﻿{
+  "MOONSCREEDPORT-GUNKEYWORD.title": "Gun",
+  "MOONSCREEDPORT-GUNKEYWORD.description": "Unaffected by [gold]Strength[/gold]. When played, targets a random enemy.",
+  "MOONSCREEDPORT-ARCRANECAST.title": "Cast",
+  "MOONSCREEDPORT-ARCRANECAST.description": "Deals additional damage equal to your [gold]Charge[/gold].",
+  "MOONSCREEDPORT-ARCRANEPYRE.title": "Pyre",
+  "MOONSCREEDPORT-ARCRANEPYRE.description": "Requires [gold]Exhausting[/gold] a card in [gold]Hand[/gold] in addition to paying its energy cost.",
+  "MOONSCREEDPORT-ARCRANEAFTERLIFE.title": "Afterlife",
+  "MOONSCREEDPORT-ARCRANEAFTERLIFE.description": "The effects of this card will also trigger when this card is [gold]Exhausted[/gold]."
+}

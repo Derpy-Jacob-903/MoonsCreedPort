@@ -1,0 +1,35 @@
+{
+  "MOONSCREEDPORT-BURNING_BLOOD_POLARIX.title": "Burning Blood",
+  "MOONSCREEDPORT-BURNING_BLOOD_POLARIX.description": "At the end of combat, heal [green]{Heal}[/green] HP.",
+  "MOONSCREEDPORT-BURNING_BLOOD_POLARIX.flavor": "Your body's own blood burns with an undying rage.",
+  "MOONSCREEDPORT-THE_LAST_KNIGHTS_WILL_RELIC.title": "The Last Knight's Testament",
+  "MOONSCREEDPORT-THE_LAST_KNIGHTS_WILL_RELIC.description": "Upon pickup, raise your Max HP by {MaxHp}. Start each combat with {DoomPower} Doom. At the start of your turn, heal [green]{Heal}[/green] HP.",
+  "MOONSCREEDPORT-THE_LAST_KNIGHTS_WILL_RELIC.flavor": "[red]Details for this relic will be revealed in the future...[/red]",
+
+  "MOONSCREEDPORT-RING_OF_THE_SNAKE_ECHO.title": "Ring of the Snake",
+  "MOONSCREEDPORT-RING_OF_THE_SNAKE_ECHO.description": "At the start of each combat, draw [blue]{Cards}[/blue] additional {Cards:plural:card|cards}.",
+  "MOONSCREEDPORT-RING_OF_THE_SNAKE_ECHO.flavor": "Made from a fossilized snake. Represents great skill as a [green]huntress[/green].",
+  "MOONSCREEDPORT-LIGHT_REAP_RELIC.title": "Light Reap",
+  "MOONSCREEDPORT-LIGHT_REAP_RELIC.description": "At the start of each combat, [gold]Channel[/gold] [blue]{Repeat}[/blue] [img]res://MoonsCreedPort/images/charui/energy/white_mana_icon.png[/img].\nYou cannot [gold]Channel[/gold] [img]res://MoonsCreedPort/images/charui/energy/white_mana_icon.png[/img].",
+  "MOONSCREEDPORT-LIGHT_REAP_RELIC.flavor": "[red]Details for this relic will be revealed in the future...[/red]",
+  "MOONSCREEDPORT-DARK_REAP_RELIC.title": "Dark Reap",
+  "MOONSCREEDPORT-DARK_REAP_RELIC.description": "At the start of each combat, [gold]Channel[/gold] [blue]{Repeat}[/blue] [img]res://MoonsCreedPort/images/charui/energy/black_mana_icon.png[/img].\nYou cannot [gold]Channel[/gold] [img]res://MoonsCreedPort/images/charui/energy/black_mana_icon.png[/img].",
+  "MOONSCREEDPORT-DARK_REAP_RELIC.flavor": "[red]Details for this relic will be revealed in the future...[/red]",
+  
+  "MOONSCREEDPORT-RING_OF_THE_SNAKE_AYTEK.title": "Ring of the Snake",
+  "MOONSCREEDPORT-RING_OF_THE_SNAKE_AYTEK.description": "At the start of each combat, draw [blue]{Cards}[/blue] additional {Cards:plural:card|cards}.",
+  "MOONSCREEDPORT-RING_OF_THE_SNAKE_AYTEK.flavor": "Made from a fossilized snake. Represents great skill as a [green]huntress[/green].",
+  "MOONSCREEDPORT-RING_OF_THE_SERPENT.description": "At the start of each combat, gain {Stars:starIcons()} and draw [blue]{Cards}[/blue] additional {Cards:plural:card|cards}.",
+  "MOONSCREEDPORT-RING_OF_THE_SERPENT.flavor": "Your ring has morphed and changed forms.",
+  "MOONSCREEDPORT-RING_OF_THE_SERPENT.title": "Ring of the Serpent",
+  "MOONSCREEDPORT-HEAVY_LOAD_RELIC.title": "Missile Override",
+  "MOONSCREEDPORT-HEAVY_LOAD_RELIC.description": "Upon pickup, [gold]Enchant[/gold] all cards containing “Missile” in your [gold]Deck[/gold] with [purple]Heavy Load[/purple]. Whenever you add a card containing “Missile” to your [gold]Deck[/gold], [gold]Enchant[/gold] it with [purple]Heavy Load[/purple].",
+  "MOONSCREEDPORT-HEAVY_LOAD_RELIC.flavor": "[red]Details for this relic will be revealed in the future...[/red]",
+  "MOONSCREEDPORT-PRECISION_SIGHT_RELIC.title": "Precision Systems",
+  "MOONSCREEDPORT-PRECISION_SIGHT_RELIC.description": "Upon pickup, [gold]Enchant[/gold] all [gold]Gun[/gold] cards in your [gold]Deck[/gold] with [purple]Precision Sight[/purple]. Whenever you add a card that has [gold]Gun[/gold] to your [gold]Deck[/gold], [gold]Enchant[/gold] it with [purple]Precision Sight[/purple].",
+  "MOONSCREEDPORT-PRECISION_SIGHT_RELIC.flavor": "[red]Details for this relic will be revealed in the future...[/red]",
+  
+  "MOONSCREEDPORT-FENCING_MANUAL_ARCRANE.title": "Used Grimoire",
+  "MOONSCREEDPORT-FENCING_MANUAL_ARCRANE.description": "At the start of each combat, gain {Charge:starIcons()}",
+  "MOONSCREEDPORT-FENCING_MANUAL_ARCRANE.flavor": "[red]Details for this relic will be revealed in the future...[/red]"
+}

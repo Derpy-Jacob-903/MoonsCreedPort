@@ -1,0 +1,170 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.5.1">
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>true</ImplicitUsings>
+        <Nullable>disable</Nullable> <!--Makes code analysis regarding null values stricter.-->
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DefaultItemExcludes>packages/**</DefaultItemExcludes>
+        <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
+        <PathMap>$(AppOutputBase)=.\</PathMap>
+    </PropertyGroup>
+
+    <!-- OS Detection -->
+    <PropertyGroup>
+        <IsWindows>false</IsWindows>
+        <IsLinux>false</IsLinux>
+        <IsOSX>false</IsOSX>
+        <IsWindows Condition="$([MSBuild]::IsOSPlatform('Windows'))">true</IsWindows>
+        <IsLinux Condition="$([MSBuild]::IsOSPlatform('Linux'))">true</IsLinux>
+        <IsOSX Condition="$([MSBuild]::IsOSPlatform('OSX'))">true</IsOSX>
+    </PropertyGroup>
+
+    <!-- // NOTE: Megadot is version 4.5.1, and the game won't load your .pck if the Godot version used is newer. -->
+
+    <!-- Windows -->
+    <PropertyGroup Condition="'$(IsWindows)' == 'true'">
+        <AutoSteamPath>$(registry:HKEY_CURRENT_USER\Software\Valve\Steam@SteamPath)\steamapps</AutoSteamPath>
+        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == '' and Exists('$(AutoSteamPath)/common/Slay the Spire 2')">$(AutoSteamPath)</SteamLibraryPath>
+
+        <GodotPath Condition="'$(GodotPath)' == ''">C:/Users/wxpno/Downloads/megadot-4.5.1-m.8-windows-x86_64-llvm-editor-csharp/MegaDot_v4.5.1-stable_mono_win64.exe</GodotPath>
+        <!-- If on Windows and Slay the Spire 2 is not installed in your default steam library, adjust the following.-->
+        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">C:/Program Files (x86)/Steam/steamapps</SteamLibraryPath>
+
+        <!-- The below should not need to be changed. -->
+        <Sts2Path Condition="'$(Sts2Path)' == ''">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path>
+        <ModsPath Condition="'$(ModsPath)' == ''">$(Sts2Path)/mods/</ModsPath>
+        <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Path)/data_sts2_windows_x86_64</Sts2DataDir>
+    </PropertyGroup>
+
+    <!-- Linux -->
+    <PropertyGroup Condition="'$(IsLinux)' == 'true'">
+        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">$(HOME)/.local/share/Steam/steamapps</SteamLibraryPath>
+        <!-- Change the path here if using a downloaded binary instead of the Steam version-->
+        <GodotPath Condition="'$(GodotPath)' == ''">$(SteamLibraryPath)/common/Godot Engine/godot.x11.opt.tools.64</GodotPath>
+
+        <!-- The below should not need to be changed. -->
+        <Sts2Path Condition="'$(Sts2Path)' == ''">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path>
+        <ModsPath Condition="'$(ModsPath)' == ''">$(Sts2Path)/mods/</ModsPath>
+        <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Path)/data_sts2_linuxbsd_x86_64</Sts2DataDir>
+    </PropertyGroup>
+
+    <!-- macOS -->
+    <PropertyGroup Condition="'$(IsOSX)' == 'true'">
+        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">$(HOME)/Library/Application Support/Steam/steamapps</SteamLibraryPath>
+        <GodotPath Condition="'$(GodotPath)' == ''">$(HOME)/Applications/Godot_mono.app/Contents/MacOS/Godot</GodotPath>
+
+        <!-- The below should not need to be changed. -->
+        <Sts2Path Condition="'$(Sts2Path)' == ''">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path>
+        <ModsPath Condition="'$(ModsPath)' == ''">$(Sts2Path)/SlayTheSpire2.app/Contents/MacOS/mods/</ModsPath>
+        <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Path)/SlayTheSpire2.app/Contents/Resources/data_sts2_macos_x86_64</Sts2DataDir>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- Diasble architecture mismatch warning; mods are ideally built for all platforms (MSIL)
+             while your local StS2 version will be for your specific platform. -->
+        <NoWarn>$(NoWarn);MSB3270</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="sts2">
+            <HintPath>$(Sts2DataDir)/sts2.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.2.0" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
+        <AdditionalFiles Include="MoonsCreedPort/localization/**/*.json"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="MoonsCreedPort/**"/>
+        <Compile Remove="materials/**"/>
+        <Compile Remove="shaders/**"/>
+        <Compile Remove="images/**"/>
+        <EmbeddedResource Remove="MoonsCreedPort/**"/>
+        <EmbeddedResource Remove="materials/**"/>
+        <EmbeddedResource Remove="shaders/**"/>
+        <EmbeddedResource Remove="images/**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include=".gitignore"/>
+        <None Include="MoonsCreedPort.json"/>
+        <None Include="MoonsCreedPortCode\Cards\Arcrane\Skill\TechLock.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\DefendCursed.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\StrikeCursed.cs" />
+        <None Include="project.godot"/>
+        <None Include="MoonsCreedPort/**"/>
+        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\DefendCursed.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\StrikeCursed.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Deprecated\DefendCursed.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\DefendCursed.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Deprecated\StrikeCursed.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\StrikeCursed.cs" />
+        <Compile Remove="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
+        <None Include="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Curses\Scorpio.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Polarix\Curses\Scorpio.cs" />
+        <Compile Remove="MoonsCreedPortCode\Powers\Aytek\Ionized.cs" />
+        <None Include="MoonsCreedPortCode\Powers\Aytek\Ionized.cs" />
+        <Compile Remove="MoonsCreedPortCode\Extensions\SkinManager.cs" />
+        <None Include="MoonsCreedPortCode\Extensions\SkinManager.cs" />
+        <Compile Remove="MoonsCreedPortCode\Extensions\ApplySkinPatch.cs" />
+        <None Include="MoonsCreedPortCode\Extensions\ApplySkinPatch.cs" />
+        <Compile Remove="MoonsCreedPortCode\Artists\Artist.cs" />
+        <None Include="MoonsCreedPortCode\Artists\Artist.cs" />
+        <Compile Remove="MoonsCreedPortCode\Artists\ArtistHoverTip.cs" />
+        <None Include="MoonsCreedPortCode\Artists\ArtistHoverTip.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\TechLock.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Attack\ArcraneGunA.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Arcrane\Attack\ArcraneGunA.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Power\AdvancedTargetingSystem.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Arcrane\Power\AdvancedTargetingSystem.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Skill\Skill.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Arcrane\Skill\Skill.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Skill\TechLock.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Arcrane\Skill\TechLock.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="MoonsCreedPortCode\Cards\Arcrane\Starter\" />
+        <Folder Include="MoonsCreedPortCode\Cards\Aytek\Starter\" />
+        <Folder Include="MoonsCreedPortCode\Cards\Echo\Starter\" />
+        <Folder Include="MoonsCreedPortCode\Cards\Polarix\Starter\" />
+        <Folder Include="MoonsCreedPortCode\Character\Chaos\" />
+        <Folder Include="MoonsCreedPortCode\Character\Echo\Relics\" />
+        <Folder Include="MoonsCreedPortCode\Character\Polarix\Relics\" />
+        <Folder Include="MoonsCreedPortCode\Potions\" />
+        <Folder Include="MoonsCreedPortCode\Relics\Chaos\Blessings\" />
+        <Folder Include="MoonsCreedPortCode\Relics\Chaos\Curses\" />
+        <Folder Include="MoonsCreedPort\images\card_portraits\big\"/>
+        <Folder Include="MoonsCreedPort\images\powers\big\"/>
+        <Folder Include="MoonsCreedPort\images\relics\big\"/>
+    </ItemGroup>
+
+    <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">
+        <Message Text="Copying .dll and manifest to mods folder." Importance="high"/>
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
+        <Copy SourceFiles="MoonsCreedPort.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
+        <Message Text="Copying BaseLib to mods folder." Importance="high"/>
+        <ItemGroup>
+            <BaseLibFiles Include="packages/alchyr.sts2.baselib/**/lib/**/BaseLib.dll;packages/alchyr.sts2.baselib/**/Content/BaseLib.pck;packages/alchyr.sts2.baselib/**/Content/BaseLib.json;"/>
+        </ItemGroup>
+        <Copy SourceFiles="@(BaseLibFiles)" DestinationFolder="$(ModsPath)BaseLib/"/>
+    </Target>
+
+    <Target Name="GodotPublish" AfterTargets="Publish" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">
+        <Message Text="Exporting Godot .pck to mods folder" Importance="high"/>
+        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;"
+              EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1"
+              ContinueOnError="WarnAndContinue"/>
+    </Target>
+
+    <Target Name="GodotPublishSkipped" AfterTargets="Publish" Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)')">
+        <Message Text="Skipping Godot .pck export because GodotPath is not configured." Importance="high"/>
+    </Target>
+</Project>

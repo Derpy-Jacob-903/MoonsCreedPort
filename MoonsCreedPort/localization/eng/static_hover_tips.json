@@ -1,0 +1,8 @@
+{
+  "MOONSCREEDPORT-AMPLIFY_KEYWORD.title": "Amplify",
+  "MOONSCREEDPORT-AMPLIFY_KEYWORD.description": "If you have enough {energyPrefix:energyIcons(1)}, pay the additional cost to activate the effect.",
+  "MOONSCREEDPORT-TECH_KEYWORD.title": "Tech",
+  "MOONSCREEDPORT-TECH_KEYWORD.description": "If you have enough {singleStarIcon}, pay the additional cost to activate the effect.",
+  "MOONSCREEDPORT-REAP_KEYWORD.title": "Reap",
+  "MOONSCREEDPORT-REAP_KEYWORD.description": "Channel a random Orb among [img]res://MoonsCreedPort/images/charui/energy/white_mana_icon.png[/img] [color=cyan]Light[/color] or [img]res://MoonsCreedPort/images/charui/energy/black_mana_icon.png[/img] [color=blue]Dark[/color]."
+}

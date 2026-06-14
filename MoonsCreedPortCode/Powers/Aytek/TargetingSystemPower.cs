@@ -1,0 +1,24 @@
+﻿using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
+
+namespace MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
+
+public class TargetingSystemPower : MoonsCreedPortPower
+{
+    public override PowerType Type => PowerType.Buff;
+ 
+   public override PowerStackType StackType => PowerStackType.Counter;
+ 
+   public override Decimal ModifyDamageAdditive(
+     Creature target,
+     decimal amount,
+     ValueProp props,
+     Creature dealer,
+     CardModel card)
+   {
+     return this.Owner != dealer || !props.IsPoweredAttack() || card == null || !card.Tags.Contains(AytekStuff.Missile) ? 0M : Amount;
+   }
+}
