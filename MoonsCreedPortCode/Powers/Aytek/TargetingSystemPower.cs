@@ -17,7 +17,7 @@ public class TargetingSystemPower : MoonsCreedPortPower
      decimal amount,
      ValueProp props,
      Creature dealer,
-     CardModel card)
+     CardModel card, CardPlay cardPlay)
    {
      return this.Owner != dealer || !props.IsPoweredAttack() || card == null || !card.Tags.Contains(AytekStuff.Missile) ? 0M : Amount;
    }

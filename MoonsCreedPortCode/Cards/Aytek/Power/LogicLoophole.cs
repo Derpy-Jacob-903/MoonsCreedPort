@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
+using MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
@@ -20,8 +21,7 @@ public class LogicLoophole() : AytekCard(1,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
-        await PowerCmd.Apply<StrengthPower>(context, Owner.Creature, DynamicVars["TechPointVar"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<LogicLoopholePower>(context, Owner.Creature, DynamicVars["TechPointVar"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade() => this.DynamicVars["TechPointVar"].UpgradeValueBy(1M);

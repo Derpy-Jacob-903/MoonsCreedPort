@@ -15,3 +15,9 @@ MoonsCreedPort/images/charui/spine/SpineSkeletonDataConverter.exe
 /MoonsCreedPort/images/charui/energy/New folder
 /MoonsCreedPort/images/events
 /MoonsCreedPort/images/powers/beta
+/Properties
+/.vs
+MoonsCreedPort.sln.DotSettings.user
+MoonsCreedPort.csproj.user
+MoonsCreedPort.sln.DotSettings.user
+*.uid

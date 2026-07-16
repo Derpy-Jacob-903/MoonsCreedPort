@@ -29,7 +29,7 @@ public class VenomPower : MoonsCreedPortPower
         int num1 = Math.Min(this.Amount, this.TriggerCount);
         for (int index = 0; index < num1; ++index)
         {
-            Decimal num2 = Hook.ModifyDamage(this.Owner.CombatState.RunState, this.Owner.CombatState, this.Owner, (Creature) null, (Decimal) (this.Amount - index), ValueProp.Unblockable | ValueProp.Unpowered, null, ModifyDamageHookType.All, CardPreviewMode.None, out IEnumerable<AbstractModel> _);
+            Decimal num2 = Hook.ModifyDamage(this.Owner.CombatState.RunState, this.Owner.CombatState, this.Owner, (Creature) null, (Decimal) (this.Amount - index), ValueProp.Unblockable | ValueProp.Unpowered, null, null, ModifyDamageHookType.All, CardPreviewMode.None, out IEnumerable<AbstractModel> _);
             totalDamageNextTurn += num2;
         }
         return (int) totalDamageNextTurn;

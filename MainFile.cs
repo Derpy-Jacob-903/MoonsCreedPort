@@ -1,3 +1,4 @@
+using BaseLib.Config;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
@@ -5,7 +6,7 @@ using MegaCrit.Sts2.Core.Modding;
 namespace MoonsCreedPort;
 
 [ModInitializer(nameof(Initialize))]
-public partial class MainFile : Node
+public partial class MoonsCreedPortMainFile : Node
 {
     public const string ModId = "MoonsCreedPort"; //At the moment, this is used only for the Logger and harmony names.
 
@@ -16,7 +17,10 @@ public partial class MainFile : Node
     {
         Harmony harmony = new(ModId);
         harmony.PatchAll();
-        
-        
+    }
+    public class ActsFromThePastConfig : SimpleModConfig
+    {
+        [ConfigHoverTip]
+        public static bool RebalancedMode { get; set; } = false;
     }
 }

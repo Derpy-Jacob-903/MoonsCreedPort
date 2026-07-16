@@ -84,8 +84,8 @@ public class autoslaystuff
 label_15:
     List<NCharacterSelectButton> all = UiHelper.FindAll<NCharacterSelectButton>(charSelectScreen.GetNode((NodePath) "CharSelectButtons/ButtonContainer"));
     //foreach (NCharacterSelectButton ncharacterSelectButton in all)
-      //ncharacterSelectButton.UnlockIfPossible();
-    NCharacterSelectButton ncharacterSelectButton1 = all.FirstOrDefault((Func<NCharacterSelectButton, bool>) (b => b.Character is Aytek));
+      //ncharacterSelectButton.UnlockIfPossible(); 
+    NCharacterSelectButton ncharacterSelectButton1 = all.FirstOrDefault((Func<NCharacterSelectButton, bool>) (b => b.Character is MoonsCreedPortCode.Character.Aytek.Aytek));
     AutoSlayLog.Action($"Selecting character: {ncharacterSelectButton1.Character.Id}");
     ncharacterSelectButton1.Select();
     await Task.Delay(100, ct);

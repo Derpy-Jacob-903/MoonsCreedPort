@@ -11,8 +11,8 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Echo;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Echo;
 
-public class SellYourSoul() : EchoCard(2,
-    CardType.Power, CardRarity.Rare,
+public class SellYourSoul() : EchoCard(0,
+    CardType.Power, CardRarity.Ancient,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

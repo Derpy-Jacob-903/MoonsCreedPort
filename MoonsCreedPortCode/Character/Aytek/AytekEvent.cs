@@ -1,5 +1,6 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,6 +14,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Echo;
@@ -27,7 +29,7 @@ public class LostTechnology : CustomEventModel
     public override string CustomInitialPortraitPath => "events/lost_technology.png".ImagePath();
     public override bool IsAllowed(IRunState runState)
     {
-        return runState.Players.All(p => p.Character is Aytek);
+        return true; //runState.Players.All(p => p.Character is Aytek);
     }
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {
@@ -72,7 +74,8 @@ public class PrecisionSightEnchant : CustomEnchantmentModel
         return !props.IsPoweredAttack() ? 1M : 0.8M;
     }
 }
-public class PrecisionSightRelic : AytekRelic
+[Pool(typeof(EventRelicPool))]
+public class PrecisionSightRelic : MoonsCreedSharedRelic
 {
     //Upon pickup, Enchant all Gun cards in your Deck with Precision Sight. Whenever you add a card that has Gun to your Deck, Enchant it with Precision Sight.
     public override RelicRarity Rarity => RelicRarity.Event;
@@ -87,12 +90,15 @@ public class HeavyLoadEnchant : CustomEnchantmentModel
         return !props.IsPoweredAttack() ? 1M : 1.2M;
     }
 }
-public class HeavyLoadRelic : AytekRelic
+[Pool(typeof(EventRelicPool))]
+public class HeavyLoadRelic : MoonsCreedSharedRelic
 {
     //Upon pickup, Enchant all cards containing “Missile” in your Deck with Heavy Load. Whenever you add a card containing “Missile” to your Deck, Enchant it with Heavy Load.
     public override RelicRarity Rarity => RelicRarity.Event;
 }
-public class LightReapRelic : EchoRelic
+
+[Pool(typeof(EventRelicPool))]
+public class LightReapRelic : MoonsCreedSharedRelic
 {
     public override RelicRarity Rarity => RelicRarity.Event;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -100,7 +106,9 @@ public class LightReapRelic : EchoRelic
         new RepeatVar(3)
     ];
 }
-public class DarkReapRelic : EchoRelic
+
+[Pool(typeof(EventRelicPool))]
+public class DarkReapRelic : MoonsCreedSharedRelic
 {
     public override RelicRarity Rarity => RelicRarity.Event;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -108,7 +116,9 @@ public class DarkReapRelic : EchoRelic
         new RepeatVar(3)
     ];
 }
-public class TheLastKnightsWillRelic : PolarixRelic
+
+[Pool(typeof(EventRelicPool))]
+public class TheLastKnightsWillRelic : MoonsCreedSharedRelic
 {
     public override RelicRarity Rarity => RelicRarity.Event;
     protected override IEnumerable<DynamicVar> CanonicalVars =>

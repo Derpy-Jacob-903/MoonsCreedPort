@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Arcrane;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
@@ -15,7 +16,7 @@ public class ChargeCard() : ArcraneCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new ChargeVar(8),
+        new ChargeVar(5),
         new EnergyVar(1)
     ];
     protected override async Task OnPlay(
@@ -23,8 +24,8 @@ public class ChargeCard() : ArcraneCard(1,
         CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await TechPointVar.GainTP(this);
+        await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.BaseValue, null, this);
     }
     
-    protected override void OnUpgrade() => this.DynamicVars[TechPointVar.defaultName].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars[ChargeVar.defaultName].UpgradeValueBy(3M);
 }

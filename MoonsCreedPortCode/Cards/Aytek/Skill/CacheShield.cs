@@ -18,7 +18,7 @@ public class CacheShield() : AytekCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(7m, ValueProp.Move),
-        new PowerVar<EnergyNextTurnPower>(1)
+        new PowerVar<EnergyNextTurnPower>(1m)
     ];
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

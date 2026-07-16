@@ -4,7 +4,9 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Unlocks;
+using MoonsCreedPort.MoonsCreedPortCode.Character.Arcrane;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 using MoonsCreedPort.MoonsCreedPortCode.Extensions;
 
@@ -49,38 +51,32 @@ public static class JesterCardPoolPatch
         CardMultiplayerConstraint multiplayerConstraint,
         ref IEnumerable<CardModel> __result)
     {
-        // If result is null (rare but possible), initialize it
         if (__result == null)
             __result = Enumerable.Empty<CardModel>();
-
-        // Echo: add Silent's cards
-        /*if (__instance is EchoCardPool)
-        {
-            var silentCards = ModelDb.AllCharacterCardPools
-                .Where(c => c is SilentCardPool)
-                .SelectMany(c => c.GetUnlockedCards(unlockState, multiplayerConstraint));
-
-            __result = __result
-                .Union(silentCards)
-                .Distinct()
-                .ToList();
-
-            return;
-        }*/
-
-        // Polarix: add Ironclad's cards
-        if (__instance is PolarixCardPool)
+        
+        if (__instance is ArcraneCardPool)
         {
             var ironcladCards = ModelDb.AllCharacterCardPools
-                .Where(c => c is IroncladCardPool)
-                .SelectMany(c => c.GetUnlockedCards(unlockState, multiplayerConstraint));
+                .Where(c => c is NecrobinderCardPool or RegentCardPool)
+                .SelectMany(c => c.GetUnlockedCards(unlockState, multiplayerConstraint))
+                .Where(c => c.BaseStarCost < 1 && isOsty(c));
 
             __result = __result
                 .Union(ironcladCards)
                 .Distinct()
                 .ToList();
-
             return;
         }
+    }
+
+    static bool isOsty(CardModel cardModel)
+    {
+        return cardModel is not Bodyguard or Unleash or Afterlife or 
+            Flatten or Poke or Snap or BoneShards or Calcify or 
+            Fetch or HighFive or Rattle or RightHandHand or SicEm or Spur or 
+            NecroMastery or Sacrifice or Squeeze or Protector or Invoke or 
+            PullAggro or Cleanse or Dirge or DevourLife or Reanimate
+            or Venerate or HiddenCache or BlackHole or ChildOfTheStars or 
+            Radiate or Genesis;
     }
 }

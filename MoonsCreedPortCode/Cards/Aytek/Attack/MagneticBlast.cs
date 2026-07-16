@@ -26,7 +26,7 @@ public class MagneticBlast() : AytekCard(1,
     {
         if (play.Target != null)
         {
-            var damageResults = await CreatureCmd.Damage(context, CombatState.HittableEnemies, DynamicVars.Damage, Owner.Creature, this);
+            var damageResults = await CreatureCmd.Damage(context, CombatState.HittableEnemies, DynamicVars.Damage, play.Card.Owner.Creature);
             await PlayerCmd.GainEnergy(
                 damageResults.Count<DamageResult>((Func<DamageResult, bool>)(r => r.TotalDamage > 0)), Owner);
         }

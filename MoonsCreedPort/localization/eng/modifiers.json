@@ -1,0 +1,12 @@
+﻿{
+  "PIKCUBERUNMODIFIERS-ALWAYS_WHALE.title": "://DEBUG",
+  "PIKCUBERUNMODIFIERS-ALWAYS_WHALE.description": "ALL non-boss encounters are Phantasmal Gardeners.",
+  "PIKCUBERUNMODIFIERS-a.title": "://DEBUG ATTACK",
+  "PIKCUBERUNMODIFIERS-a.description": "Start with ALL Attacks from your character in your deck.",
+  "PIKCUBERUNMODIFIERS-s.title": "://DEBUG SKILL",
+  "PIKCUBERUNMODIFIERS-s.description": "Start with ALL Skills from your character in your deck.",
+  "PIKCUBERUNMODIFIERS-p.title": "://DEBUG POWER",
+  "PIKCUBERUNMODIFIERS-p.description": "Start with ALL Powers from your character in your deck.",
+  "PIKCUBERUNMODIFIERS-SEEK.title": "://SEEK",
+  "PIKCUBERUNMODIFIERS-SEEK.description": "Start with 3 copies of a single card."
+}

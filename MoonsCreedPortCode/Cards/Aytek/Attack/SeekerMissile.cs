@@ -17,19 +17,25 @@ public class SeekerMissile() : AytekCard(1,
     protected override HashSet<CardTag> CanonicalTags => [AytekStuff.Missile];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5m, ValueProp.Move),
-        new DamageVar("VulnDamage", 15m, ValueProp.Move),
-        new ExtraDamageVar(10)
+        ..MakeCalculatedDamage(5, (_, c) => c != null && c.HasPower<VulnerablePower>() ? 1 : 0, 10)
+        //new DamageVar(5m, ValueProp.Move),
+        //new DamageVar("VulnDamage", 15m, ValueProp.Move),
+        //new ExtraDamageVar(10)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
         if (play.Target != null)
-            await DamageCmd.Attack(play.Target.HasPower<VulnerablePower>() ? DynamicVars["VulnDamage"].BaseValue : DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(play.Target)
+            //await DamageCmd.Attack(play.Target.HasPower<VulnerablePower>() ? DynamicVars["VulnDamage"].BaseValue : DynamicVars.Damage.BaseValue)
+            await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(play.Target))
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade()
+    {
+        this.DynamicVars.CalculationBase.UpgradeValueBy(3M);
+        this.DynamicVars.ExtraDamage.UpgradeValueBy(6M);
+    } 
 }

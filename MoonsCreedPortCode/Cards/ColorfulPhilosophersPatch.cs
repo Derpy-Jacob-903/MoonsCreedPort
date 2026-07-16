@@ -3,10 +3,8 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Events;
 using MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
-using MoonsCreedPort.MoonsCreedPortCode.Character.Arcrane;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
-using MoonsCreedPort.MoonsCreedPortCode.Character.Echo;
-using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
+using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek.Cards;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards;
 
@@ -18,9 +16,9 @@ public static class ColorfulPhilosophersPatch
     public static void Postfix(ref IEnumerable<CardPoolModel> __result)
     {
         __result = __result.Append(ModelDb.CardPool<AytekCardPool>());
-        __result = __result.Append(ModelDb.CardPool<EchoCardPool>());
-        __result = __result.Append(ModelDb.CardPool<PolarixCardPool>());
-        __result = __result.Append(ModelDb.CardPool<ArcraneCardPool>());
+        //__result = __result.Append(ModelDb.CardPool<EchoCardPool>());
+        //__result = __result.Append(ModelDb.CardPool<PolarixCardPool>());
+        //__result = __result.Append(ModelDb.CardPool<ArcraneCardPool>());
     }
 }
 
@@ -32,5 +30,6 @@ public static class TrashHeapPatch
     public static void Postfix(ref CardModel[] __result)
     {
         __result = __result.AddToArray(ModelDb.Card<ShieldMelter>());
+        __result = __result.AddToArray(ModelDb.Card<MightyCard>());
     }
 }

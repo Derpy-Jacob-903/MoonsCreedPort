@@ -21,8 +21,22 @@ public abstract class ArcraneCard(int cost, CardType type, CardRarity rarity, Ta
 {
     protected override bool ArtRollerCase(CardModel card)
     {
-        return card.Pool is DefectCardPool or RegentCardPool;
+        return card.Pool is NecrobinderCardPool or RegentCardPool;
+    }
+    
+    public override string CustomPortraitPath {
+        get
+        {
+            if (ResourceLoader.Exists($"arcrane/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath())) {
+                return $"arcrane/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+            }
+            if (ResourceLoader.Exists($"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath())) {
+                return $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+            }
+            if (ResourceLoader.Exists($"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath())) {
+                return $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+            }
+            return RolledArt(this) ?? MissingPortraitPath;
+        }
     }
 }
-
-public interface ITechKeyword { }

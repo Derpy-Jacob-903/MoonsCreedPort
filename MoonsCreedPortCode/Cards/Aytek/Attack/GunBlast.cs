@@ -33,11 +33,11 @@ public class GunBlast() : AytekCard(1,
         if (play.Target != null)
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
         if (!TriggeredTech(play) || CombatState == null) return;
-        await CardCmd.Discard(context, (await CardPileCmd.Draw(context, DynamicVars.Cards.IntValue, Owner)).Where<CardModel>((Func<CardModel, bool>) (c => c.Keywords.Contains(AytekStuff.GunKeyword))));
+        await CardCmd.Discard(context, (await CardPileCmd.Draw(context, DynamicVars.Cards.IntValue, Owner)).Where<CardModel>((Func<CardModel, bool>) (c => !c.Keywords.Contains(AytekStuff.GunKeyword))));
     }
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(1M);
 }

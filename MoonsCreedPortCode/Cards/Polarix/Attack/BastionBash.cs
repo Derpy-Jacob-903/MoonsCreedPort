@@ -27,7 +27,7 @@ public class BastionBash() : PolarixCard(1,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target).WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3").Execute(context);
+        await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(play.Card, play).Targeting(play.Target).WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3").Execute(context);
     }
     protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);
 }

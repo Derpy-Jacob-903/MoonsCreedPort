@@ -26,7 +26,7 @@ public class EmpMissile() : AytekCard(1,
     {
         if (play.Target == null) return;
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this).Targeting(play.Target)
+            .FromCard(play.Card, play).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
             .Execute(context);
         if (play.Target.HasPower<VulnerablePower>()) await PowerCmd.Apply<WeakPower>(context, play.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);

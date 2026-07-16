@@ -28,7 +28,7 @@ public class CursedStrike() : PolarixCard(0,
     {
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
         CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Haunt>(Owner), PileType.Draw, Owner));

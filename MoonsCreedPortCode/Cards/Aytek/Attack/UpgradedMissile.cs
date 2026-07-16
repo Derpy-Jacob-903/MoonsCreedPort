@@ -18,7 +18,8 @@ public class UpgradedMissile() : AytekCard(3,
     protected override HashSet<CardTag> CanonicalTags => [AytekStuff.Missile];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(16m, ValueProp.Move)
+        new DamageVar(16m, ValueProp.Move),
+        new EnergyVar(1)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -26,7 +27,7 @@ public class UpgradedMissile() : AytekCard(3,
     {
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }

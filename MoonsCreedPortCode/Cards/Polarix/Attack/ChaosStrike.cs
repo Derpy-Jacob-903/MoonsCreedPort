@@ -25,7 +25,7 @@ public class ChaosStrike() : PolarixCard(2,
     {
         if (play.Target != null)
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(play.Target).WithHitCount(DynamicVars.Repeat.IntValue)
+                .FromCard(play.Card, play).Targeting(play.Target).WithHitCount(DynamicVars.Repeat.IntValue)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }

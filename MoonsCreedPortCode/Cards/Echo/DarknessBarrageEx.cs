@@ -33,7 +33,7 @@ public class DarknessBarrageEx() : EchoCard(0,
         {
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .WithHitCount((int) ((CalculatedVar) this.DynamicVars["CalculatedHits"]).Calculate(play.Target))
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
             await PowerCmd.Apply<WeakPower>(context, play.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);

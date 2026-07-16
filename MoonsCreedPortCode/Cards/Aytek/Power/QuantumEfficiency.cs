@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
+using MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
@@ -14,15 +15,14 @@ public class QuantumEfficiency() : AytekCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<StrengthPower>(2)
+        new PowerVar<QuantumEfficiencyPower>(2)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
-        await PowerCmd.Apply<StrengthPower>(context, Owner.Creature, DynamicVars.Strength.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<QuantumEfficiencyPower>(context, Owner.Creature, DynamicVars["QuantumEfficiencyPower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Strength.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars["QuantumEfficiencyPower"].UpgradeValueBy(1M);
 }

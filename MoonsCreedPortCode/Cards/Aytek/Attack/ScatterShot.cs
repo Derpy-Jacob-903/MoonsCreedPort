@@ -33,7 +33,7 @@ public class ScatterShot() : AytekCard(1,
         {
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
             if (!TriggeredTech(play) || CombatState == null) return;

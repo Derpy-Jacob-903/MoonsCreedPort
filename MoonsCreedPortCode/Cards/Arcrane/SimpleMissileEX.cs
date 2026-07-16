@@ -16,6 +16,7 @@ public class MagicMissileEx() : ArcraneCard(1,
     TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [AytekStuff.Missile];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [ CardKeyword.Retain, AytekStuff.ArcraneCast ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(20M,ValueProp.Move),
@@ -28,9 +29,10 @@ public class MagicMissileEx() : ArcraneCard(1,
         if (play.Target != null)
         {
             await DamageCmd.Attack(TechATK(play))
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
+            
         }
     }
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);

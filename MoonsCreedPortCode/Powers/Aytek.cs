@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using BaseLib.Abstracts;
 using BaseLib.Patches.Content;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.AutoSlay;
@@ -15,6 +16,7 @@ using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.ValueProps;
+using MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 using MoonsCreedPort.MoonsCreedPortCode.Powers;
 
@@ -32,19 +34,28 @@ public class AytekStuff
     public static CardTag BlackReap;
     [CustomEnum]
     public static CardTag Missile;
+    [CustomEnum]
+    public static CardTag Kick;
+    //HERMIT(MOD)-ROUNDHOUSE_KICK, WATCHER-WHEEL_KICK, KINGLY_KICK
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
+    public static CardKeyword Crude;
     [CustomEnum] [Obsolete("Use GunKeyword")]
     public static ValueProp GunDamage;
     [CustomEnum] [KeywordProperties(AutoKeywordPosition.After)]
     public static CardKeyword GunKeyword;
     [CustomEnum] [KeywordProperties(AutoKeywordPosition.After)]
     public static CardKeyword ArcraneCast;
-    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)] [Obsolete("Unused")]
     public static CardKeyword ArcranePyre;
-    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)] [Obsolete("Unused")]
     public static CardKeyword ArcraneAfterlife;
     public static bool IsGun(CardModel card)
     {
         return card.Keywords.Contains(GunKeyword);
+    }
+    public static bool IsCrude(CardModel card)
+    {
+        return card.Type == CardType.Curse || card.Rarity == CardRarity.Status || card.Rarity == CardRarity.Quest;
     }
     public static Creature GetGunTargets(Player player, ICombatState combatState)
     {
@@ -55,14 +66,14 @@ public class AytekStuff
     [HarmonyPatch(typeof(CardModel))]
     public static class OnPlayPatch
     {
-        [HarmonyPatch(nameof(CardModel.TargetType))]
+        /*[HarmonyPatch(nameof(CardModel.TargetType))]
         [HarmonyPrefix]
         public static bool Prefix(CardModel __instance, ref TargetType __result)
         {
             if (__instance == null || !__instance.Keywords.Contains(GunKeyword)) return true;
             __result = TargetType.RandomEnemy;
             return false;
-        }
+        }*/
         [HarmonyPatch(nameof(CardModel.OnPlayWrapper))]
         [HarmonyPrefix]
         public static bool OnPlayPrefix(CardModel __instance, 
@@ -75,6 +86,24 @@ public class AytekStuff
             if (__instance == null || !__instance.Keywords.Contains(GunKeyword) || isAutoPlay) return true;
             target = GetGunTargets(__instance.Owner, __instance.CombatState);
             return true;
+        }
+        [HarmonyPatch(nameof(CardModel.TargetType), MethodType.Getter)]
+        [HarmonyPrefix]
+        public static bool Prefix(CardModel __instance, ref TargetType __result)
+        {
+            if (__instance == null || !__instance.Keywords.Contains(GunKeyword)) return true;
+            __result = TargetType.RandomEnemy;
+            return false;
+        }
+        [HarmonyPatch(nameof(CardModel.IsBasicStrikeOrDefend), MethodType.Getter)]
+        public static class Card_IsBasicStrikeOrDefend_Patch
+        {
+            [HarmonyPostfix]
+            static void Postfix(CardModel __instance, ref bool __result)
+            {
+                if (__instance is RadiantStrike)
+                    __result = false;
+            }
         }
     }
     [HarmonyPatch(typeof(AbstractModel))]
@@ -122,6 +151,15 @@ public class TechPointVar(string name, int techPoints) : DynamicVar(name, techPo
     public static async Task GainTP(CardModel Card)
     {
         await GainTP(Card.Owner, Card.DynamicVars["TechPointVar"].BaseValue);
+    }
+    
+    public static IEnumerable<DynamicVar> MakeTechDamage(
+        int baseVal,
+        Func<CardModel, Creature?, Decimal> bonus,
+        int mult = 1,
+        ValueProp props = ValueProp.Move)
+    {
+        return CustomCardModel.FinishMakeCalculatedVar(new CalculatedDamageVar(props).WithMultiplier(bonus), baseVal, mult);
     }
 }
 

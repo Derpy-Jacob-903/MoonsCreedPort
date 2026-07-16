@@ -25,7 +25,7 @@ public class ZeroPointKick() : AytekCard(2,
     {
         if (play.Target != null)
         {
-            if (!(await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).WithHitFx("vfx/vfx_attack_slash", tmpSfx: "slash_attack.mp3").Execute(context)).Results.SelectMany<List<DamageResult>, DamageResult>((Func<List<DamageResult>, IEnumerable<DamageResult>>) (r => (IEnumerable<DamageResult>) r)).Any<DamageResult>((Func<DamageResult, bool>) (r => r.WasTargetKilled)))
+            if (!(await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(play.Card, play).Targeting(play.Target).WithHitFx("vfx/vfx_attack_slash", tmpSfx: "slash_attack.mp3").Execute(context)).Results.SelectMany<List<DamageResult>, DamageResult>((Func<List<DamageResult>, IEnumerable<DamageResult>>) (r => (IEnumerable<DamageResult>) r)).Any<DamageResult>((Func<DamageResult, bool>) (r => r.WasTargetKilled)))
                 return;
             await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);
         }

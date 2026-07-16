@@ -34,7 +34,7 @@ public class PlasmaPunch() : AytekCard(1,
             {
                 var singleTarget = Owner.RunState.Rng.CombatTargets.NextItem(validTargets);
                 var damageResult =
-                    await CreatureCmd.Damage(context, singleTarget, DynamicVars.Damage, Owner.Creature, this);
+                    await CreatureCmd.Damage(context, singleTarget, DynamicVars.Damage, play.Card, play);
                 if (damageResults.Any(e => e.Receiver == damageResult.First().Receiver))
                     await TechPointVar.GainTP(this);
                 damageResults.AddRange(damageResult);

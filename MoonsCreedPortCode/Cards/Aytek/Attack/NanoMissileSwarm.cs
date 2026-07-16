@@ -33,7 +33,7 @@ public class NanoMissileSwarm() : AytekCard(1,
         if (play.Target != null)
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount((int) ((CalculatedVar) DynamicVars["CalculatedHits"]).Calculate(play.Target) + 1)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", tmpSfx: "dagger_throw.mp3").Execute(context);
     }
     protected override bool ShouldGlowRedInternal => ((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(null) == 0;

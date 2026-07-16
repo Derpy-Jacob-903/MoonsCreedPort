@@ -168,6 +168,8 @@ public class BlackEchoOrb : EchoOrb<SpentBlackOrbPower>
 {
     protected override string ChannelSfx => "event:/sfx/characters/defect/defect_dark_channel";
     public override Color DarkenedColor => new Color("004dfa");
+    public override string CustomIconPath => "res://MoonsCreedPort/images/charui/energy/black_mana_icon.png";
+
     public override Node2D? CreateCustomSprite()
     {
         var container = new Node2D();
@@ -177,7 +179,7 @@ public class BlackEchoOrb : EchoOrb<SpentBlackOrbPower>
         new MegaSprite(lightning.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
         // change the color and size
-        lightning.Modulate = new Color(0.0f, 0.3f, 1.0f, 1.0f);
+        lightning.Modulate = new Color(0.3f, 0.4f, 1.0f, 1.0f);
         container.AddChild(lightning);
         return container;
     }
@@ -187,6 +189,7 @@ public class WhiteEchoOrb : EchoOrb<SpentWhiteOrbPower>
 {
     protected override string ChannelSfx => "event:/sfx/characters/defect/defect_glass_channel";
     public override Color DarkenedColor => new Color("004dfa");
+    public override string CustomIconPath => "res://MoonsCreedPort/images/charui/energy/white_mana_icon.png";
     public override Node2D? CreateCustomSprite()
     {
         var container = new Node2D();
@@ -196,7 +199,7 @@ public class WhiteEchoOrb : EchoOrb<SpentWhiteOrbPower>
         new MegaSprite(lightning.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
         // change the color and size
-        lightning.Modulate = new Color(0f, 1.0f, 1.0f, 1.0f);
+        lightning.Modulate = new Color(0.5f, 1f, 0.9f, 1.0f);
         container.AddChild(lightning);
         return container;
     }

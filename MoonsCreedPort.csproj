@@ -75,7 +75,7 @@
             <Private>false</Private>
         </Reference>
 
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.2.0" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.3.5" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
         <AdditionalFiles Include="MoonsCreedPort/localization/**/*.json"/>
     </ItemGroup>
@@ -95,6 +95,7 @@
         <None Include=".gitignore"/>
         <None Include="MoonsCreedPort.json"/>
         <None Include="MoonsCreedPortCode\Cards\Arcrane\Skill\TechLock.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Curses\Scorpio.cs" />
         <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\DefendCursed.cs" />
         <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\StrikeCursed.cs" />
         <None Include="project.godot"/>
@@ -105,12 +106,7 @@
         <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\DefendCursed.cs" />
         <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Deprecated\StrikeCursed.cs" />
         <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\StrikeCursed.cs" />
-        <Compile Remove="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
-        <None Include="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
         <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Curses\Scorpio.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Polarix\Curses\Scorpio.cs" />
-        <Compile Remove="MoonsCreedPortCode\Powers\Aytek\Ionized.cs" />
-        <None Include="MoonsCreedPortCode\Powers\Aytek\Ionized.cs" />
         <Compile Remove="MoonsCreedPortCode\Extensions\SkinManager.cs" />
         <None Include="MoonsCreedPortCode\Extensions\SkinManager.cs" />
         <Compile Remove="MoonsCreedPortCode\Extensions\ApplySkinPatch.cs" />
@@ -128,13 +124,26 @@
         <None Include="MoonsCreedPortCode\Cards\Arcrane\Skill\Skill.cs" />
         <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Skill\TechLock.cs" />
         <None Include="MoonsCreedPortCode\Cards\Arcrane\Skill\TechLock.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Aytek\Power\TakeAim.cs" />
+        <None Include="MoonsCreedPortCode\Cards\Aytek\Power\TakeAim.cs" />
+        <Compile Remove="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
+        <None Include="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Echo\Attack\*" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Echo\Skill\*" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Echo\Power\*" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Attack\*" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Skill\*" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Power\*" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Attack\*" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Skill\*" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Power\*" />
+        <Compile Remove="MoonsCreedPortCode\Modifiers\DebugModifier.cs" />
+        <None Include="MoonsCreedPortCode\Modifiers\DebugModifier.cs" />
     </ItemGroup>
 
     <ItemGroup>
         <Folder Include="MoonsCreedPortCode\Cards\Arcrane\Starter\" />
-        <Folder Include="MoonsCreedPortCode\Cards\Aytek\Starter\" />
         <Folder Include="MoonsCreedPortCode\Cards\Echo\Starter\" />
-        <Folder Include="MoonsCreedPortCode\Cards\Polarix\Starter\" />
         <Folder Include="MoonsCreedPortCode\Character\Chaos\" />
         <Folder Include="MoonsCreedPortCode\Character\Echo\Relics\" />
         <Folder Include="MoonsCreedPortCode\Character\Polarix\Relics\" />

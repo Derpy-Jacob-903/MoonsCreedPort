@@ -24,7 +24,7 @@ public class Cleave() : PolarixCard(1,
     {
         if (CombatState != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this).TargetingAllOpponents(this.CombatState)
+                .FromCard(play.Card, play).TargetingAllOpponents(this.CombatState)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }

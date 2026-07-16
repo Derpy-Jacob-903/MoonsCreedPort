@@ -34,7 +34,7 @@ public class Harmony() : EchoCard(0,
         await CreatureCmd.GainBlock(Owner.Creature, base.DynamicVars.Block, play);
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
         await EchoOrb<PowerModel>.EvokeFirstOf<BlackEchoOrb>(context, Owner);

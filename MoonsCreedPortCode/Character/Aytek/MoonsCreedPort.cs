@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Characters;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 using MoonsCreedPort.MoonsCreedPortCode.Extensions;
@@ -15,7 +16,6 @@ public class Aytek : PlaceholderCharacterModel
 {
     public const string CharacterId = "Aytek";
     public override string PlaceholderID => "defect";
-
     public static readonly Color Color = new("f65d34");
 
     public override Color NameColor => Color;

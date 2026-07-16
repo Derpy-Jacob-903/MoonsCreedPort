@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -20,7 +21,7 @@ public class ArcraneChargePower : MoonsCreedPortPower
         if (command.Attacker != this.Owner || !command.DamageProps.IsPoweredAttack())
             return Task.CompletedTask;
         Data internalData = this.GetInternalData<Data>();
-        if (internalData.commandToModify != null || command.ModelSource != null && !(command.ModelSource is CardModel cardModel && !cardModel.Keywords.Contains(AytekStuff.ArcraneCast)) || !command.DamageProps.IsPoweredAttack())
+        if (internalData.commandToModify != null || command.ModelSource != null && !(command.ModelSource is CardModel cardModel && cardModel.Keywords.Contains(AytekStuff.ArcraneCast)) || !command.DamageProps.IsPoweredAttack())
             return Task.CompletedTask;
         internalData.commandToModify = command;
         internalData.amountWhenAttackStarted = this.Amount;
@@ -32,7 +33,7 @@ public class ArcraneChargePower : MoonsCreedPortPower
         decimal amount,
         ValueProp props,
         Creature dealer,
-        CardModel cardSource)
+        CardModel cardSource, CardPlay cardPlay)
     {
         if (this.Owner != dealer || !props.IsPoweredAttack() || cardSource == null || !cardSource.Keywords.Contains(AytekStuff.ArcraneCast))
             return 0M;

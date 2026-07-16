@@ -25,9 +25,9 @@ public class ElectricShot() : AytekCard(1,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        if (play.Target != null)
+        if (CombatState != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this).TargetingRandomOpponents(CombatState)
+                .FromCard(play.Card, play).TargetingRandomOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }

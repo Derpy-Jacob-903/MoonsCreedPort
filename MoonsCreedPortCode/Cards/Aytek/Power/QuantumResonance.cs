@@ -5,23 +5,23 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
+using MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
 public class QuantumResonance() : AytekCard(1,
-    CardType.Power, CardRarity.Rare,
+    CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<StrengthPower>(2)
+        new PowerVar<QuantumResonancePower>(5)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
-        await PowerCmd.Apply<StrengthPower>(context, Owner.Creature, DynamicVars.Strength.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<QuantumResonancePower>(context, Owner.Creature, DynamicVars["QuantumResonancePower"].BaseValue, Owner.Creature, this);
     }
-    protected override void OnUpgrade() => this.DynamicVars.Strength.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars["QuantumResonancePower"].UpgradeValueBy(3M);
 }

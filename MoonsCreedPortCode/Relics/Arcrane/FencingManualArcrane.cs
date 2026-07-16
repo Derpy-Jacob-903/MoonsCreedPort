@@ -10,13 +10,14 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.Relics;
+using MoonsCreedPort.MoonsCreedPortCode.Character.Arcrane;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 using MoonsCreedPort.MoonsCreedPortCode.Powers;
 using MoonsCreedPort.MoonsCreedPortCode.Relics.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Relics.Arcrane;
 
-public class FencingManualArcrane() : AytekRelic
+public class FencingManualArcrane() : ArcraneRelic
 {
     public override RelicRarity Rarity =>
         RelicRarity.Starter;

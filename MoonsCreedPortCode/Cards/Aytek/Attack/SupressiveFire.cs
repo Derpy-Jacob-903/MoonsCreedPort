@@ -36,7 +36,7 @@ public class SupressiveFire() : AytekCard(1,
             {
                 var singleTarget = Owner.RunState.Rng.CombatTargets.NextItem(validTargets);
                 var damageResult =
-                    await CreatureCmd.Damage(context, singleTarget, DynamicVars.Damage, Owner.Creature, this);
+                    await CreatureCmd.Damage(context, singleTarget, DynamicVars.Damage, play.Card, play);
                 await PowerCmd.Apply<BruisePower>(context, singleTarget, DynamicVars["BruisePower"].BaseValue, Owner.Creature, this);
                 //damageResults.AddRange(damageResult);
             }

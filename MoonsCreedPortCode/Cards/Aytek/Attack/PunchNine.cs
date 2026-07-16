@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Combat;
+﻿using BaseLib.Extensions;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -31,10 +32,10 @@ public class PunchNine() : AytekCard(1,
     {
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
-        await CreatureCmd.Heal(Owner.Creature, DynamicVars["CalculatedHeal"].BaseValue);
+        await CreatureCmd.Heal(Owner.Creature, ((CalculatedVar)DynamicVars["CalculatedHeal"]).Calculate(null));
     }
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(4M);
 }

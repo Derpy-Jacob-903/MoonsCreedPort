@@ -15,6 +15,7 @@ public class SatelliteStrike() : AytekCard(1,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
+    protected override HashSet<CardTag> CanonicalTags => [AytekStuff.Missile, CardTag.Strike];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CalculationBaseVar(6M),
@@ -27,8 +28,8 @@ public class SatelliteStrike() : AytekCard(1,
         CardPlay play)
     {
         if (play.Target != null)
-            await DamageCmd.Attack(base.DynamicVars.CalculatedDamage.BaseValue)
-                .FromCard(this).Targeting(play.Target)
+            await DamageCmd.Attack(base.DynamicVars.CalculatedDamage.Calculate(play.Target))
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }

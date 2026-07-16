@@ -23,12 +23,12 @@ public class BootKick() : AytekCard(2,
     {
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
         if (!TriggeredTech(play) || CombatState == null) return;
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this).TargetingAllOpponents(CombatState)
+        await DamageCmd.Attack(base.DynamicVars["TechDamage"].BaseValue)
+            .FromCard(play.Card, play).TargetingAllOpponents(CombatState)
             .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
             .Execute(context);
     }

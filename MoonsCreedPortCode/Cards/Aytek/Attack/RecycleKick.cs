@@ -23,7 +23,7 @@ public class RecycleKick() : AytekCard(1,
     {
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
         await PowerCmd.Apply<ReboundPower>(context, Owner.Creature, 1M, Owner.Creature, this);

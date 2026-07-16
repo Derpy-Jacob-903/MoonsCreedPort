@@ -25,7 +25,7 @@ public class ShieldMelter() : AytekCard(1,
         {
             await CreatureCmd.LoseBlock(play.Target, play.Target.Block);
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this).Targeting(play.Target)
+                .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
         }

@@ -40,7 +40,7 @@ public class ThermalTargeting() : AytekCard(1,
         {
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
-                .FromCard(this).Targeting(weakestEnemy)
+                .FromCard(play.Card, play).Targeting(weakestEnemy)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
         }

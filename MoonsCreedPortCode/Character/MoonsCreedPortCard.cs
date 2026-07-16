@@ -2,6 +2,7 @@
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Godot;
+using MegaCrit.Sts2.Core.AutoSlay;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -11,7 +12,9 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Random;
+using MegaCrit.Sts2.Core.ValueProps;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 using MoonsCreedPort.MoonsCreedPortCode.Extensions;
 
@@ -80,8 +83,15 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
     
     public bool ForceTriggerTech = false;
     public bool WillTriggerTech => CombatState != null && this is ITechKeyword && Owner.PlayerCombatState != null && Owner.PlayerCombatState.Stars >= CanonicalStarCost;
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="play">CardPlay</param>
+    /// <returns></returns>
     public bool TriggeredTech(CardPlay play) => (play.Resources.StarsSpent > 0 && play.Card is ITechKeyword) || ForceTriggerTech;
+    [Obsolete("You should refactor this to use a CalculatedDamageVar")]
     public decimal TechATK(CardPlay play) => TriggeredTech(play) ? DynamicVars["TechDamage"].BaseValue : DynamicVars.Damage.BaseValue;
+    [Obsolete("You should refactor this to use a CalculatedBlockVar")]
     public BlockVar TechBlock(CardPlay play) => TriggeredTech(play) ? (BlockVar)DynamicVars["TechBlock"] : DynamicVars.Block;
     public override int CurrentStarCost
     {
@@ -94,18 +104,57 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
     
     protected override bool ShouldGlowGoldInternal => WillTriggerTech;
 
-    public override async Task BeforeCardAutoPlayed(CardModel card, Creature target, AutoPlayType type)
+    public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (!(card == this && WillTriggerTech))
-            return;
-        ForceTriggerTech = true;
-        //await PlayerCmd.LoseStars(card.CanonicalStarCost, card.Owner);
+        if (TriggeredTech(cardPlay)) ForceTriggerTech = true;
+        return base.BeforeCardPlayed(cardPlay);
+    }
+
+    public override Task BeforeCardAutoPlayed(CardModel card, Creature target, AutoPlayType type)
+    {
+        if (card is ColorlessCard techCard && techCard.WillTriggerTech)
+        {
+            ForceTriggerTech = true;
+            //if (AutoSlayer.IsActive)
+                //await PlayerCmd.LoseStars(card.CanonicalStarCost, card.Owner);
+        }
+        return base.BeforeCardAutoPlayed(card, target, type);
     }
 
     public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card == this && cardPlay.IsAutoPlay) ForceTriggerTech = false;
+        if (cardPlay.Card is ColorlessCard) ForceTriggerTech = false;
         return base.AfterCardPlayed(choiceContext, cardPlay);
+    }
+    
+    public static IEnumerable<DynamicVar> MakeTechDamage(
+        ColorlessCard This, 
+        int baseVal,
+        int extraVal,
+        ValueProp props = ValueProp.Move)
+    {
+        return
+        [
+            new CalculationBaseVar(baseVal),
+            new ExtraDamageVar(extraVal),
+            new CalculatedDamageVar(props).WithMultiplier(
+                (Func<CardModel, Creature, decimal>)((c, _) => (((ColorlessCard)c).WillTriggerTech || ((ColorlessCard)c).ForceTriggerTech) ? 1 : 0))
+        ];
+    }
+    
+    public static IEnumerable<DynamicVar> MakeTechBlock(
+        ColorlessCard This, 
+        int baseVal,
+        int extraVal,
+        ValueProp props = ValueProp.Move)
+    {
+        return
+        [
+            new CalculationBaseVar(baseVal),
+            new CalculationExtraVar(extraVal),
+            new CalculatedBlockVar(props).WithMultiplier(
+                (Func<CardModel, Creature, decimal>)((c, _) => This.WillTriggerTech ? 1 : 0))
+        ];
     }
     
     /*public override async Task AfterCardExhausted(PlayerChoiceContext ctx, CardModel card, bool causedByEthereal)

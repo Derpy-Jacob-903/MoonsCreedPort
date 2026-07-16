@@ -26,7 +26,7 @@ public class CoverFire() : AytekCard(1,
         if (CombatState != null)
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
-                .FromCard(this).TargetingRandomOpponents(CombatState, true)
+                .FromCard(play.Card, play).TargetingRandomOpponents(CombatState, true)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
         if (!TriggeredTech(play) || CombatState == null) return;

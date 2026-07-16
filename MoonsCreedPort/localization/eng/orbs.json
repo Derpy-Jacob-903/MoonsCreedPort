@@ -1,8 +1,8 @@
 {
-  "MOONSCREEDPORT-WHITE_ECHO_ORB.description": "Orb: Echo's cards may require [img]res://MoonsCreedPort/images/charui/energy/white_mana_icon.png[/img] to play.",
-  "MOONSCREEDPORT-WHITE_ECHO_ORB.smartDescription": "[gold]Passive:[/gold] Can be Evoked as a cost.\n[gold]Evoke:[/gold] Gain [blue]{Evoke}[/blue] [gold]Spent Light Orb[/gold].",
+  "MOONSCREEDPORT-WHITE_ECHO_ORB.description": "Orb: Echo's cards may require [gold]Shattering[/gold] [img]res://MoonsCreedPort/images/orbs/mox_white.png[/img] to play.",
+  "MOONSCREEDPORT-WHITE_ECHO_ORB.smartDescription": "[gold]Passive:[/gold] Can be [gold]Evoked[/gold] as a cost.\n[gold]Evoke:[/gold] Gain [blue]{Evoke}[/blue] [gold]Spent Light Orb[/gold].",
   "MOONSCREEDPORT-WHITE_ECHO_ORB.title": "Light",
-  "MOONSCREEDPORT-BLACK_ECHO_ORB.description": "Orb: Echo's cards may require [img]res://MoonsCreedPort/images/charui/energy/black_mana_icon.png[/img] to play.",
-  "MOONSCREEDPORT-BLACK_ECHO_ORB.smartDescription": "[gold]Passive:[/gold] Can be Evoked as a cost.\n[gold]Evoke:[/gold] Gain [blue]{Evoke}[/blue] [gold]Spent Dark Orb[/gold].",
+  "MOONSCREEDPORT-BLACK_ECHO_ORB.description": "Orb: Echo's cards may require [gold]Shattering[/gold] [img]res://MoonsCreedPort/images/orbs/mox_black.png[/img] to play.",
+  "MOONSCREEDPORT-BLACK_ECHO_ORB.smartDescription": "[gold]Passive:[/gold] Can be [gold]Evoked[/gold] as a cost.\n[gold]Evoke:[/gold] Gain [blue]{Evoke}[/blue] [gold]Spent Dark Orb[/gold].",
   "MOONSCREEDPORT-BLACK_ECHO_ORB.title": "Dark"
 }
