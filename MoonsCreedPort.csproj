@@ -82,77 +82,7 @@
 
     <ItemGroup>
         <Compile Remove="MoonsCreedPort/**"/>
-        <Compile Remove="materials/**"/>
-        <Compile Remove="shaders/**"/>
-        <Compile Remove="images/**"/>
         <EmbeddedResource Remove="MoonsCreedPort/**"/>
-        <EmbeddedResource Remove="materials/**"/>
-        <EmbeddedResource Remove="shaders/**"/>
-        <EmbeddedResource Remove="images/**"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Include=".gitignore"/>
-        <None Include="MoonsCreedPort.json"/>
-        <None Include="MoonsCreedPortCode\Cards\Arcrane\Skill\TechLock.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Curses\Scorpio.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\DefendCursed.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\StrikeCursed.cs" />
-        <None Include="project.godot"/>
-        <None Include="MoonsCreedPort/**"/>
-        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\DefendCursed.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\StrikeCursed.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Deprecated\DefendCursed.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\DefendCursed.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Deprecated\StrikeCursed.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Polarix\Deprecated\StrikeCursed.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Curses\Scorpio.cs" />
-        <Compile Remove="MoonsCreedPortCode\Extensions\SkinManager.cs" />
-        <None Include="MoonsCreedPortCode\Extensions\SkinManager.cs" />
-        <Compile Remove="MoonsCreedPortCode\Extensions\ApplySkinPatch.cs" />
-        <None Include="MoonsCreedPortCode\Extensions\ApplySkinPatch.cs" />
-        <Compile Remove="MoonsCreedPortCode\Artists\Artist.cs" />
-        <None Include="MoonsCreedPortCode\Artists\Artist.cs" />
-        <Compile Remove="MoonsCreedPortCode\Artists\ArtistHoverTip.cs" />
-        <None Include="MoonsCreedPortCode\Artists\ArtistHoverTip.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\TechLock.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Attack\ArcraneGunA.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Arcrane\Attack\ArcraneGunA.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Power\AdvancedTargetingSystem.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Arcrane\Power\AdvancedTargetingSystem.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Skill\Skill.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Arcrane\Skill\Skill.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Skill\TechLock.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Arcrane\Skill\TechLock.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Aytek\Power\TakeAim.cs" />
-        <None Include="MoonsCreedPortCode\Cards\Aytek\Power\TakeAim.cs" />
-        <Compile Remove="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
-        <None Include="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Echo\Attack\*" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Echo\Skill\*" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Echo\Power\*" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Attack\*" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Skill\*" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\Power\*" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Attack\*" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Skill\*" />
-        <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Power\*" />
-        <Compile Remove="MoonsCreedPortCode\Modifiers\DebugModifier.cs" />
-        <None Include="MoonsCreedPortCode\Modifiers\DebugModifier.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="MoonsCreedPortCode\Cards\Arcrane\Starter\" />
-        <Folder Include="MoonsCreedPortCode\Cards\Echo\Starter\" />
-        <Folder Include="MoonsCreedPortCode\Character\Chaos\" />
-        <Folder Include="MoonsCreedPortCode\Character\Echo\Relics\" />
-        <Folder Include="MoonsCreedPortCode\Character\Polarix\Relics\" />
-        <Folder Include="MoonsCreedPortCode\Potions\" />
-        <Folder Include="MoonsCreedPortCode\Relics\Chaos\Blessings\" />
-        <Folder Include="MoonsCreedPortCode\Relics\Chaos\Curses\" />
-        <Folder Include="MoonsCreedPort\images\card_portraits\big\"/>
-        <Folder Include="MoonsCreedPort\images\powers\big\"/>
-        <Folder Include="MoonsCreedPort\images\relics\big\"/>
     </ItemGroup>
 
     <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">

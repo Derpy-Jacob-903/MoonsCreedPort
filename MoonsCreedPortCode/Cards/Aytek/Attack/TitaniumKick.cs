@@ -19,7 +19,7 @@ public class TitaniumKick() : AytekCard(1,
         new DamageVar(12m, ValueProp.Move),
         new CalculationBaseVar(1M),
         new CalculationExtraVar(3M),
-        new CalculatedVar("CalculatedHits").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => (Decimal) PileType.Hand.GetPile(card.Owner).Cards.All<CardModel>((Func<CardModel, bool>) (c => c.IsUpgraded || c.Type is CardType.Curse or CardType.Status or CardType.Quest))) ? 1 : 0)
+        new CalculatedVar("CalculatedHits").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => (Decimal) (PileType.Hand.GetPile(card.Owner).Cards.All<CardModel>((Func<CardModel, bool>) (c => c.IsUpgraded || c.Type is CardType.Curse or CardType.Status or CardType.Quest)) ? 1 : 0)))
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
