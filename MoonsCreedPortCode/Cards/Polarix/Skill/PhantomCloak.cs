@@ -10,7 +10,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
-public class PhantomCloak() : PolarixCard(1,
+public class PhantomCloak() : PolarixCard(2,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {

@@ -10,8 +10,8 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
-public class Muska() : PolarixCard(1,
-    CardType.Skill, CardRarity.Uncommon,
+public class Muska() : PolarixCard(2,
+    CardType.Power, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

@@ -11,7 +11,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 public class DefensiveHarmony() : PolarixCard(1,
-    CardType.Attack, CardRarity.Rare,
+    CardType.Power, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

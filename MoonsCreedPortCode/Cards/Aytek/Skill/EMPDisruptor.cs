@@ -13,16 +13,16 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class EmpDisruptor() : AytekCard(2,
+public class EmpDisruptor() : AytekCard(3,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self), ITechKeyword
 {
-    public override int CanonicalStarCost => 1;
+    public override int CanonicalStarCost => 2;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<WeakPower>(1),
-        new PowerVar<VulnerablePower>(1),
-        new EnergyVar(1)
+        new PowerVar<WeakPower>(2),
+        new PowerVar<VulnerablePower>(2),
+        new EnergyVar(2)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

@@ -19,7 +19,7 @@ public class CheatCode() : AytekCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("Exhausts", 2),
-        new DynamicVar("Discount", -1)
+        new DynamicVar("Discount", 1)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -31,7 +31,7 @@ public class CheatCode() : AytekCard(1,
         foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards)
         {
             if (!card.EnergyCost.CostsX)
-                card.EnergyCost.AddThisTurn(DynamicVars["Discount"].IntValue);
+                card.EnergyCost.AddThisTurn(-DynamicVars["Discount"].IntValue);
         }
     }
 

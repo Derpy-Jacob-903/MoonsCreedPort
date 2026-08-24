@@ -8,7 +8,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class TechUpgrade() : AytekCard(1,
+public class TechUpgrade() : AytekCard(2,
     CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {

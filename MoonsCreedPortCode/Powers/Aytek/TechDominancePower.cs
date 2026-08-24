@@ -23,24 +23,26 @@ public class TechDominancePower : MoonsCreedPortPower
     [
         new CalculationBaseVar(0M),
         new CalculationExtraVar(5M),
-        new CalculatedVar("CalculatedHits").WithMultiplier((Func<CardModel, Creature, Decimal>)((card, _) =>
+        /*new CalculatedVar("CalculatedHits").WithMultiplier((Func<CardModel, Creature, Decimal>)((card, _) =>
         {
-            if (Owner.Player != null && Owner.Player.PlayerCombatState != null)
+            if (Owner.Player?.PlayerCombatState != null)
             {
                 return Owner.Player.PlayerCombatState.Stars * 5;
             }
             return 0;
-        }))
+        }))*/
     ];
 
-    public override Decimal ModifyDamageMultiplicative(
-        Creature? target,
-        Decimal amount,
+    public override decimal ModifyDamageMultiplicative(
+        Creature target,
+        decimal amount,
         ValueProp props,
-        Creature? dealer,
-        CardModel? cardSource,
-        CardPlay? cardPlay)
+        Creature dealer,
+        CardModel cardSource,
+        CardPlay cardPlay)
     {
-        return dealer != this.Owner && !this.Owner.Pets.Contains<Creature>(dealer) || !props.IsPoweredAttack() || cardSource == null || Owner.Player != null? 1M : (1M + 0.01M * Owner.Player.PlayerCombatState.Stars);
+        if (!props.IsPoweredAttack() || cardSource == null || cardSource.Owner.Creature != this.Owner)
+            return 1M;
+        return 1M + (Decimal) this.Amount * Owner.Player.PlayerCombatState.Stars / 100M;
     }
 }

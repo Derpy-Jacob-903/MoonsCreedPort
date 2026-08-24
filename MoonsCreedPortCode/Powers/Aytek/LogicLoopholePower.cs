@@ -16,7 +16,6 @@ public class LogicLoopholePower : MoonsCreedPortPower
 {
     public override PowerType Type => PowerType.None;
     public override PowerStackType StackType => PowerStackType.Counter;
-    private bool Active = true;
 
     public override async Task AfterStarsGained(int amount, Player gainer)
     {

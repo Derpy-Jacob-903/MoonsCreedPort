@@ -23,8 +23,7 @@ public class Forerunner() : PolarixCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(5m, ValueProp.Move),
-        new BlockVar(3m, ValueProp.Move),
-        new PowerVar<AnticipatePower>(2)
+        new PowerVar<AnticipatePower>(5)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -37,12 +36,11 @@ public class Forerunner() : PolarixCard(1,
                 .Execute(context);
         if (ShouldGlowGoldInternal)
         {
-            await CreatureCmd.GainBlock(Owner.Creature, base.DynamicVars.Block, play);
             await CommonActions.ApplySelf<AnticipatePower>(context, this);
         }
     }
 
-    protected override bool ShouldGlowGoldInternal => CombatManager.Instance.History.CardPlaysFinished.Any<CardPlayFinishedEntry>((Func<CardPlayFinishedEntry, bool>) (e =>  e.HappenedThisTurn(this.CombatState)));
+    protected override bool ShouldGlowGoldInternal => !CombatManager.Instance.History.CardPlaysFinished.Any<CardPlayFinishedEntry>((Func<CardPlayFinishedEntry, bool>) (e =>  e.HappenedThisTurn(this.CombatState)));
 
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
 }

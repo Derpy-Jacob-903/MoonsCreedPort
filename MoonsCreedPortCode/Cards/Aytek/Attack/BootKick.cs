@@ -7,7 +7,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class BootKick() : AytekCard(2,
+public class BootKick() : AytekCard(1,
     CardType.Attack, CardRarity.Uncommon,
     TargetType.AnyEnemy), ITechKeyword
 {

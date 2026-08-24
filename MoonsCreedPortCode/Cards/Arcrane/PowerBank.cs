@@ -24,6 +24,7 @@ public class ChargeCard() : ArcraneCard(1,
         CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<ArcraneChargePower>(choiceContext, Owner.Creature, DynamicVars["Charge"].BaseValue, null, this);
         await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.BaseValue, null, this);
     }
     

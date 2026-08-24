@@ -17,10 +17,10 @@ public class GunOverhaulPower : MoonsCreedPortPower
  
    public override PowerStackType StackType => PowerStackType.Counter;
 
-   protected override IEnumerable<DynamicVar> CanonicalVars => [ 
+   protected override IEnumerable<DynamicVar> CanonicalVars => [ /*
      new CalculationBaseVar(0M),
      new CalculationExtraVar(3M),
-     new CalculatedVar("CalculatedHits").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => PileType.Hand.GetPile(card.Owner).Cards.Count<CardModel>((Func<CardModel, bool>) (c => c.Tags.Contains(AytekStuff.Missile)))))
+     new CalculatedVar("CalculatedHits").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => PileType.Hand.GetPile(card.Owner).Cards.Count<CardModel>((Func<CardModel, bool>) (c => c.Keywords.Contains(AytekStuff.GunKeyword)))))*/
    ];
 
    public override async Task BeforeSideTurnEnd(
@@ -31,7 +31,9 @@ public class GunOverhaulPower : MoonsCreedPortPower
      if (Owner.Player != null && !participants.Contains(Owner))
        return;
      Flash();
-     for (int i = 0; i < ((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(null); i++)
+     var CalculatedHits = PileType.Hand.GetPile(Owner.Player).Cards
+       .Count((Func<CardModel, bool>)(c => c.Keywords.Contains(AytekStuff.GunKeyword)));
+     for (var i = 0; i < CalculatedHits; i++)
      {
        await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner);
      }

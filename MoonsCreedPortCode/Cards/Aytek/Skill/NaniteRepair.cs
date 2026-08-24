@@ -12,8 +12,7 @@ public class NaniteRepair() : AytekCard(1,
     CardType.Skill, CardRarity.Rare,
     TargetType.Self), ITechKeyword
 {
-    public override int CanonicalStarCost => 1;
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
+    public override int CanonicalStarCost => 2;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -33,5 +32,9 @@ public class NaniteRepair() : AytekCard(1,
         await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
     }
     public override bool CanBeGeneratedInCombat => false;
-    protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(2M);
+    protected override void OnUpgrade()
+    {
+        this.DynamicVars.Block.UpgradeValueBy(2M);
+        this.DynamicVars.Heal.UpgradeValueBy(2M);
+    }
 }

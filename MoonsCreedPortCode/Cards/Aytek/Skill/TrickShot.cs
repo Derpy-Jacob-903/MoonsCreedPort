@@ -22,7 +22,7 @@ public class TrickShot() : AytekCard(1,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        var cards = PileType.Hand.GetPile(Owner).Cards
+        var cards = PileType.Draw.GetPile(Owner).Cards
             .Where((Func<CardModel, bool>)(c => c.Keywords.Contains(AytekStuff.GunKeyword)))
             .Take(DynamicVars.Cards.IntValue).ToArray();
         foreach (var card in cards)

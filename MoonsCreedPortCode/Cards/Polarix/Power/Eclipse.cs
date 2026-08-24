@@ -11,7 +11,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 public class EclipsePolarix() : PolarixCard(1,
-    CardType.Skill, CardRarity.Uncommon,
+    CardType.Power, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

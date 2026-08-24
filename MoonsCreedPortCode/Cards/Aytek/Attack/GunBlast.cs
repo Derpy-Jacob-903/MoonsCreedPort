@@ -13,9 +13,9 @@ namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
 public class GunBlast() : AytekCard(1,
     CardType.Attack, CardRarity.Uncommon,
-    TargetType.AnyEnemy), ITechKeyword
+    TargetType.AnyEnemy)//, ITechKeyword
 {
-    public override int CanonicalStarCost => 1;
+    //public override int CanonicalStarCost => 1;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(2m, ValueProp.Move),
@@ -36,7 +36,7 @@ public class GunBlast() : AytekCard(1,
                 .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
-        if (!TriggeredTech(play) || CombatState == null) return;
+        if (/*!TriggeredTech(play) || */CombatState == null) return;
         await CardCmd.Discard(context, (await CardPileCmd.Draw(context, DynamicVars.Cards.IntValue, Owner)).Where<CardModel>((Func<CardModel, bool>) (c => !c.Keywords.Contains(AytekStuff.GunKeyword))));
     }
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(1M);

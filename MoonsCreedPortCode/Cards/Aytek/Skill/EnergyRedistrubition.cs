@@ -24,7 +24,7 @@ public class EnergyRedistrubition() : AytekCard(1,
     {
         while (Owner.Creature.Block > 4)
         {
-            await CreatureCmd.LoseBlock(Owner.Creature, DynamicVars["BlockDown"].BaseValue);
+            await CreatureCmd.LoseBlock(context, Owner.Creature, DynamicVars["BlockDown"].BaseValue, Owner.Creature);
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
         }
     }

@@ -11,7 +11,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 public class Transmutation() : PolarixCard(1,
-    CardType.Skill, CardRarity.Uncommon,
+    CardType.Skill, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

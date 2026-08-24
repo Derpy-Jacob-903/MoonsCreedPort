@@ -15,20 +15,17 @@ public class SebCardPolarix() : PolarixCard(1,
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Retain,
         CardKeyword.Exhaust
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(3),
-        new HealVar(12)
+        new PowerVar<VulnerablePower>(1), new PowerVar<VulnerablePower>("VulnUp", 1), new MaxHpVar(2)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        var p = Owner.Creature;
         
     }
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(-1M);
+    protected override void OnUpgrade() => this.DynamicVars.MaxHp.UpgradeValueBy(-1M);
 }

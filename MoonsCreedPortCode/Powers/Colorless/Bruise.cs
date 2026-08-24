@@ -14,7 +14,7 @@ public class MightyPower : MoonsCreedPortPower
     public override decimal ModifyDamageMultiplicative(Creature target, decimal amount, ValueProp props, Creature dealer,
         CardModel cardSource, CardPlay cardPlay)
     {
-        if (target != Owner || !props.HasFlag(ValueProp.Move) || props.HasFlag(ValueProp.Unpowered) || amount < 1) return 1;
+        if (target == Owner || !props.HasFlag(ValueProp.Move) || props.HasFlag(ValueProp.Unpowered) || amount < 1) return 1;
         return amount < 2 ? 1.25M : 1.5m;
     }
 
@@ -25,9 +25,9 @@ public class MightyPower : MoonsCreedPortPower
     {
         if (side == Owner.Side)
             return;
-        await PowerCmd.Remove(this);
+        await PowerCmd.Decrement(this);
     }
 
-    public override PowerType Type => PowerType.Debuff;
+    public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 }

@@ -22,7 +22,7 @@ public class ThermalTargeting() : AytekCard(1,
     [
         new DamageVar(1m, ValueProp.Move),
         new RepeatVar(4),
-        new PowerVar<BruisePower>(1)
+        new PowerVar<BruisePower>(2)
     ];
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

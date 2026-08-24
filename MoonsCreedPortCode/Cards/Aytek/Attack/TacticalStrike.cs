@@ -28,7 +28,6 @@ public class TacticalStrike() : AytekCard(2,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
@@ -38,5 +37,9 @@ public class TacticalStrike() : AytekCard(2,
         if (!TriggeredTech(play) || Owner == null) return;
         await CommonActions.Draw(this, context);
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade()
+    {
+        this.DynamicVars.Repeat.UpgradeValueBy(2M);
+        this.DynamicVars.Cards.UpgradeValueBy(1M);
+    }
 }

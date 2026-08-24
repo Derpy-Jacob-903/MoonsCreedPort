@@ -24,5 +24,6 @@ public class TechAmplifier() : AytekCard(1,
         await PowerCmd.Apply<TechAmplifierPower>(context, Owner.Creature, DynamicVars["TechAmplifierPower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["TechAmplifierPower"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => 
+        this.AddKeyword(CardKeyword.Innate);
 }

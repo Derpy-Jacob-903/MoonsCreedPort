@@ -17,6 +17,8 @@ public class UmbralReap() : EchoCard(1,
     [
         new DamageVar(9m, ValueProp.Move)
     ];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [];
+    protected override HashSet<CardTag> CanonicalTags => [AytekStuff.Reap, AytekStuff.BlackReap];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)

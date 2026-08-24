@@ -17,7 +17,7 @@ public class SeekerMissile() : AytekCard(1,
     protected override HashSet<CardTag> CanonicalTags => [AytekStuff.Missile];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedDamage(5, (_, c) => c != null && c.HasPower<VulnerablePower>() ? 1 : 0, 10)
+        ..MakeCalculatedDamage(5, (_, c) => c != null && c.HasPower<VulnerablePower>() ? 1 : 0, 5)
         //new DamageVar(5m, ValueProp.Move),
         //new DamageVar("VulnDamage", 15m, ValueProp.Move),
         //new ExtraDamageVar(10)
@@ -35,7 +35,7 @@ public class SeekerMissile() : AytekCard(1,
     }
     protected override void OnUpgrade()
     {
-        this.DynamicVars.CalculationBase.UpgradeValueBy(3M);
-        this.DynamicVars.ExtraDamage.UpgradeValueBy(6M);
+        this.DynamicVars.CalculationBase.UpgradeValueBy(2M);
+        this.DynamicVars.ExtraDamage.UpgradeValueBy(4M);
     } 
 }

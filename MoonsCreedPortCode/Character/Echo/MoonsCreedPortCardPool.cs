@@ -23,7 +23,7 @@ public class EchoCardPool : CustomCardPoolModel
     Generally they should be values between 0 and 1. */
     public override float H => 174/360f; //Hue; changes the color.
     public override float S => 0.72f; //Saturation
-    public override float V => 0.85f; //Brightness
+    public override float V => 0.95f; //Brightness
 
     //Alternatively, leave these values at 1 and provide a custom frame image.
     /*public override Texture2D CustomFrame(CustomCardModel card)

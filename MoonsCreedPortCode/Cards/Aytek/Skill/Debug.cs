@@ -8,13 +8,13 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class Debug() : AytekCard(1,
+public class Debug() : AytekCard(2,
     CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Cleanse", -10),
+        new DynamicVar("Cleanse", 10),
         new TechPointVar(1)
     ];
     protected override async Task OnPlay(
@@ -25,22 +25,22 @@ public class Debug() : AytekCard(1,
         if (p.HasPower<VulnerablePower>())
         {
             await PowerCmd.ModifyAmount(context, p.GetPower<VulnerablePower>(), 
-                DynamicVars["Cleanse"].BaseValue, null, this);
+                -DynamicVars["Cleanse"].BaseValue, null, this);
             await PlayerCmd.GainStars(DynamicVars["TechPointVar"].BaseValue, Owner);
         }
         if (p.HasPower<WeakPower>())
         {
             await PowerCmd.ModifyAmount(context, p.GetPower<WeakPower>(), 
-                DynamicVars["Cleanse"].BaseValue, null, this);
+                -DynamicVars["Cleanse"].BaseValue, null, this);
             await PlayerCmd.GainStars(DynamicVars["TechPointVar"].BaseValue, Owner);
         }
         if (p.HasPower<FrailPower>())
         {
             await PowerCmd.ModifyAmount(context, p.GetPower<FrailPower>(), 
-                DynamicVars["Cleanse"].BaseValue, null, this);
+                -DynamicVars["Cleanse"].BaseValue, null, this);
             await PlayerCmd.GainStars(DynamicVars["TechPointVar"].BaseValue, Owner);
         }
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["Cleanse"].UpgradeValueBy(-5M);
+    protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);
 }

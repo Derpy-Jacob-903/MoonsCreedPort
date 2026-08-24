@@ -10,15 +10,13 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class Recompile() : AytekCard(1,
+public class Recompile() : AytekCard(2,
     CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(3m, ValueProp.Move)
+        new BlockVar(8m, ValueProp.Move)
     ];
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -28,13 +26,13 @@ public class Recompile() : AytekCard(1,
         PlayerChoiceContext context,
         CardPlay play)
     {
+        await CreatureCmd.GainBlock(Owner.Creature, base.DynamicVars.Block, play);
         var prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
         var card = (await CardSelectCmd.FromSimpleGrid(context, PileType.Discard.GetPile(Owner).Cards, Owner, prefs)).FirstOrDefault<CardModel>();
         if (card == null)
             return;
         await CardPileCmd.Add(card, PileType.Hand);
-        await CreatureCmd.GainBlock(Owner.Creature, base.DynamicVars.Block, play);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(2M);
+    protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(4M);
 }

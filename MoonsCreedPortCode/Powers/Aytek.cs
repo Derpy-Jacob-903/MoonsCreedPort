@@ -25,7 +25,6 @@ namespace MoonsCreedPort.MoonsCreedPortCode;
 
 public class AytekStuff
 {
-    //
     [CustomEnum]
     public static CardTag Reap;
     [CustomEnum]
@@ -112,22 +111,38 @@ public class AytekStuff
         [HarmonyPatch(nameof(AbstractModel.ModifyDamageAdditive))]
         [HarmonyPrefix]
         public static bool Prefix(AbstractModel __instance,
-            Creature target, Decimal amount,
-            ValueProp props, Creature dealer,
-            CardModel cardSource, ref decimal __result)
+            Creature target,
+            Decimal amount,
+            ValueProp props,
+            Creature dealer,
+            CardModel cardSource,
+            CardPlay cardPlay, ref decimal __result)
         {
             if (cardSource == null || !cardSource.Keywords.Contains(GunKeyword)) return true;
+            // ReSharper disable once SuspiciousTypeConversion.Global
             if (__instance is not StrengthPower or IGunBlacklist) return true;
             var power = (PowerModel)__instance;
-            if ((power.Owner != cardSource.Owner.Creature)) return true;
+            if (power.Owner != cardSource.Owner.Creature) return true;
             __result = 0m;
             return false;
         }
     }
+    
+    /*[HarmonyPatch(typeof(CardKeywordExtensions), nameof(CardKeywordExtensions.GetCardText))]
+    public static class KeywordColorPatch
+    {
+        [HarmonyPostfix]
+        private static void Postfix(CardKeyword keyword, ref string __result)
+        {
+            if (keyword is not AytekStuff.)
+            __result = __result.Replace("[gold]", $"[{color}]")
+                .Replace("[/gold]", $"[/{color}]");
+        }
+    }*/
 }
 
 /// <summary>
-/// Blocks a AbstractModel from applying it's ModifyDamageAdditive hook on Gun cards.
+/// Blocks a AbstractModel from applying its ModifyDamageAdditive hook on Gun cards.
 /// </summary>
 public interface IGunBlacklist {}
 

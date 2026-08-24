@@ -12,8 +12,6 @@ public class EchoPotionPool : CustomPotionPoolModel
     public override Color LabOutlineColor => Echo.Color;
     protected override IEnumerable<PotionModel> GenerateAllPotions() =>
     [
-        ModelDb.Potion<PoisonPotion>(),
-        ModelDb.Potion<CunningPotion>(),
-        ModelDb.Potion<GhostInAJar>()
+        ModelDb.Potion<PotionOfCapacity>()
     ];
 }

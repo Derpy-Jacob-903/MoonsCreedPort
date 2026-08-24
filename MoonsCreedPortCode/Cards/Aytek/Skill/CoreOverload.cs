@@ -32,5 +32,9 @@ public class CoreOverload() : AytekCard(0,
         await CommonActions.Draw(this, context);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Energy.UpgradeValueBy(0M);
+    protected override void OnUpgrade() {
+        this.DynamicVars.HpLoss.UpgradeValueBy(-2M);
+        this.DynamicVars.Cards.UpgradeValueBy(1M);
+    }
+    
 }

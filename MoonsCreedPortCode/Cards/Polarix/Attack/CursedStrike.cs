@@ -1,9 +1,12 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Echo;
@@ -12,7 +15,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 public class CursedStrike() : PolarixCard(0,
-    CardType.Attack, CardRarity.Common,
+    CardType.Attack, CardRarity.Common, //Common
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -34,5 +37,5 @@ public class CursedStrike() : PolarixCard(0,
         CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Haunt>(Owner), PileType.Draw, Owner));
         await Cmd.Wait(0.5f);
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(6M);
 }

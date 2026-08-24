@@ -11,8 +11,8 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class Analyze() : AytekCard(1,
-    CardType.Skill, CardRarity.Common,
+public class Analyze() : AytekCard(0,
+    CardType.Skill, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

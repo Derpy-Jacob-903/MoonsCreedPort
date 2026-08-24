@@ -1,9 +1,11 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 using MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Character.Aytek.Cards;
@@ -13,6 +15,8 @@ public class MightyCard() : ColorlessCard(1,
     CardType.Skill, CardRarity.Event,
     TargetType.Self)
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<MightyPower>()];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<MightyPower>(3)
@@ -30,5 +34,5 @@ public class MightyCard() : ColorlessCard(1,
         DynamicVars["MightyPower"].UpgradeValueBy(2M);
     }
 
-    public override CardPoolModel VisualCardPool => ModelDb.CardPool<CeylanCardPool>();
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<PolarixCardPool>();
 }

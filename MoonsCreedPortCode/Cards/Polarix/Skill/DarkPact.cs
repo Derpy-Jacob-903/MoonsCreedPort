@@ -18,6 +18,7 @@ public class DarkPact() : PolarixCard(0,
     [
         new BlockVar(9m, ValueProp.Move)
     ];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)

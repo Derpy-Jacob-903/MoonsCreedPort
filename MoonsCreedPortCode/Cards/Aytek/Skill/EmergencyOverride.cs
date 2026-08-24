@@ -8,7 +8,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class EmergencyOverride() : AytekCard(1,
+public class EmergencyOverride() : AytekCard(0,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {

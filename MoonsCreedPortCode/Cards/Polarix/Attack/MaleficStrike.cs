@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -22,13 +23,16 @@ public class MaleficStrike() : PolarixCard(1,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
+        var john = await CovetPolarix.CovetCmd(context, Owner, 1, this);
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Haunt>(Owner), PileType.Draw, Owner));
+        if (john > 0)
+        {
+            await CommonActions.Draw(this, context);
+        }
         await Cmd.Wait(0.5f);
     }
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);

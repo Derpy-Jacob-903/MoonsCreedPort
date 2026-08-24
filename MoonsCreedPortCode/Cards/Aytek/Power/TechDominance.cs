@@ -15,7 +15,7 @@ public class TechDominance() : AytekCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<TechDominancePower>(1)
+        new PowerVar<TechDominancePower>(5)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -24,5 +24,5 @@ public class TechDominance() : AytekCard(1,
         await PowerCmd.Apply<TechDominancePower>(context, Owner.Creature, DynamicVars["TechDominancePower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["TechDominancePower"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars["TechDominancePower"].UpgradeValueBy(5M);
 }

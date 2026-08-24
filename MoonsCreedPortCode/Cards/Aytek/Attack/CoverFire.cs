@@ -33,5 +33,9 @@ public class CoverFire() : AytekCard(1,
         await CommonActions.CardBlock(this, DynamicVars.Block, play);
 
     }
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
+    protected override void OnUpgrade()
+    {
+        this.DynamicVars.Repeat.UpgradeValueBy(1M);
+        DynamicVars.Block.UpgradeValueBy(3);
+    }
 }

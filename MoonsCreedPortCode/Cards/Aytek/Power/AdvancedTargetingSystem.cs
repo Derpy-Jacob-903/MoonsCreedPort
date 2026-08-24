@@ -9,7 +9,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class AdvancedTargetingSystem() : AytekCard(1,
+public class AdvancedTargetingSystem() : AytekCard(2,
     CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {

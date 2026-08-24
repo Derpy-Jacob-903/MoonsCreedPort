@@ -10,7 +10,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
 public class QuantumResonance() : AytekCard(1,
-    CardType.Power, CardRarity.Uncommon,
+    CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

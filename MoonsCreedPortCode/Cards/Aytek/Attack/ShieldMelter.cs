@@ -15,7 +15,7 @@ public class ShieldMelter() : AytekCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(12m, ValueProp.Move)
+        new DamageVar(11m, ValueProp.Move)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -23,7 +23,7 @@ public class ShieldMelter() : AytekCard(1,
     {
         if (play.Target != null)
         {
-            await CreatureCmd.LoseBlock(play.Target, play.Target.Block);
+            await CreatureCmd.LoseBlock(context, play.Target, play.Target.Block, play.Card.Owner.Creature);
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
@@ -31,5 +31,5 @@ public class ShieldMelter() : AytekCard(1,
         }
             
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(4M);
 }

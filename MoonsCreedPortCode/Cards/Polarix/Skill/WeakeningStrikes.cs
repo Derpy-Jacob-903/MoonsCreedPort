@@ -14,6 +14,8 @@ public class WeakeningStrikes() : PolarixCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(9m, ValueProp.Move)

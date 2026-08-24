@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Events;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 using Haunt = MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix.Haunt;
 using Void = MegaCrit.Sts2.Core.Models.Cards.Void;
@@ -16,9 +17,9 @@ public class CircuitFlood() : AytekCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new EnergyVar(1)
+        new EnergyVar(2)
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [ HoverTipFactory.FromCard<Void>() ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => IsUpgraded ? [] : [HoverTipFactory.FromCard<Void>()];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)

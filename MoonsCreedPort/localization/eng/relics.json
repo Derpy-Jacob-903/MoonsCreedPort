@@ -2,6 +2,7 @@
   "MOONSCREEDPORT-BURNING_BLOOD_POLARIX.title": "Burning Blood",
   "MOONSCREEDPORT-BURNING_BLOOD_POLARIX.description": "At the end of combat, heal [green]{Heal}[/green] HP.",
   "MOONSCREEDPORT-BURNING_BLOOD_POLARIX.flavor": "Your body's own blood burns with an undying rage.",
+  
   "MOONSCREEDPORT-THE_LAST_KNIGHTS_WILL_RELIC.title": "The Last Knight's Testament",
   "MOONSCREEDPORT-THE_LAST_KNIGHTS_WILL_RELIC.description": "Upon pickup, raise your Max HP by {MaxHp}. Start each combat with {DoomPower} Doom. At the start of your turn, heal [green]{Heal}[/green] HP.",
   "MOONSCREEDPORT-THE_LAST_KNIGHTS_WILL_RELIC.flavor": "[red]Details for this relic will be revealed in the future...[/red]",

@@ -16,7 +16,7 @@ public class SimpleMissile() : AytekCard(1,
     TargetType.AnyEnemy), ITranscendenceCard, ITechKeyword
 {
     public override int CanonicalStarCost => 1;
-    protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { AytekStuff.Missile };
+    protected override HashSet<CardTag> CanonicalTags => [AytekStuff.Missile];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

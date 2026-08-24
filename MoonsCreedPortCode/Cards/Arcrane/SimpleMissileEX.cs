@@ -11,15 +11,17 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Arcrane;
 
-public class MagicMissileEx() : ArcraneCard(1,
+public class MagicMissileEx() : ArcraneCard(2,
     CardType.Attack, CardRarity.Ancient,
     TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [AytekStuff.Missile];
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [ CardKeyword.Retain, AytekStuff.ArcraneCast ];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [ CardKeyword.Retain ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(20M,ValueProp.Move),
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+        ..MakeCalculatedDamage(25, (Func<CardModel, Creature, Decimal>) ((card, _) => card.Owner.Creature.GetPowerAmount<ArcraneChargePower>())),
+        new ChargeVar(10)
         //new CalculatedDamageVar(ValueProp.Move).WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => this.WillTriggerTech ? 1 : 0))
     ];
     protected override async Task OnPlay(
@@ -28,12 +30,13 @@ public class MagicMissileEx() : ArcraneCard(1,
     {
         if (play.Target != null)
         {
-            await DamageCmd.Attack(TechATK(play))
+            await DamageCmd.Attack(DynamicVars.CalculatedDamage)
                 .FromCard(play.Card, play).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
             
         }
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+
+    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
 }

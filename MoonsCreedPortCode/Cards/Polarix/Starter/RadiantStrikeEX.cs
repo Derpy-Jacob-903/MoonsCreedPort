@@ -10,7 +10,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 public class RadiantStrikeEx() : PolarixCard(2,
-    CardType.Attack, CardRarity.Basic,
+    CardType.Attack, CardRarity.Ancient,
     TargetType.AnyEnemy)
 {
     

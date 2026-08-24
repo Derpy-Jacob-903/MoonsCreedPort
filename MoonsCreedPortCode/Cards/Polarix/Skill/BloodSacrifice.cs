@@ -10,9 +10,9 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
-public class BloodSacrifice() : PolarixCard(1,
-    CardType.Skill, CardRarity.Common,
-    TargetType.AnyEnemy)
+public class BloodSacrifice() : PolarixCard(0,
+    CardType.Skill, CardRarity.Uncommon,
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

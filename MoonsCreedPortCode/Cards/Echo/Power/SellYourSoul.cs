@@ -17,7 +17,7 @@ public class SellYourSoul() : EchoCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<RitualPower>( 2)
+        new PowerVar<RitualPower>( 3)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,

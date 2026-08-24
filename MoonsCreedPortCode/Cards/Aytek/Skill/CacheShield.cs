@@ -12,13 +12,13 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
 public class CacheShield() : AytekCard(1,
-    CardType.Skill, CardRarity.Uncommon,
+    CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(7m, ValueProp.Move),
-        new PowerVar<EnergyNextTurnPower>(1m)
+        new EnergyVar(1)
     ];
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

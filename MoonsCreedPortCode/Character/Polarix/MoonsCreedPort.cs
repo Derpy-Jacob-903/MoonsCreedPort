@@ -34,6 +34,7 @@ public class Polarix : PlaceholderCharacterModel
         ModelDb.Card<DefendPolarix>(),
         ModelDb.Card<DefendPolarix>(),
         ModelDb.Card<DefendPolarix>(),
+        ModelDb.Card<CovetPolarix>(),
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

@@ -1,23 +1,26 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.ValueProps;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Echo;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
+using Void = MegaCrit.Sts2.Core.Models.Cards.Void;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
-public class ForbiddenPower() : PolarixCard(1,
-    CardType.Skill, CardRarity.Uncommon,
+public class ForbiddenPower() : PolarixCard(0,
+    CardType.Skill, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(9m, ValueProp.Move)
+        new EnergyVar(1),
     ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [ HoverTipFactory.FromCard<Exhaustion>() ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
@@ -26,5 +29,5 @@ public class ForbiddenPower() : PolarixCard(1,
         await CreatureCmd.GainBlock(Owner.Creature, base.DynamicVars.Block, play);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(3M);
+    protected override void OnUpgrade() => this.DynamicVars.Energy.UpgradeValueBy(1M);
 }

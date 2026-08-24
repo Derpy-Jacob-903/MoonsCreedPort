@@ -26,35 +26,45 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
     //Image size:
     //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)
     //Full art: 606x852
-    public override string CustomPortraitPath {
+    public override string CustomPortraitPath
+    {
         get
         {
-            if (ResourceLoader.Exists($"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath())) {
+            if (ResourceLoader.Exists($"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath()))
+            {
                 return $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
             }
-            if (ResourceLoader.Exists($"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath())) {
+
+            if (ResourceLoader.Exists($"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath()))
+            {
                 return $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
             }
-            return RolledArt(this) ?? MissingPortraitPath;
+            return "beta_art_0.png".CardImagePath(); //MissingPortraitPath;
+            //return RolledArt(this) ?? MissingPortraitPath;
         }
     }
-    
+
     //Smaller variants of card images for efficiency:
     //Smaller variant of fullart: 250x350
     //Smaller variant of normalart: 250x190
 
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
     public override string PortraitPath => CustomPortraitPath ?? MissingPortraitPath;
-    
-    public override string BetaPortraitPath {
+
+    public override string BetaPortraitPath
+    {
         get
         {
-            if (ResourceLoader.Exists($"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath())) {
+            if (ResourceLoader.Exists($"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath()))
+            {
                 return $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
             }
-            if (ResourceLoader.Exists($"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath())) {
+
+            if (ResourceLoader.Exists($"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath()))
+            {
                 return $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
             }
+
             return RolledArt(this) ?? MissingPortraitPath;
         }
     }
@@ -73,26 +83,36 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
         var rng = new Rng((uint)c.Id.GetHashCode());
         var card = validPool.TakeRandom(1, rng).First();
         //if (card is null) return ImageHelper.GetImagePath("atlases/card_atlas.sprites/beta.tres");
-        return ImageHelper.GetImagePath($"atlases/card_atlas.sprites/{card.Pool.Title.ToLowerInvariant()}/{card.Id.Entry.ToLowerInvariant()}.tres");
+        return ImageHelper.GetImagePath(
+            $"atlases/card_atlas.sprites/{card.Pool.Title.ToLowerInvariant()}/{card.Id.Entry.ToLowerInvariant()}.tres");
     }
 
     protected virtual bool ArtRollerCase(CardModel card)
     {
         return card.Pool is ColorlessCardPool or StatusCardPool or CurseCardPool;
     }
-    
+
     public bool ForceTriggerTech = false;
-    public bool WillTriggerTech => CombatState != null && this is ITechKeyword && Owner.PlayerCombatState != null && Owner.PlayerCombatState.Stars >= CanonicalStarCost;
+
+    public bool WillTriggerTech => CombatState != null && this is ITechKeyword && Owner.PlayerCombatState != null &&
+                                   Owner.PlayerCombatState.Stars >= CanonicalStarCost;
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="play">CardPlay</param>
     /// <returns></returns>
-    public bool TriggeredTech(CardPlay play) => (play.Resources.StarsSpent > 0 && play.Card is ITechKeyword) || ForceTriggerTech;
+    public bool TriggeredTech(CardPlay play) =>
+        (play.Resources.StarsSpent > 0 && play.Card is ITechKeyword) || ForceTriggerTech;
+
     [Obsolete("You should refactor this to use a CalculatedDamageVar")]
-    public decimal TechATK(CardPlay play) => TriggeredTech(play) ? DynamicVars["TechDamage"].BaseValue : DynamicVars.Damage.BaseValue;
+    public decimal TechATK(CardPlay play) =>
+        TriggeredTech(play) ? DynamicVars["TechDamage"].BaseValue : DynamicVars.Damage.BaseValue;
+
     [Obsolete("You should refactor this to use a CalculatedBlockVar")]
-    public BlockVar TechBlock(CardPlay play) => TriggeredTech(play) ? (BlockVar)DynamicVars["TechBlock"] : DynamicVars.Block;
+    public BlockVar TechBlock(CardPlay play) =>
+        TriggeredTech(play) ? (BlockVar)DynamicVars["TechBlock"] : DynamicVars.Block;
+
     public override int CurrentStarCost
     {
         get
@@ -101,7 +121,7 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
             return WillTriggerTech ? CanonicalStarCost : 0;
         }
     }
-    
+
     protected override bool ShouldGlowGoldInternal => WillTriggerTech;
 
     public override Task BeforeCardPlayed(CardPlay cardPlay)
@@ -116,8 +136,9 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
         {
             ForceTriggerTech = true;
             //if (AutoSlayer.IsActive)
-                //await PlayerCmd.LoseStars(card.CanonicalStarCost, card.Owner);
+            //await PlayerCmd.LoseStars(card.CanonicalStarCost, card.Owner);
         }
+
         return base.BeforeCardAutoPlayed(card, target, type);
     }
 
@@ -126,8 +147,17 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
         if (cardPlay.Card is ColorlessCard) ForceTriggerTech = false;
         return base.AfterCardPlayed(choiceContext, cardPlay);
     }
-    
-    public static IEnumerable<DynamicVar> MakeTechDamage(
+
+    public static bool GetTechBool(ColorlessCard c)
+    {
+        return c.WillTriggerTech || c.ForceTriggerTech;
+    }
+    public static int GetTechInt(ColorlessCard c)
+    {
+        return c.WillTriggerTech || c.ForceTriggerTech ? 1 : 0;
+    }
+
+public static IEnumerable<DynamicVar> MakeTechDamage(
         ColorlessCard This, 
         int baseVal,
         int extraVal,
@@ -138,7 +168,7 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
             new CalculationBaseVar(baseVal),
             new ExtraDamageVar(extraVal),
             new CalculatedDamageVar(props).WithMultiplier(
-                (Func<CardModel, Creature, decimal>)((c, _) => (((ColorlessCard)c).WillTriggerTech || ((ColorlessCard)c).ForceTriggerTech) ? 1 : 0))
+                (Func<CardModel, Creature, decimal>)((c, _) => c is ColorlessCard tc && (tc.WillTriggerTech || tc.ForceTriggerTech) ? 1 : 0))
         ];
     }
     
@@ -153,7 +183,7 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
             new CalculationBaseVar(baseVal),
             new CalculationExtraVar(extraVal),
             new CalculatedBlockVar(props).WithMultiplier(
-                (Func<CardModel, Creature, decimal>)((c, _) => This.WillTriggerTech ? 1 : 0))
+                (Func<CardModel, Creature, decimal>)((c, _) => c is ColorlessCard tc && (tc.WillTriggerTech || tc.ForceTriggerTech) ? 1 : 0))
         ];
     }
     

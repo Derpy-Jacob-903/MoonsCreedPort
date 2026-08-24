@@ -15,7 +15,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 public class FrailtyCrusher() : PolarixCard(1,
-    CardType.Attack, CardRarity.Rare,
+    CardType.Attack, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -34,5 +34,9 @@ public class FrailtyCrusher() : PolarixCard(1,
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade()
+    {
+        this.DynamicVars.CalculationBase.UpgradeValueBy(2m);
+        DynamicVars.ExtraDamage.UpgradeValueBy(1m);
+    }
 }

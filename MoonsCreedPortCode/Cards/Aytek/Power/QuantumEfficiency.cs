@@ -9,13 +9,13 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class QuantumEfficiency() : AytekCard(1,
+public class QuantumEfficiency() : AytekCard(2,
     CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<QuantumEfficiencyPower>(2)
+        new PowerVar<QuantumEfficiencyPower>(1)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -24,5 +24,5 @@ public class QuantumEfficiency() : AytekCard(1,
         await PowerCmd.Apply<QuantumEfficiencyPower>(context, Owner.Creature, DynamicVars["QuantumEfficiencyPower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["QuantumEfficiencyPower"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);
 }

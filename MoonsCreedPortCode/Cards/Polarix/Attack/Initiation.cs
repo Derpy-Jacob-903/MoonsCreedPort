@@ -22,7 +22,6 @@ public class Initiation() : PolarixCard(1,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .FromCard(play.Card, play).Targeting(play.Target)

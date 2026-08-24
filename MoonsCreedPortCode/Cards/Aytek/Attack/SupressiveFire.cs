@@ -42,5 +42,5 @@ public class SupressiveFire() : AytekCard(1,
             }
         }
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade() => this.DynamicVars["BruisePower"].UpgradeValueBy(1M);
 }

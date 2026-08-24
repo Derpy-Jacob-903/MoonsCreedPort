@@ -29,5 +29,5 @@ public class ChaosStrike() : PolarixCard(2,
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);
 }

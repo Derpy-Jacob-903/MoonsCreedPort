@@ -16,7 +16,7 @@ public class CosmicPurge() : PolarixCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(9m, ValueProp.Move)
+        new BlockVar(7m, ValueProp.Move)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,

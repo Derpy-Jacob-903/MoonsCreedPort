@@ -12,7 +12,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Enemy;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
-public class FrenziedAssault() : PolarixCard(1,
+public class FrenziedAssault() : PolarixCard(0,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {

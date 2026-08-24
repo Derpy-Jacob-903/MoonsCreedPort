@@ -17,15 +17,15 @@ public class EmpMissile() : AytekCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6m, ValueProp.Move),
-        new PowerVar<VulnerablePower>(2),
-        new PowerVar<WeakPower>(2),
+        new PowerVar<VulnerablePower>(1),
+        new PowerVar<WeakPower>(1),
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
         if (play.Target == null) return;
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(play.Card, play).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
             .Execute(context);

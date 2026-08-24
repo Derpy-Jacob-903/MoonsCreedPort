@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 using MoonsCreedPort.MoonsCreedPortCode.Powers;
@@ -15,7 +16,8 @@ public class ElectricShot() : AytekCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8m, ValueProp.Move)
+        new DamageVar(8m, ValueProp.Move),
+        new PowerVar<VigorPower>(2)
     ];
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -27,9 +29,13 @@ public class ElectricShot() : AytekCard(1,
     {
         if (CombatState != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(play.Card, play).TargetingRandomOpponents(CombatState)
+                .FromCard(play.Card, play).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(4M);
+    protected override void OnUpgrade()
+    {
+        this.DynamicVars.Damage.UpgradeValueBy(2M);
+        this.DynamicVars["VigorPower"].UpgradeValueBy(1M);
+    }
 }

@@ -18,8 +18,8 @@ public class AbstractDefence() : AytekCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(9m, ValueProp.Move),
-        new DynamicVar("Decrease", 3M),
-        new ExhaustiveVar(3)
+        new DynamicVar("Decrease", 3M)//,
+        //new ExhaustiveVar(3)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -42,7 +42,7 @@ public class AbstractDefence() : AytekCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(3M);
-        DynamicVars["Decrease"].UpgradeValueBy(1M);
-        DynamicVars["Exhaustive"].UpgradeValueBy(3M);
+        DynamicVars["Decrease"].UpgradeValueBy(-1M);
+        //DynamicVars["Exhaustive"].UpgradeValueBy(3M);
     }
 }

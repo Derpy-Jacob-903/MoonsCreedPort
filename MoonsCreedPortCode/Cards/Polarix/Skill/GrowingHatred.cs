@@ -10,7 +10,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
-public class GrowingHatred() : PolarixCard(2,
+public class GrowingHatred() : PolarixCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {

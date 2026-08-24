@@ -9,7 +9,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 
-[Obsolete("Plasma Punch handles its [Star] gain itself.")]
+[Obsolete("Plasma Punch handles its {singleStarIcon} gain itself.")]
 public class IonizedPower : MoonsCreedPortPower
 {
     public override PowerType Type => PowerType.None;

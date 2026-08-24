@@ -10,20 +10,20 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
-public class Affliction() : PolarixCard(2,
+public class Affliction() : PolarixCard(0,
     CardType.Power, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<ThornsPower>("Thorns", 5)
+        new PowerVar<SleightOfFleshPower>("Thorns", 3)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
         Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
-        await PowerCmd.Apply<ThornsPower>(context, Owner.Creature, DynamicVars.Strength.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SleightOfFleshPower>(context, Owner.Creature, DynamicVars["Thorns"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade() => this.DynamicVars["Thorns"].UpgradeValueBy(1M);

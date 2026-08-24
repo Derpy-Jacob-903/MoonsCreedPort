@@ -19,7 +19,7 @@ public class FrenziedPower : MoonsCreedPortPower
 {
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (Owner == card.Owner.Creature) {
+        if (Owner == card.Owner.Creature && card.Type == CardType.Attack) {
             Galvanized galvanized = await CardCmd.Afflict<Galvanized>(card, Amount);
         }
     }

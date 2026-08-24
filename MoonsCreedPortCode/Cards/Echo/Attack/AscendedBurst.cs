@@ -17,6 +17,9 @@ public class AscendedBurst() : EchoCard(1,
     [
         new DamageVar(9m, ValueProp.Move)
     ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)

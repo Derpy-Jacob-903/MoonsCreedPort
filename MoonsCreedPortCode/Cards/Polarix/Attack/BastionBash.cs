@@ -14,7 +14,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 public class BastionBash() : PolarixCard(1,
-    CardType.Attack, CardRarity.Uncommon,
+    CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

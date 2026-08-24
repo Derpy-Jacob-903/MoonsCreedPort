@@ -13,25 +13,23 @@ public class SystemReboot() : AytekCard(3,
     CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DrawCardsNextTurnPower>("DrawCardsNextTurn", 2),
-        new PowerVar<EnergyNextTurnPower>("EnergyNextTurn", 2)
+        new CardsVar(2),
+        new EnergyVar(2)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        await PowerCmd.Apply<DrawCardsNextTurnPower>(context, Owner.Creature, DynamicVars["DrawCardsNextTurn"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<EnergyNextTurnPower>(context, Owner.Creature, DynamicVars["EnergyNextTurn"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DrawCardsNextTurnPower>(context, Owner.Creature, DynamicVars.Cards.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EnergyNextTurnPower>(context, Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
         PlayerCmd.EndTurn(Owner, false);
     }
 
     protected override void OnUpgrade()
     {
-        this.DynamicVars["DrawCardsNextTurn"].UpgradeValueBy(1M);
+        this.DynamicVars.Cards.UpgradeValueBy(1M);
         this.EnergyCost.UpgradeBy(-1);
     } 
 }

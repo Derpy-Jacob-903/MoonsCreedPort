@@ -4,7 +4,9 @@
   "MOONSCREEDPORT-TECH_KEYWORD.title": "Tech",
   "MOONSCREEDPORT-TECH_KEYWORD.description": "If you have enough {singleStarIcon}, pay the additional cost to activate the effect.",
   "MOONSCREEDPORT-REAP_KEYWORD.title": "Reap",
-  "MOONSCREEDPORT-REAP_KEYWORD.description": "Channel a random Orb among [img]res://MoonsCreedPort/images/orbs/mox_white.png[/img] or [img]res://MoonsCreedPort/images/orbs/mox_black.png[/img].",
-  "MOONSCREEDPORT-REAP_KEYWORD.title": "Reap",
-  "MOONSCREEDPORT-REAP_KEYWORD.description": "Cards containing \"Strike\"",
+  "MOONSCREEDPORT-REAP_KEYWORD.description": "Channel [img]res://MoonsCreedPort/images/orbs/mox_white.png[/img] or [img]res://MoonsCreedPort/images/orbs/mox_black.png[/img] at random.",
+  "MOONSCREEDPORT-SHATTER_KEYWORD.title": "Shatter",
+  "MOONSCREEDPORT-SHATTER_KEYWORD.description": "Requires [gold]Evoking[/gold] the specified Orbs in addition to paying its energy cost.",
+  "MOONSCREEDPORT-STRIKE.title": "Strike",
+  "MOONSCREEDPORT-STRIKE.description": "Cards containing \"Strike\""
 }

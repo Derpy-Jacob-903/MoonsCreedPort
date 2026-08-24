@@ -11,7 +11,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class UpgradedMissile() : AytekCard(3,
+public class UpgradedMissile() : AytekCard(4,
     CardType.Attack, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {

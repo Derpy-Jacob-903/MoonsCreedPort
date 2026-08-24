@@ -13,8 +13,6 @@ public class AytekPotionPool : CustomPotionPoolModel
 
     protected override IEnumerable<PotionModel> GenerateAllPotions() =>
     [
-        ModelDb.Potion<StarPotion>(),
-        ModelDb.Potion<FocusPotion>(),
-        ModelDb.Potion<PotionOfCapacity>()
+        ModelDb.Potion<StarPotion>()
     ];
 }

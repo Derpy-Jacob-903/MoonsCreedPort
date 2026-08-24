@@ -16,13 +16,14 @@ public class SunbladeShield() : PolarixCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9m, ValueProp.Move)
+        new DamageVar(5m, ValueProp.Move),
+        new BlockVar(5, ValueProp.Move)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
+        await CreatureCmd.GainBlock(Owner.Creature, base.DynamicVars.Block, play);
         if (play.Target != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .FromCard(play.Card, play).Targeting(play.Target)

@@ -19,7 +19,7 @@ public class ScatterShot() : AytekCard(1,
     [
         new DamageVar(2m, ValueProp.Move),
         new RepeatVar(3),
-        new PowerVar<VulnerablePower>(3)
+        new PowerVar<VulnerablePower>(2)
     ];
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -40,5 +40,5 @@ public class ScatterShot() : AytekCard(1,
             await CommonActions.Apply<VulnerablePower>(context, play.Target, this);
         }
     }
-    protected override void OnUpgrade() => this.DynamicVars.Repeat.UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars.Vulnerable.UpgradeValueBy(1M);
 }

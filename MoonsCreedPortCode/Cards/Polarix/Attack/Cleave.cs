@@ -14,6 +14,8 @@ public class Cleave() : PolarixCard(1,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(8m, ValueProp.Move)

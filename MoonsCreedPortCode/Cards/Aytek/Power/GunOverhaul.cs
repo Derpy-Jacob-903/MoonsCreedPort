@@ -24,5 +24,5 @@ public class GunOverhaul() : AytekCard(1,
         await PowerCmd.Apply<GunOverhaulPower>(context, Owner.Creature, DynamicVars["GunOverhaulPower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars.Strength.UpgradeValueBy(2M);
+    protected override void OnUpgrade() => this.DynamicVars["GunOverhaulPower"].UpgradeValueBy(2M);
 }

@@ -14,6 +14,7 @@ public class Ascend() : PolarixCard(1,
     CardType.Skill, CardRarity.Ancient,
     TargetType.AnyEnemy)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(9m, ValueProp.Move)

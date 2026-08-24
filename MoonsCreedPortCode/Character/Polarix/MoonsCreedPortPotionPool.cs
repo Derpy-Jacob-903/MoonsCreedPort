@@ -14,6 +14,6 @@ public class PolarixPotionPool : CustomPotionPoolModel
     [
         ModelDb.Potion<BloodPotion>(),
         ModelDb.Potion<Ashwater>(),
-        ModelDb.Potion<SoldiersStew>(),
+        ModelDb.Potion<SoldiersStew>()
     ];
 }

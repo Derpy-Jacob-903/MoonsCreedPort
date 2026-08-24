@@ -40,5 +40,5 @@ public class QuantumWarheads() : AytekCard(1,
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }
-    protected override void OnUpgrade() => this.DynamicVars.CalculationBase.UpgradeValueBy(4M);
+    protected override void OnUpgrade() => this.DynamicVars.ExtraDamage.UpgradeValueBy(1M);
 }

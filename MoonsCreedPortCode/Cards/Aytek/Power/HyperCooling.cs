@@ -24,5 +24,5 @@ public class HyperCooling() : AytekCard(3,
         await PowerCmd.Apply<HyperCoolingPower>(context, Owner.Creature, DynamicVars["HyperCoolingPower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["HyperCoolingPower"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);
 }

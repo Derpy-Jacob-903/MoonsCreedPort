@@ -14,16 +14,18 @@ public class LunarInsight() : PolarixCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9m, ValueProp.Move)
+        new DamageVar(3m, ValueProp.Move),
+        new RepeatVar(2),
+        new CardsVar(1)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
-        if (play.Target != null)
+        if (CombatState != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(play.Card, play).Targeting(play.Target)
+                .FromCard(play.Card, play).TargetingRandomOpponents(CombatState)
+                .WithHitCount(DynamicVars.Repeat.IntValue)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }

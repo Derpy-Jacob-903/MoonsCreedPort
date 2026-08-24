@@ -10,21 +10,20 @@ using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
-public class GhostMode() : PolarixCard(2,
+public class GhostMode() : PolarixCard(3,
     CardType.Power, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<ThornsPower>("Thorns", 5)
+        new PowerVar<BarricadePower>(1)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
-        await PowerCmd.Apply<ThornsPower>(context, Owner.Creature, DynamicVars.Strength.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<BarricadePower>(context, Owner.Creature, DynamicVars["BarricadePower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["Thorns"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars["BarricadePower"].UpgradeValueBy(1M);
 }

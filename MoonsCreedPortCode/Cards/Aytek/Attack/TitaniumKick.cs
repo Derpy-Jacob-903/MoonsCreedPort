@@ -16,9 +16,9 @@ public class TitaniumKick() : AytekCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(12m, ValueProp.Move),
+        new DamageVar(11m, ValueProp.Move),
         new CalculationBaseVar(1M),
-        new CalculationExtraVar(3M),
+        new CalculationExtraVar(2M),
         new CalculatedVar("CalculatedHits").WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, _) => (Decimal) (PileType.Hand.GetPile(card.Owner).Cards.All<CardModel>((Func<CardModel, bool>) (c => c.IsUpgraded || c.Type is CardType.Curse or CardType.Status or CardType.Quest)) ? 1 : 0)))
     ];
     protected override async Task OnPlay(
@@ -32,5 +32,5 @@ public class TitaniumKick() : AytekCard(1,
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(context);
     }
-    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);
+    protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(5M);
 }

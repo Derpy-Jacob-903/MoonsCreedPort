@@ -8,13 +8,13 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 
-public class Overload() : AytekCard(1,
+public class Overload() : AytekCard(0,
     CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new TechPointVar(2),
+        new TechPointVar(3),
         new PowerVar<HpLossNextTurnPower>("HpLossNextTurnPower", 3)
     ];
     protected override async Task OnPlay(
@@ -27,5 +27,5 @@ public class Overload() : AytekCard(1,
             this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["TechPointVar"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars["TechPointVar"].UpgradeValueBy(2M);
 }
