@@ -12,7 +12,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 [Pool(typeof(StatusCardPool))]
-public class BurningFlame() : ColorlessCard(0,
+public class BurningFlame() : CollarlessCard(0,
     CardType.Status, CardRarity.Status,
     TargetType.None)
 {

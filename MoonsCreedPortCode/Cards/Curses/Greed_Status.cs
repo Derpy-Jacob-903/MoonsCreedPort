@@ -18,7 +18,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Enemy;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 [Pool(typeof(StatusCardPool))]
-public class GreedStatus() : ColorlessCard(0,
+public class GreedStatus() : CollarlessCard(0,
     CardType.Status, CardRarity.Status,
     TargetType.None)
 {

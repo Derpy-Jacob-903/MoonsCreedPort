@@ -20,7 +20,8 @@ using MoonsCreedPort.MoonsCreedPortCode.Extensions;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Character;
 
-public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, TargetType target) :
+[Pool(typeof(ColorlessCardPool))]
+public abstract class CollarlessCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
     //Image size:
@@ -69,12 +70,12 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
         }
     }
 
-    protected static string RolledArt(ColorlessCard c)
+    protected static string RolledArt(CollarlessCard c)
     {
         //return ImageHelper.GetImagePath("atlases/card_atlas.sprites/beta.tres");
         var validPool = ModelDb.AllCards
             .Where(c2 =>
-                c2 is not ColorlessCard &&
+                c2 is not CollarlessCard &&
                 c2.Type == c.Type &&
                 c.ArtRollerCase(c2))
             .ToList();
@@ -89,7 +90,7 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
 
     protected virtual bool ArtRollerCase(CardModel card)
     {
-        return card.Pool is ColorlessCardPool or StatusCardPool or CurseCardPool;
+        return card.Pool is CollarlessCardPool or StatusCardPool or CurseCardPool;
     }
 
     public bool ForceTriggerTech = false;
@@ -132,7 +133,7 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
 
     public override Task BeforeCardAutoPlayed(CardModel card, Creature target, AutoPlayType type)
     {
-        if (card is ColorlessCard techCard && techCard.WillTriggerTech)
+        if (card is CollarlessCard techCard && techCard.WillTriggerTech)
         {
             ForceTriggerTech = true;
             //if (AutoSlayer.IsActive)
@@ -144,21 +145,21 @@ public abstract class ColorlessCard(int cost, CardType type, CardRarity rarity, 
 
     public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card is ColorlessCard) ForceTriggerTech = false;
+        if (cardPlay.Card is CollarlessCard) ForceTriggerTech = false;
         return base.AfterCardPlayed(choiceContext, cardPlay);
     }
 
-    public static bool GetTechBool(ColorlessCard c)
+    public static bool GetTechBool(CollarlessCard c)
     {
         return c.WillTriggerTech || c.ForceTriggerTech;
     }
-    public static int GetTechInt(ColorlessCard c)
+    public static int GetTechInt(CollarlessCard c)
     {
         return c.WillTriggerTech || c.ForceTriggerTech ? 1 : 0;
     }
 
 public static IEnumerable<DynamicVar> MakeTechDamage(
-        ColorlessCard This, 
+        CollarlessCard This, 
         int baseVal,
         int extraVal,
         ValueProp props = ValueProp.Move)
@@ -168,12 +169,12 @@ public static IEnumerable<DynamicVar> MakeTechDamage(
             new CalculationBaseVar(baseVal),
             new ExtraDamageVar(extraVal),
             new CalculatedDamageVar(props).WithMultiplier(
-                (Func<CardModel, Creature, decimal>)((c, _) => c is ColorlessCard tc && (tc.WillTriggerTech || tc.ForceTriggerTech) ? 1 : 0))
+                (Func<CardModel, Creature, decimal>)((c, _) => c is CollarlessCard tc && (tc.WillTriggerTech || tc.ForceTriggerTech) ? 1 : 0))
         ];
     }
     
     public static IEnumerable<DynamicVar> MakeTechBlock(
-        ColorlessCard This, 
+        CollarlessCard This, 
         int baseVal,
         int extraVal,
         ValueProp props = ValueProp.Move)
@@ -183,7 +184,7 @@ public static IEnumerable<DynamicVar> MakeTechDamage(
             new CalculationBaseVar(baseVal),
             new CalculationExtraVar(extraVal),
             new CalculatedBlockVar(props).WithMultiplier(
-                (Func<CardModel, Creature, decimal>)((c, _) => c is ColorlessCard tc && (tc.WillTriggerTech || tc.ForceTriggerTech) ? 1 : 0))
+                (Func<CardModel, Creature, decimal>)((c, _) => c is CollarlessCard tc && (tc.WillTriggerTech || tc.ForceTriggerTech) ? 1 : 0))
         ];
     }
     

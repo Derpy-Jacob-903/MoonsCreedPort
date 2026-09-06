@@ -18,7 +18,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Extensions;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 [Pool(typeof(StatusCardPool))]
-public class Haunt() : ColorlessCard(1,
+public class Haunt() : CollarlessCard(1,
     CardType.Status, CardRarity.Status,
     TargetType.Self)
 {

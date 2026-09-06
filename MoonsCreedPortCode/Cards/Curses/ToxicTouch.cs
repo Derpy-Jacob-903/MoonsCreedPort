@@ -17,7 +17,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Enemy;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 [Pool(typeof(StatusCardPool))]
-public class ToxicTouch() : ColorlessCard(1,
+public class ToxicTouch() : CollarlessCard(1,
     CardType.Status, CardRarity.Status,
     TargetType.Self)
 {

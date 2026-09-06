@@ -17,7 +17,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Enemy;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 [Pool(typeof(CurseCardPool))]
-public class Drained() : ColorlessCard(-1,
+public class Drained() : CollarlessCard(-1,
     CardType.Curse, CardRarity.Curse,
     TargetType.Self)
 {public override int MaxUpgradeLevel => 0;

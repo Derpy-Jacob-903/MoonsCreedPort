@@ -16,7 +16,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 [Pool(typeof(StatusCardPool))]
-public class Seeded() : ColorlessCard(1,
+public class Seeded() : CollarlessCard(1,
     CardType.Status, CardRarity.Status,
     TargetType.None)
 {

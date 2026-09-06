@@ -104,6 +104,8 @@
       <None Include="MoonsCreedPortCode\Potions\ReapPotion.cs" />
       <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Attack\FireBreath.cs" />
       <None Include="MoonsCreedPortCode\Cards\Polarix\Attack\FireBreath.cs" />
+      <Compile Remove="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
+      <None Include="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
     </ItemGroup>
 
     <ItemGroup>

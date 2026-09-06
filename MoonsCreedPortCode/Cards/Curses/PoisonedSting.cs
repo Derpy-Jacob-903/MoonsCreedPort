@@ -15,7 +15,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Character;
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 [Pool(typeof(StatusCardPool))]
-public class PoisonedSting() : ColorlessCard(1,
+public class PoisonedSting() : CollarlessCard(1,
     CardType.Status, CardRarity.Status,
     TargetType.Self)
 {
