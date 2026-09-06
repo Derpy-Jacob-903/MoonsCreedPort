@@ -16,7 +16,7 @@ namespace MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 
 [Pool(typeof(PolarixCardPool))]
 public abstract class PolarixCard(int cost, CardType type, CardRarity rarity, TargetType target) :
-    ColorlessCard(cost, type, rarity, target)
+    CollarlessCard(cost, type, rarity, target)
 {
     //Image size:
     //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)
@@ -34,7 +34,7 @@ public abstract class PolarixCard(int cost, CardType type, CardRarity rarity, Ta
     
     /*public static string RolledArt(CardModel c)
     {
-        var card = ModelDb.AllCards.Where(c2 => c2 is not PolarixCard or EchoCard or AytekCard or ColorlessCard && c2.Type == c.Type).TakeRandom(1, new Rng((uint)c.Id.GetHashCode())).FirstOrDefault();
+        var card = ModelDb.AllCards.Where(c2 => c2 is not PolarixCard or EchoCard or AytekCard or CollarlessCard && c2.Type == c.Type).TakeRandom(1, new Rng((uint)c.Id.GetHashCode())).FirstOrDefault();
         if (card is null) return ImageHelper.GetImagePath("atlases/card_atlas.sprites/beta.tres");
         return ImageHelper.GetImagePath($"atlases/card_atlas.sprites/{card.Pool.Title.ToLowerInvariant()}/{card.Id.Entry.ToLowerInvariant()}.tres");
     }*/

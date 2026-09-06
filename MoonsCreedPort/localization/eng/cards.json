@@ -533,5 +533,7 @@
   "MOONSCREEDPORT-BALANCED_LOAD.title": "Balanced Load",
   "MOONSCREEDPORT-BALANCED_LOAD.description": "If you have played a card containing \"Missile\" and a [gold]Gun[/gold] card this turn, gain {Energy:energyIcons()} and draw {Cards:diff()} {Cards:plural:card|cards}.",
   "MOONSCREEDPORT-KILL_PROCESS.title": "KILL PROCESS",
-  "MOONSCREEDPORT-KILL_PROCESS.description": "Deal {Damage:diff()} damage X times.\nDouble X if this is the first card played on the enemy this turn."
+  "MOONSCREEDPORT-KILL_PROCESS.description": "Deal {Damage:diff()} damage X times.\nDouble X if this is the first card played on the enemy this turn.",
+  "MOONSCREEDPORT-FLAME_RAIN.title": "",
+  "MOONSCREEDPORT-FLAME_RAIN.description": ""
 }

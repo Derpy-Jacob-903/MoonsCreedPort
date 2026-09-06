@@ -17,7 +17,7 @@ namespace MoonsCreedPort.MoonsCreedPortCode.Character.Arcrane;
 
 [Pool(typeof(ArcraneCardPool))]
 public abstract class ArcraneCard(int cost, CardType type, CardRarity rarity, TargetType target) :
-    ColorlessCard(cost, type, rarity, target)
+    CollarlessCard(cost, type, rarity, target)
 {
     protected override bool ArtRollerCase(CardModel card)
     {

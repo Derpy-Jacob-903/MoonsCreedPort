@@ -17,7 +17,7 @@ namespace MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 
 [Pool(typeof(AytekCardPool))]
 public abstract class AytekCard(int cost, CardType type, CardRarity rarity, TargetType target) :
-    ColorlessCard(cost, type, rarity, target)
+    CollarlessCard(cost, type, rarity, target)
 {
     protected override bool ArtRollerCase(CardModel card)
     {

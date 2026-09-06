@@ -90,7 +90,7 @@ public abstract class CollarlessCard(int cost, CardType type, CardRarity rarity,
 
     protected virtual bool ArtRollerCase(CardModel card)
     {
-        return card.Pool is CollarlessCardPool or StatusCardPool or CurseCardPool;
+        return card.Pool is ColorlessCardPool or StatusCardPool or CurseCardPool;
     }
 
     public bool ForceTriggerTech = false;

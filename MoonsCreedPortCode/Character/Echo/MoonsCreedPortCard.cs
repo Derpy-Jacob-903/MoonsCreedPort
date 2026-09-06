@@ -13,7 +13,7 @@ namespace MoonsCreedPort.MoonsCreedPortCode.Character.Echo;
 
 [Pool(typeof(EchoCardPool))]
 public abstract class EchoCard(int cost, CardType type, CardRarity rarity, TargetType target) :
-    ColorlessCard(cost, type, rarity, target)
+    CollarlessCard(cost, type, rarity, target)
 {
     protected override bool ArtRollerCase(CardModel card)
     {

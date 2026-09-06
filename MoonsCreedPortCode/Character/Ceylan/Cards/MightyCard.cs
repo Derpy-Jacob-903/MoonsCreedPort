@@ -11,7 +11,7 @@ using MoonsCreedPort.MoonsCreedPortCode.Powers.Aytek;
 namespace MoonsCreedPort.MoonsCreedPortCode.Character.Aytek.Cards;
 
 [Pool(typeof(EventCardPool))]
-public class MightyCard() : ColorlessCard(1,
+public class MightyCard() : CollarlessCard(1,
     CardType.Skill, CardRarity.Event,
     TargetType.Self)
 {
