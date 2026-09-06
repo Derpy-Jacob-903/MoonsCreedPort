@@ -109,39 +109,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-BASTION_BASH.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-BEAM.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-BLADE_DANCE.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-BLOOD_SACRIFICE.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-CACHE_SHIELD.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-CATACLYSMIC_STRIKE.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-COSMIC_INFLUX.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-COSMIC_PURGE.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-DARKBIND_REAP.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-DARK_REAP.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-FIRST_LIGHT.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-FORBIDDEN_POWER.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-GHOST_MODE.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-HARVEST_CALL.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-LIGHTBIND_REAP.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-LIGHT_REAP.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-LIGHT_THOUGHTS.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-LUNAR_INSIGHT.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-MISERY.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-MUSKA.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-OVERLOAD.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-PHANTOM_CLOAK.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-QUICK_SHOT.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-REBALANCE.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-RUSHED_STRIKE.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-SCATTER_SHOT.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-SUDDEN_INSIGHT.hsv" />
-      <Content Include="IntoTheSpireverse\ArtRoller\CARD.MOONSCREEDPORT-SWIFT_GUARD.hsv" />
       <Content Include="MoonsCreedPort\shaders\color_adjust.gdshader" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="IntoTheSpireverse\" />
     </ItemGroup>
 
     <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">
