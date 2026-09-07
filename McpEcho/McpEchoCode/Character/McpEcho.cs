@@ -2,45 +2,52 @@
 using BaseLib.Utils.NodeFactories;
 using McpEcho.McpEchoCode.Extensions;
 using Godot;
+using McpEcho.McpEchoCode.Cards;
+using McpEcho.McpEchoCode.Relics;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
+using MoonsCreedPortCard.MoonsCreedPortCardCode.Character;
 
 namespace McpEcho.McpEchoCode.Character;
 
-public class McpEcho : PlaceholderCharacterModel
+public class Echo : MoonsCreedPortCharacter
 {
-    public const string CharacterId = "McpEcho";
+    public const string CharacterId = "Echo";
+    public override string PlaceholderID => "silent";
 
-    public static readonly Color Color = new("ffffff");
+    public static readonly Color Color = new("3dd9ca");
 
     public override Color NameColor => Color;
-    public override CharacterGender Gender => CharacterGender.Neutral;
-    public override int StartingHp => 70;
+    public override CharacterGender Gender => CharacterGender.Feminine;
+    public override int StartingHp => 65; // very odd
+    public override int BaseOrbSlotCount => 3;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<LightBarrier>(),
+        ModelDb.Card<DarknessBarrage>(),
+        ModelDb.Card<Harmony>(),
+        ModelDb.Card<DefendEcho>(),
+        ModelDb.Card<DefendEcho>(),
+        ModelDb.Card<DefendEcho>(),
+        ModelDb.Card<DefendEcho>(),
+        ModelDb.Card<StrikeEcho>(),
+        ModelDb.Card<StrikeEcho>(),
+        ModelDb.Card<StrikeEcho>(),
+        ModelDb.Card<StrikeEcho>(),
+        ModelDb.Card<StrikeEcho>(),
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<RingOfTheSnakeEcho>()
     ];
 
-    public override CardPoolModel CardPool => ModelDb.CardPool<McpEchoCardPool>();
-    public override RelicPoolModel RelicPool => ModelDb.RelicPool<McpEchoRelicPool>();
-    public override PotionPoolModel PotionPool => ModelDb.PotionPool<McpEchoPotionPool>();
+    public override CardPoolModel CardPool => ModelDb.CardPool<EchoCardPool>();
+    public override RelicPoolModel RelicPool => ModelDb.RelicPool<EchoRelicPool>();
+    public override PotionPoolModel PotionPool => ModelDb.PotionPool<EchoPotionPool>();
 
     /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
         override all the other methods that define those assets.

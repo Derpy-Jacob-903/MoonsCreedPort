@@ -1,3 +1,16 @@
 {
-  
+  "MCPPOLARIX-POLARIX.title": "Polarix",
+  "MCPPOLARIX-POLARIX.titleObject": "Polarix",
+  "MCPPOLARIX-POLARIX.description": "Pioneer and guide of the Guardians.\ntodo",
+  "MCPPOLARIX-POLARIX.possessiveAdjective": "his",
+  "MCPPOLARIX-POLARIX.pronounObject": "him",
+  "MCPPOLARIX-POLARIX.pronounPossessive": "his",
+  "MCPPOLARIX-POLARIX.pronounSubject": "he",
+  "MCPPOLARIX-POLARIX.cardsModifierTitle": "Polarix Cards",
+  "MCPPOLARIX-POLARIX.cardsModifierDescription": "Polarix cards will now appear in rewards and shops.",
+  "MCPPOLARIX-POLARIX.aromaPrinciple": "[sine][purple]...[/purple][/sine]",
+  "MCPPOLARIX-POLARIX.eventDeathPrevention": "...",
+  "MCPPOLARIX-POLARIX.banter.alive.endTurnPing": "...",
+  "MCPPOLARIX-POLARIX.banter.dead.endTurnPing": "...",
+  "MCPPOLARIX-POLARIX.goldMonologue": "..."
 }

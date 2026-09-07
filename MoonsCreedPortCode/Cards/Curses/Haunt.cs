@@ -12,7 +12,6 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MoonsCreedPort.MoonsCreedPortCode.Character;
-using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
 using MoonsCreedPort.MoonsCreedPortCode.Extensions;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
@@ -39,9 +38,4 @@ public class Haunt() : CollarlessCard(1,
     {
         await PowerCmd.Apply<VulnerablePower>(choiceContext, Owner.Creature, DynamicVars.Vulnerable.BaseValue, null, this);
     }
-    
-    public override string CustomPortraitPath => ResourceLoader.Exists($"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath()) 
-        ? $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath() : PolarixCard.RolledArt(this);
-    public override string PortraitPath => ResourceLoader.Exists($"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath()) 
-        ? $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath() : PolarixCard.RolledArt(this);
 }

@@ -7,8 +7,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 
 namespace McpEcho.McpEchoCode.Cards;
 
-[Pool(typeof(McpEchoCardPool))]
-public abstract class McpEchoCard(int cost, CardType type, CardRarity rarity, TargetType target) :
+[Pool(typeof(EchoCardPool))]
+public abstract class EchoCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
     //Image size:

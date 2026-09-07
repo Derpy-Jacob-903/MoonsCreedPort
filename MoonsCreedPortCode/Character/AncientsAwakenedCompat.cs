@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Character;
 
-internal static class AncientsAwakenedCompat
+public static class AncientsAwakenedCompat
 {
     private const string PerfectedPoolTypeName =
         "AncientsAwakened.AncientsAwakenedCode.Pools.Mithrix.PerfectedPool";

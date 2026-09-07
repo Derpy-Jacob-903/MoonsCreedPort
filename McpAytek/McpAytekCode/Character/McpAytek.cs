@@ -2,6 +2,8 @@
 using BaseLib.Utils.NodeFactories;
 using McpAytek.McpAytekCode.Extensions;
 using Godot;
+using McpAytek.McpAytekCode.Cards;
+using McpAytek.McpAytekCode.Relics;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
@@ -9,38 +11,41 @@ using MegaCrit.Sts2.Core.Models.Relics;
 
 namespace McpAytek.McpAytekCode.Character;
 
-public class McpAytek : PlaceholderCharacterModel
+public class Aytek : PlaceholderCharacterModel
 {
-    public const string CharacterId = "McpAytek";
-
-    public static readonly Color Color = new("ffffff");
+    public const string CharacterId = "Aytek";
+    public override string PlaceholderID => "defect";
+    public static readonly Color Color = new("f65d34");
 
     public override Color NameColor => Color;
-    public override CharacterGender Gender => CharacterGender.Neutral;
-    public override int StartingHp => 70;
+    public override CharacterGender Gender => CharacterGender.Masculine;
+    public override int StartingHp => 75;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<StrikeAytek>(),
+        ModelDb.Card<StrikeAytek>(),
+        ModelDb.Card<StrikeAytek>(),
+        ModelDb.Card<StrikeAytek>(),
+        ModelDb.Card<SimpleMissile>(),
+        ModelDb.Card<SimpleMissile>(),
+        ModelDb.Card<DefendAytek>(),
+        ModelDb.Card<DefendAytek>(),
+        ModelDb.Card<DefendAytek>(),
+        ModelDb.Card<DefendAytek>(),
+        ModelDb.Card<PowerBank>(),
+        ModelDb.Card<TechLock>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<RingOfTheSnakeAytek>()
     ];
 
-    public override CardPoolModel CardPool => ModelDb.CardPool<McpAytekCardPool>();
-    public override RelicPoolModel RelicPool => ModelDb.RelicPool<McpAytekRelicPool>();
-    public override PotionPoolModel PotionPool => ModelDb.PotionPool<McpAytekPotionPool>();
+    public override CardPoolModel CardPool => ModelDb.CardPool<AytekCardPool>();
+    public override RelicPoolModel RelicPool => ModelDb.RelicPool<AytekRelicPool>();
+    public override PotionPoolModel PotionPool => ModelDb.PotionPool<AytekPotionPool>();
+
 
     /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
         override all the other methods that define those assets.
@@ -56,8 +61,11 @@ public class McpAytek : PlaceholderCharacterModel
         }
     }
 
-    public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
-    public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
-    public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
-    public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+    public override string CustomVisualPath => "characters/aytek/aytek.tscn".ImagePath();
+
+    public override string CustomEnergyCounterPath => "charui/energy_counter/aytek_energy_counter.tscn".ImagePath();
+    public override string CustomIconTexturePath => "character_icon_aytek.png".CharacterUiPath();
+    public override string CustomCharacterSelectIconPath => "char_select_aytek.png".CharacterUiPath();
+    public override string CustomCharacterSelectLockedIconPath => "char_select_aytek_locked.png".CharacterUiPath();
+    public override string CustomMapMarkerPath => "map_marker_aytek.png".CharacterUiPath();
 }

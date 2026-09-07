@@ -43,7 +43,7 @@ public abstract class EchoOrb<SpentPowerModel> : CustomOrbModel
     {
         return ModelDb.GetById<OrbModel>(rng.NextItem(_validEchoOrbs));
     }
-    private static readonly ModelId[] _validEchoOrbs =
+    public static readonly ModelId[] _validEchoOrbs =
     [
         ModelDb.GetId<WhiteEchoOrb>(),
         ModelDb.GetId<BlackEchoOrb>()
@@ -53,7 +53,7 @@ public abstract class EchoOrb<SpentPowerModel> : CustomOrbModel
         await PowerCmd.Apply<SpentPowerModel>(context,Owner.Creature, EvokeVal, null, null, false);
         return (IEnumerable<Creature>) Array.Empty<Creature>();
     }
-    public static async Task ChannelRandomEchoOrb(PlayerChoiceContext context, Player player)
+    public static async Task ReapKeywordCmd(PlayerChoiceContext context, Player player)
     {
         await OrbCmd.Channel(context, GetRandomEchoOrb(player.RunState.Rng.CombatOrbGeneration).ToMutable(), player);
     }

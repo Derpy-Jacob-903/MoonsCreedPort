@@ -1,3 +1,16 @@
 {
-  
+  "MCPECHO-ECHO.title": "Echo",
+  "MCPECHO-ECHO.titleObject": "Echo",
+  "MCPECHO-ECHO.description": "One of the most mysterious of the Moon Guardians.\nLiberates souls and maintains the balance of the cosmos with her two weapons.",
+  "MCPECHO-ECHO.possessiveAdjective": "her",
+  "MCPECHO-ECHO.pronounObject": "her",
+  "MCPECHO-ECHO.pronounPossessive": "hers",
+  "MCPECHO-ECHO.pronounSubject": "she",
+  "MCPECHO-ECHO.cardsModifierTitle": "Echo Cards",
+  "MCPECHO-ECHO.cardsModifierDescription": "Echo cards will now appear in rewards and shops.",
+  "MCPECHO-ECHO.aromaPrinciple": "[sine][blue]...[/blue][/sine]",
+  "MCPECHO-ECHO.eventDeathPrevention": "...",
+  "MCPECHO-ECHO.banter.alive.endTurnPing": "...",
+  "MCPECHO-ECHO.banter.dead.endTurnPing": "...",
+  "MCPECHO-ECHO.goldMonologue": "..."
 }

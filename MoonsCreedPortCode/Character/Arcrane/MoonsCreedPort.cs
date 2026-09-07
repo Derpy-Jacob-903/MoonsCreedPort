@@ -10,7 +10,6 @@ using MoonsCreedPort.MoonsCreedPortCode.Cards.Arcrane;
 using MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
 using MoonsCreedPort.MoonsCreedPortCode.Extensions;
 using MoonsCreedPort.MoonsCreedPortCode.Relics.Arcrane;
-using MoonsCreedPort.MoonsCreedPortCode.Relics.Aytek;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Character.Arcrane;
 

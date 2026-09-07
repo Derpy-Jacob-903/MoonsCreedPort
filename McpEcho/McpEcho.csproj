@@ -65,6 +65,10 @@
         <Folder Include="McpEcho\images\relics\big\"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MoonsCreedPort.csproj" />
+    </ItemGroup>
+
     <Target Name="CheckDependencyPaths">
         <Error
                 Text=" Slay the Spire 2 data not found at path '$(Sts2DataDir)'"

@@ -1,3 +1,16 @@
 {
-  
+  "MCPAYTEK-AYTEK.title": "Aytek",
+  "MCPAYTEK-AYTEK.titleObject": "Aytek",
+  "MCPAYTEK-AYTEK.description": "A member of the Star Guardians.\nUses his otherworldly tech and combat skills to protect his new home while seeking a way back to home.",
+  "MCPAYTEK-AYTEK.possessiveAdjective": "his",
+  "MCPAYTEK-AYTEK.pronounObject": "him",
+  "MCPAYTEK-AYTEK.pronounPossessive": "his",
+  "MCPAYTEK-AYTEK.pronounSubject": "he",
+  "MCPAYTEK-AYTEK.cardsModifierTitle": "Aytek Cards",
+  "MCPAYTEK-AYTEK.cardsModifierDescription": "Aytek cards will now appear in rewards and shops.",
+  "MCPAYTEK-AYTEK.aromaPrinciple": "[sine][red]...[/red][/sine]",
+  "MCPAYTEK-AYTEK.eventDeathPrevention": "...",
+  "MCPAYTEK-AYTEK.banter.alive.endTurnPing": "...",
+  "MCPAYTEK-AYTEK.banter.dead.endTurnPing": "...",
+  "MCPAYTEK-AYTEK.goldMonologue": "..."
 }

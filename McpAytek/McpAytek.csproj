@@ -49,6 +49,10 @@
         <EmbeddedResource Remove="materials/**"/>
         <EmbeddedResource Remove="shaders/**"/>
         <EmbeddedResource Remove="images/**"/>
+        <Compile Remove="McpAytekCode\Cards\Attack\Beam.cs" />
+        <Compile Remove="McpAytekCode\Cards\Attack\QuickShot.cs" />
+        <Compile Remove="McpAytekCode\Cards\Power\TakeAim.cs" />
+        <Compile Remove="McpAytekCode\Powers\Ionized.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -57,12 +61,19 @@
         <None Include="McpAytek.json"/>
         <None Include="project.godot"/>
         <None Include="McpAytek/**"/>
+        <Compile Remove="AytekEvent.cs" />
+        <None Include="AytekEvent.cs" />
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="McpAytekCode\Powers\" />
         <Folder Include="McpAytek\images\card_portraits\big\"/>
         <Folder Include="McpAytek\images\powers\big\"/>
         <Folder Include="McpAytek\images\relics\big\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MoonsCreedPort.csproj" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">

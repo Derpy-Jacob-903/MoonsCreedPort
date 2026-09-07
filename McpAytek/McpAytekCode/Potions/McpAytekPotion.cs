@@ -4,5 +4,5 @@ using McpAytek.McpAytekCode.Character;
 
 namespace McpAytek.McpAytekCode.Potions;
 
-[Pool(typeof(McpAytekPotionPool))]
+[Pool(typeof(AytekPotionPool))]
 public abstract class McpAytekPotion : CustomPotionModel;

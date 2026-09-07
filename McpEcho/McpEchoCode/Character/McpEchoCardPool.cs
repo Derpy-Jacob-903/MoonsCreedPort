@@ -4,9 +4,9 @@ using Godot;
 
 namespace McpEcho.McpEchoCode.Character;
 
-public class McpEchoCardPool : CustomCardPoolModel
+public class EchoCardPool : CustomCardPoolModel
 {
-    public override string Title => McpEcho.CharacterId; //This is not a display name.
+    public override string Title => Echo.CharacterId; //This is not a display name.
 
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();

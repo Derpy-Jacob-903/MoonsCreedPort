@@ -10,8 +10,6 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MoonsCreedPort.MoonsCreedPortCode.Character;
-using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
-using MoonsCreedPort.MoonsCreedPortCode.Extensions;
 using MoonsCreedPort.MoonsCreedPortCode.Powers.Enemy;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;

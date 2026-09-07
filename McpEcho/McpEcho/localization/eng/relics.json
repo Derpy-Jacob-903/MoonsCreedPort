@@ -1,3 +1,5 @@
 {
-  
+  "MCPECHO-RING_OF_THE_SNAKE_ECHO.title": "Ring of the Snake",
+  "MCPECHO-RING_OF_THE_SNAKE_ECHO.description": "At the start of each combat, draw [blue]{Cards}[/blue] additional {Cards:plural:card|cards}.",
+  "MCPECHO-RING_OF_THE_SNAKE_ECHO.flavor": "Made from a fossilized snake. Represents great skill as a huntress."
 }

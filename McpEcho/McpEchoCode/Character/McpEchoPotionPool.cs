@@ -4,9 +4,9 @@ using Godot;
 
 namespace McpEcho.McpEchoCode.Character;
 
-public class McpEchoPotionPool : CustomPotionPoolModel
+public class EchoPotionPool : CustomPotionPoolModel
 {
-    public override Color LabOutlineColor => McpEcho.Color;
+    public override Color LabOutlineColor => Echo.Color;
 
 
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();

@@ -66,6 +66,10 @@
         <NoWarn>$(NoWarn);MSB3270</NoWarn>
     </PropertyGroup>
 
+
+    <ItemGroup Condition="True"> <!--Allows access to originally private/protected members but may (unlikely to) cause errors.-->
+        <Publicize Include="sts2" IncludeVirtualMembers="false" IncludeCompilerGeneratedMembers="false"/>
+    </ItemGroup>
     <ItemGroup>
         <Reference Include="0Harmony">
             <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
@@ -77,6 +81,7 @@
         </Reference>
 
         <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.4.5" PrivateAssets="All" />
+        <PackageReference Include="Krafs.Publicizer" Version="2.3.0" PrivateAssets="All"/>
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
         <AdditionalFiles Include="MoonsCreedPort/localization/**/*.json"/>
     </ItemGroup>
@@ -97,19 +102,39 @@
         <EmbeddedResource Remove="MoonsCreedPortCode\ArtRoller\**" />
         <Compile Remove="MoonsCreedPortCode\Cards\Aytek\Attack\QuickShot.cs" />
         <Compile Remove="MoonsCreedPortCode\Cards\Aytek\Attack\Beam.cs" />
+        <Compile Remove="McpAytek\**" />
+        <EmbeddedResource Remove="McpAytek\**" />
+        <Compile Remove="MoonsCreedPortCode\Character\Arcrane\**" />
+        <EmbeddedResource Remove="MoonsCreedPortCode\Character\Arcrane\**" />
+        <Compile Remove="McpEcho\**" />
+        <EmbeddedResource Remove="McpEcho\**" />
+        <Compile Remove="McpPolarix\**" />
+        <EmbeddedResource Remove="McpPolarix\**" />
+        <Compile Remove="MoonsCreedPortCode\Cards\Arcrane\**" />
+        <EmbeddedResource Remove="MoonsCreedPortCode\Cards\Arcrane\**" />
+        <Compile Remove="MoonsCreedPortCode\Relics\Arcrane\**" />
+        <EmbeddedResource Remove="MoonsCreedPortCode\Relics\Arcrane\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Compile Remove="MoonsCreedPortCode\Potions\ReapPotion.cs" />
       <None Include="MoonsCreedPortCode\Potions\ReapPotion.cs" />
       <Compile Remove="MoonsCreedPortCode\Cards\Polarix\Attack\FireBreath.cs" />
-      <None Include="MoonsCreedPortCode\Cards\Polarix\Attack\FireBreath.cs" />
       <Compile Remove="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
       <None Include="MoonsCreedPortCode\Powers\autoslaystuff.cs" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="MoonsCreedPort\shaders\color_adjust.gdshader" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="MoonsCreedPortCode\Cards\Echo\" />
+      <Folder Include="MoonsCreedPortCode\Character\Ceylan\Cards\" />
+      <Folder Include="MoonsCreedPortCode\Data\" />
+      <Folder Include="MoonsCreedPortCode\Relics\Aytek\" />
+      <Folder Include="MoonsCreedPortCode\Relics\Echo\" />
+      <Folder Include="MoonsCreedPortCode\Relics\Polarix\" />
     </ItemGroup>
 
     <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">

@@ -4,5 +4,5 @@ using McpEcho.McpEchoCode.Character;
 
 namespace McpEcho.McpEchoCode.Potions;
 
-[Pool(typeof(McpEchoPotionPool))]
-public abstract class McpEchoPotion : CustomPotionModel;
+[Pool(typeof(EchoPotionPool))]
+public abstract class EchoPotion : CustomPotionModel;

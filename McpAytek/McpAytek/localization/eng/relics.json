@@ -1,3 +1,8 @@
 {
-  
+  "MCPAYTEK-RING_OF_THE_SNAKE_AYTEK.title": "Ring of the Snake",
+  "MCPAYTEK-RING_OF_THE_SNAKE_AYTEK.description": "At the start of each combat, draw [blue]{Cards}[/blue] additional {Cards:plural:card|cards}.",
+  "MCPAYTEK-RING_OF_THE_SNAKE_AYTEK.flavor": "Made from a fossilized snake. Represents great skill as a huntress.",
+  "MCPAYTEK-RING_OF_THE_SERPENT.description": "At the start of each combat, gain {Stars:starIcons()} and draw [blue]{Cards}[/blue] additional {Cards:plural:card|cards}.",
+  "MCPAYTEK-RING_OF_THE_SERPENT.flavor": "Your ring has morphed and changed forms.",
+  "MCPAYTEK-RING_OF_THE_SERPENT.title": "Ring of the Serpent"
 }

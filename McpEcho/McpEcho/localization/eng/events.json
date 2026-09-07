@@ -1,0 +1,17 @@
+﻿{
+  "COLORFUL_PHILOSOPHERS.pages.INITIAL.options.CARD_POOL∴MCPECHO-ECHO_CARD_POOL.title": "Turquoise",
+  "COLORFUL_PHILOSOPHERS.pages.INITIAL.options.CARD_POOL∴MCPECHO-ECHO_CARD_POOL.description": "Obtain [blue]{Cards}[/blue] Echo {Cards:plural:card|cards}.",
+
+  "MCPECHO-SONG_OF_THE_ORACLES.title": "Song of the Reaps",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.INITIAL.description": "As you journey onward, you enter a room and notice an intriguing altar. The altar bears strange symbols and radiates pulsating energy. On its surface, two scythes appear: one glowing white with serenity, the other shrouded in shadows. Whispers fill your mind: [blue][sine]Which path will you choose?[/sine][/blue]",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.INITIAL.options.WHITE.title": "Light Reap",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.INITIAL.options.WHITE.description": "Obtain [gold]{Relic}[/gold].",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.WHITE.description": "The light reap connects with you, shining with radiance. You feel a protective energy, but notice that your power feels limited.",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.INITIAL.options.WHITE_LOCKED.description": "Your Max HP is too low.",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.INITIAL.options.BLACK.title": "Dark Reap",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.INITIAL.options.BLACK.description": "Obtain [gold]{Relic}[/gold].",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.BLACK.description": "The dark reap connects with you, surrounded by shadows. You feel unlimited power, but begin to bear the weight of an uncontrollable energy.",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.INITIAL.options.BOTH.title": "Balance",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.INITIAL.options.BOTH.description": "Add Harmony to your [gold]Deck[/gold].",
+  "MCPECHO-SONG_OF_THE_ORACLES.pages.BOTH.description": "You feel both peace and destruction within you, but maintaining this balance requires great effort."
+}

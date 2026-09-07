@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxkbshrpxtk1v"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://btr10yk305xra" path="res://McpAytek/images/characters/aytek/Aytek.atlas" id="1_ni8ys"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://biyhmpabqrkcn" path="res://McpAytek/images/characters/aytek/Aytek.skel" id="2_nyp18"]
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_ntie5"]
+atlas_res = ExtResource("1_ni8ys")
+skeleton_file_res = ExtResource("2_nyp18")
+
+[node name="Runesmith" type="Node2D"]
+
+[node name="Visuals" type="SpineSprite" parent="."]
+skeleton_data_res = SubResource("SpineSkeletonDataResource_ntie5")
+preview_skin = "default"
+preview_animation = "Idle"
+preview_frame = false
+preview_time = 0.0
+unique_name_in_owner = true
+scale = Vector2(0.13, 0.13)
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -107.0
+offset_top = -284.0
+offset_right = 107.0
+metadata/_edit_lock_ = true
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, -149)
+metadata/_edit_lock_ = true
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(12, -297)
+metadata/_edit_lock_ = true

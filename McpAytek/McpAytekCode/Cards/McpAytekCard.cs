@@ -4,12 +4,13 @@ using BaseLib.Utils;
 using McpAytek.McpAytekCode.Character;
 using McpAytek.McpAytekCode.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MoonsCreedPort.MoonsCreedPortCode.Character;
 
 namespace McpAytek.McpAytekCode.Cards;
 
-[Pool(typeof(McpAytekCardPool))]
-public abstract class McpAytekCard(int cost, CardType type, CardRarity rarity, TargetType target) :
-    CustomCardModel(cost, type, rarity, target)
+[Pool(typeof(AytekCardPool))]
+public abstract class AytekCard(int cost, CardType type, CardRarity rarity, TargetType target) :
+    CollarlessCard(cost, type, rarity, target)
 {
     //Image size:
     //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)

@@ -1,5 +1,4 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Extensions;
+﻿using BaseLib.Extensions;
 using BaseLib.Utils;
 using McpPolarix.McpPolarixCode.Character;
 using McpPolarix.McpPolarixCode.Extensions;
@@ -8,8 +7,8 @@ using MoonsCreedPort.MoonsCreedPortCode.Character;
 
 namespace McpPolarix.McpPolarixCode.Cards;
 
-[Pool(typeof(McpPolarixCardPool))]
-public abstract class McpPolarixCard(int cost, CardType type, CardRarity rarity, TargetType target) :
+[Pool(typeof(PolarixCardPool))]
+public abstract class PolarixCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CollarlessCard(cost, type, rarity, target)
 {
     //Image size:

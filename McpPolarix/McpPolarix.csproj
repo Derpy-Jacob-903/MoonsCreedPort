@@ -49,12 +49,14 @@
         <EmbeddedResource Remove="materials/**"/>
         <EmbeddedResource Remove="shaders/**"/>
         <EmbeddedResource Remove="images/**"/>
+        <Compile Remove="McpPolarixCode\Cards\Polarix\Attack\FireBreath.cs" />
     </ItemGroup>
 
     <ItemGroup>
         <None Condition="Exists('Directory.Build.props')" Include="Directory.Build.props"/>
         <None Include=".gitignore"/>
         <None Include="McpPolarix.json"/>
+        <None Include="McpPolarixCode\Cards\Polarix\Attack\FireBreath.cs" />
         <None Include="project.godot"/>
         <None Include="McpPolarix/**"/>
     </ItemGroup>
@@ -63,6 +65,10 @@
         <Folder Include="McpPolarix\images\card_portraits\big\"/>
         <Folder Include="McpPolarix\images\powers\big\"/>
         <Folder Include="McpPolarix\images\relics\big\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MoonsCreedPort.csproj" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">

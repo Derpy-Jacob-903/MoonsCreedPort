@@ -2,45 +2,50 @@
 using BaseLib.Utils.NodeFactories;
 using McpPolarix.McpPolarixCode.Extensions;
 using Godot;
+using McpPolarix.McpPolarixCode.Cards;
+using McpPolarix.McpPolarixCode.Relics;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
+using MoonsCreedPortCard.MoonsCreedPortCardCode.Character;
 
 namespace McpPolarix.McpPolarixCode.Character;
 
-public class McpPolarix : PlaceholderCharacterModel
+public class Polarix : MoonsCreedPortCharacter
 {
-    public const string CharacterId = "McpPolarix";
+    public const string CharacterId = "Polarix";
+    //protected override CharacterModel UnlocksAfterRunAs => ModelDb.Character<Echo.Echo>();
 
-    public static readonly Color Color = new("ffffff");
+    public static readonly Color Color = new("ae00ff");
 
     public override Color NameColor => Color;
-    public override CharacterGender Gender => CharacterGender.Neutral;
-    public override int StartingHp => 70;
+    public override CharacterGender Gender => CharacterGender.Masculine;
+    public override int StartingHp => 80;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<StrikePolarix>(),
+        ModelDb.Card<StrikePolarix>(),
+        ModelDb.Card<StrikePolarix>(),
+        ModelDb.Card<StrikePolarix>(),
+        ModelDb.Card<RadiantStrike>(),
+        ModelDb.Card<DefendPolarix>(),
+        ModelDb.Card<DefendPolarix>(),
+        ModelDb.Card<DefendPolarix>(),
+        ModelDb.Card<DefendPolarix>(),
+        ModelDb.Card<DefendPolarix>(),
+        ModelDb.Card<CovetPolarix>(),
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<BurningBloodPolarix>()
     ];
 
-    public override CardPoolModel CardPool => ModelDb.CardPool<McpPolarixCardPool>();
-    public override RelicPoolModel RelicPool => ModelDb.RelicPool<McpPolarixRelicPool>();
-    public override PotionPoolModel PotionPool => ModelDb.PotionPool<McpPolarixPotionPool>();
+    public override CardPoolModel CardPool => ModelDb.CardPool<PolarixCardPool>();
+    public override RelicPoolModel RelicPool => ModelDb.RelicPool<PolarixRelicPool>();
+    public override PotionPoolModel PotionPool => ModelDb.PotionPool<PolarixPotionPool>();
 
     /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
         override all the other methods that define those assets.

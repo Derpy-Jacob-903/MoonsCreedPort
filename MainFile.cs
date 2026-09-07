@@ -2,6 +2,7 @@ using BaseLib.Config;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
+using MoonsCreedPort.MoonsCreedPortCode.Data;
 
 namespace MoonsCreedPort;
 
@@ -15,6 +16,7 @@ public partial class MoonsCreedPortMainFile : Node
 
     public static void Initialize()
     {
+        ModManager.OnMetricsUpload += DownfallMetrics.OnMetricsUpload;
         Harmony harmony = new(ModId);
         harmony.PatchAll();
     }

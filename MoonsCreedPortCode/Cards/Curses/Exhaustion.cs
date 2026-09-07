@@ -12,8 +12,6 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MoonsCreedPort.MoonsCreedPortCode.Character;
-using MoonsCreedPort.MoonsCreedPortCode.Character.Polarix;
-using MoonsCreedPort.MoonsCreedPortCode.Extensions;
 
 namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 

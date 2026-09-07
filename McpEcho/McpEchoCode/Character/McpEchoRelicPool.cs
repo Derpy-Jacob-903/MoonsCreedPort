@@ -4,9 +4,9 @@ using Godot;
 
 namespace McpEcho.McpEchoCode.Character;
 
-public class McpEchoRelicPool : CustomRelicPoolModel
+public class EchoRelicPool : CustomRelicPoolModel
 {
-    public override Color LabOutlineColor => McpEcho.Color;
+    public override Color LabOutlineColor => Echo.Color;
 
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();

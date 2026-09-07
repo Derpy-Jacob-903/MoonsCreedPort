@@ -4,9 +4,9 @@ using Godot;
 
 namespace McpPolarix.McpPolarixCode.Character;
 
-public class McpPolarixPotionPool : CustomPotionPoolModel
+public class PolarixPotionPool : CustomPotionPoolModel
 {
-    public override Color LabOutlineColor => McpPolarix.Color;
+    public override Color LabOutlineColor => Polarix.Color;
 
 
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();

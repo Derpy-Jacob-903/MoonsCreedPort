@@ -1,0 +1,13 @@
+﻿{
+  "COLORFUL_PHILOSOPHERS.pages.INITIAL.options.CARD_POOL∴MCPPOLARIX-POLARIX_CARD_POOL.title": "Lavender",
+  "COLORFUL_PHILOSOPHERS.pages.INITIAL.options.CARD_POOL∴MCPPOLARIX-POLARIX_CARD_POOL.description": "Obtain [blue]{Cards}[/blue] Polarix {Cards:plural:card|cards}.",
+
+  "MCPPOLARIX-THE_LAST_KNIGHTS_WILL.title": "The Last Knight's Testament",
+  "MCPPOLARIX-THE_LAST_KNIGHTS_WILL.pages.INITIAL.description": "You come across an altar surrounded by the remnants of an armor worn down by time. The symbols engraved on its chestplate bear the traces of an ancient legend. As you begin to read the text on the altar, a voice echoes:\n\n[blue]Once, I gave everything to protect these lands. Now, I offer this power to you. But know this, such power comes only with [sine]great sacrifices.[/sine][/blue]",
+  "MCPPOLARIX-THE_LAST_KNIGHTS_WILL.pages.INITIAL.options.ACCEPT.title": "Accept",
+  "MCPPOLARIX-THE_LAST_KNIGHTS_WILL.pages.INITIAL.options.ACCEPT.description": "Obtain [gold]{Relic}[/gold].",
+  "MCPPOLARIX-THE_LAST_KNIGHTS_WILL.pages.ACCEPT.description": "The symbols on the armor begin to glow, and their energy flows into your body. You are now a part of this legend.",
+  "MCPPOLARIX-THE_LAST_KNIGHTS_WILL.pages.INITIAL.options.LEAVE.title": "Reject",
+  "MCPPOLARIX-THE_LAST_KNIGHTS_WILL.pages.INITIAL.options.LEAVE.description": "Add [blue]{Cards}[/blue] random Ironclad Attacks to your [gold]Deck[/gold].",
+  "MCPPOLARIX-THE_LAST_KNIGHTS_WILL.pages.LEAVE.description": "You quietly pass by the altar and move on."
+}

@@ -10,7 +10,7 @@
   "MOONSCREEDPORT-STRIKE_POLARIX.title": "Strike",
   "MOONSCREEDPORT-STRIKE_POLARIX.description": "Deal {Damage:diff()} damage.",
   "MOONSCREEDPORT-RADIANT_STRIKE.title": "Radiant Strike",
-  "MOONSCREEDPORT-RADIANT_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].",
+  "MOONSCREEDPORT-RADIANT_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].\n[i][gray]This is not a Basic Strike.[/gray][/i]",
   "MOONSCREEDPORT-LIGHT_BARRIER.title": "Light Barrier",
   "MOONSCREEDPORT-LIGHT_BARRIER.description": "[gold]Evoke[/gold] ALL [img]res://MoonsCreedPort/images/orbs/mox_white.png[/img].\nGain {Block:diff()} [gold]Block[/gold] for each [img]res://MoonsCreedPort/images/orbs/mox_white.png[/img] [gold]Evoked[/gold].{InCombat:\n(Blocks {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
   "MOONSCREEDPORT-DARKNESS_BARRAGE.title": "Darkness Barrage",

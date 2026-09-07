@@ -4,5 +4,5 @@ using McpPolarix.McpPolarixCode.Character;
 
 namespace McpPolarix.McpPolarixCode.Potions;
 
-[Pool(typeof(McpPolarixPotionPool))]
-public abstract class McpPolarixPotion : CustomPotionModel;
+[Pool(typeof(PolarixPotionPool))]
+public abstract class PolarixPotion : CustomPotionModel;

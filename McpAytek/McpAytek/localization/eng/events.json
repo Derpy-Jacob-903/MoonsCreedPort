@@ -1,0 +1,16 @@
+﻿{
+  "COLORFUL_PHILOSOPHERS.pages.INITIAL.options.CARD_POOL∴MCPAYTEK-AYTEK_CARD_POOL.title": "Vermilion",
+  "COLORFUL_PHILOSOPHERS.pages.INITIAL.options.CARD_POOL∴MCPAYTEK-AYTEK_CARD_POOL.description": "Obtain [blue]{Cards}[/blue] Aytek {Cards:plural:card|cards}.",
+
+  "MCPAYTEK-LOST_TECHNOLOGY.title": "Lost Technology",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.INITIAL.description": "During your journey, you come across a ruined altar deep within an ancient chamber. At the center of the altar lies a piece that seems to have broken off from your landing pod. Despite the passage of time, its surface still shimmers faintly with light.\n\nAs you approach, the symbols on the piece suddenly glow, and a holographic message appears before you:\n[aqua]Each upgrade may strain system resources. Choose wisely.[/aqua]",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.INITIAL.options.GUN.title": "Enable Precision Systems",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.INITIAL.options.GUN.description": "Obtain [gold]{Relic}[/gold].",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.GUN.description": "The pod initiates a recalibration of its targeting matrices.",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.INITIAL.options.MISSILE.title": "Activate Missile Override",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.INITIAL.options.MISSILE.description": "Obtain [gold]{Relic}[/gold].",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.MISSILE.description": "The pod augments your missile capabilities.",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.INITIAL.options.LEAVE.title": "Leave",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.INITIAL.options.LEAVE.description": "Add [blue]{Cards}[/blue] random Regent cards to your [gold]Deck[/gold].",
+  "MCPAYTEK-LOST_TECHNOLOGY.pages.LEAVE.description": "You turn away from the pod, resuming your journey. Behind you, the abandoned technology pulses with fading blue light before falling permanently silent."
+}

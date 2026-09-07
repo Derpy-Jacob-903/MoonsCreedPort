@@ -94,16 +94,6 @@ public class AytekStuff
             __result = TargetType.RandomEnemy;
             return false;
         }
-        [HarmonyPatch(nameof(CardModel.IsBasicStrikeOrDefend), MethodType.Getter)]
-        public static class Card_IsBasicStrikeOrDefend_Patch
-        {
-            [HarmonyPostfix]
-            static void Postfix(CardModel __instance, ref bool __result)
-            {
-                if (__instance is RadiantStrike)
-                    __result = false;
-            }
-        }
     }
     [HarmonyPatch(typeof(AbstractModel))]
     public static class ModifyDamageAdditivePatch
@@ -200,3 +190,5 @@ public class ChargeVar(string name, int charge) : PowerVar<ArcraneChargePower>(n
         await GainCharge(context, Card.Owner, Card.DynamicVars[defaultName].BaseValue, Card);
     }
 }
+
+public interface ITechKeyword { } //why did Aytek take this in the divorce /j

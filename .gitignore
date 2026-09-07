@@ -22,3 +22,4 @@ MoonsCreedPort.csproj.user
 MoonsCreedPort.sln.DotSettings.user
 *.uid
 /IntoTheSpireverse
+MoonsCreedPortCode/Data/BuildSecrets.cs
