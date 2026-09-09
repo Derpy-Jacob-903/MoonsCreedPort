@@ -15,7 +15,7 @@ public class SoulSiphon() : PolarixCard(2,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(5m, ValueProp.Move),
-        new HealVar(4)
+        new HealVar(2)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
@@ -25,7 +25,7 @@ public class SoulSiphon() : PolarixCard(2,
         {
             var damageResults = await CreatureCmd.Damage(context, CombatState.HittableEnemies, DynamicVars.Damage, play.Card.Owner.Creature);
             await CreatureCmd.Heal(Owner.Creature,
-                damageResults.Count<DamageResult>((Func<DamageResult, bool>)(r => r.TotalDamage > 0)));
+                damageResults.Count<DamageResult>((Func<DamageResult, bool>)(r => r.TotalDamage > 0)) * DynamicVars.Heal.BaseValue);
         }
     }
     protected override void OnUpgrade() => this.DynamicVars.Damage.UpgradeValueBy(3M);

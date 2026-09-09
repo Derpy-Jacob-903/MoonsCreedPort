@@ -40,8 +40,18 @@ public abstract class CollarlessCard(int cost, CardType type, CardRarity rarity,
             {
                 return $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
             }
-            return "beta_art_0.png".CardImagePath(); //MissingPortraitPath;
-            //return RolledArt(this) ?? MissingPortraitPath;
+
+            switch (this.Type)
+            {
+                case CardType.None:
+                    throw new System.NotImplementedException("what the fuck are you doing?");
+                case CardType.Attack:
+                    return $"MoonsCreedPort/images/card_portraits/beta_attack.png".CardImagePath();
+                case CardType.Power:
+                    return $"MoonsCreedPort/images/card_portraits/beta_power.png".CardImagePath();
+                default:
+                    return $"MoonsCreedPort/images/card_portraits/beta_skill.png".CardImagePath();
+            }
         }
     }
 
@@ -65,8 +75,18 @@ public abstract class CollarlessCard(int cost, CardType type, CardRarity rarity,
             {
                 return $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
             }
-
-            return RolledArt(this) ?? MissingPortraitPath;
+            
+            switch (this.Type)
+            {
+                case CardType.None:
+                    throw new System.NotImplementedException("what the fuck are you doing?");
+                case CardType.Attack:
+                    return $"MoonsCreedPort/images/card_portraits/beta_attack.png".CardImagePath();
+                case CardType.Power:
+                    return $"MoonsCreedPort/images/card_portraits/beta_power.png".CardImagePath();
+                default:
+                    return $"MoonsCreedPort/images/card_portraits/beta_skill.png".CardImagePath();
+            }
         }
     }
 

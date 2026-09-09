@@ -14,6 +14,7 @@ public class ShieldSurge() : PolarixCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new DamageVar(10m, ValueProp.Move),
         new BlockVar(8m, ValueProp.Move),
         new DisplayVar<ShieldSurge>("Block2", var => (this.DynamicVars.Block.BaseValue * 2).ToString()),
         ..MakeCalculatedVar("CalculatedHits", 0, (card, creature) => Case(card) ? 0 : 1)
@@ -35,6 +36,8 @@ public class ShieldSurge() : PolarixCard(1,
     {
         return card.Owner.Creature.Block > card.DynamicVars["Block2"].BaseValue;
     }
+
+    protected override bool ShouldGlowGoldInternal => Case(this);
 
     protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(3M);
 }

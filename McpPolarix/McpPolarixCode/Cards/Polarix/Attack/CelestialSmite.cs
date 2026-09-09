@@ -17,7 +17,7 @@ public class CelestialSmite() : PolarixCard(1,
     [
         new CalculationBaseVar(6M),
         new ExtraDamageVar(8M),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, creature) => creature.HasPower<WeakPower>() ? 1 : 0))
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((Func<CardModel, Creature, Decimal>) ((card, creature) => creature?.HasPower<WeakPower>() != null ? 1 : 0))
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,

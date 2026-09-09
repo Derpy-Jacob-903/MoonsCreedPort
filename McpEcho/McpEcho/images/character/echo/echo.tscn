@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxkbshrpxtk1v"]
+[gd_scene load_steps=4 format=3 uid="uid://dnqi0e777wlnl"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://btr10yk305xra" path="res://McpAytek/images/characters/aytek/Aytek.atlas" id="1_ni8ys"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://biyhmpabqrkcn" path="res://McpAytek/images/characters/aytek/Aytek.skel" id="2_nyp18"]
+[ext_resource type="SpineAtlasResource" uid="uid://dsml4lvpx12eb" path="res://McpEcho/images/character/echo/Echo.atlas" id="1_ni8ys"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cg200nu4j17fa" path="res://McpEcho/images/character/echo/Echo.skel" id="2_nyp18"]
 
 [sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_ntie5"]
 atlas_res = ExtResource("1_ni8ys")
@@ -13,9 +13,9 @@ skeleton_file_res = ExtResource("2_nyp18")
 skeleton_data_res = SubResource("SpineSkeletonDataResource_ntie5")
 bones = true
 preview_skin = "default"
-preview_animation = "Death"
+preview_animation = "Idle"
 preview_frame = false
-preview_time = 0.0
+preview_time = 0.46
 unique_name_in_owner = true
 scale = Vector2(0.15, 0.15)
 

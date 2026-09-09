@@ -4,7 +4,10 @@ using McpAytek.McpAytekCode.Extensions;
 using Godot;
 using McpAytek.McpAytekCode.Cards;
 using McpAytek.McpAytekCode.Relics;
+using MegaCrit.Sts2.Core.Animation;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
@@ -68,4 +71,44 @@ public class Aytek : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_aytek.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_aytek_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_aytek.png".CharacterUiPath();
+    
+    public new Func<Creature, bool> IsLowHealth => (creature => false);
+
+    /// <summary>
+    /// These are the standard animations based on the animation trigger.
+    /// These animations always transition back to an idle.
+    /// </summary>
+    protected override List<(AnimState, string)> AnimationStates
+    {
+        get
+        {
+            return new List<(AnimState, string)>()
+            {
+                (new AnimState("Cast"), "Cast"),
+                (new AnimState("Fist_Attack"), "Attack"),
+                (new AnimState("Kick_Attack"), "Attack_Missile"),
+                (new AnimState("Right_Left_fire_Attack"), "Attack_Gun_Alt"),
+                (new AnimState("Right_Fire_attack"), "Attack_Gun"),
+                (new AnimState("Hurt"), "Hit"),
+                (new AnimState("Cast"), "PowerUp")
+            };
+        }
+    }
+    
+    public override CreatureAnimator GenerateAnimator(MegaSprite controller, Creature creature)
+    {
+        AnimState state1 = new AnimState("Idle", true);
+        AnimState state2 = new AnimState("Death");
+        AnimState state4 = new AnimState("Idle", true);
+        CreatureAnimator animator = new CreatureAnimator(state1, controller);
+        animator.AddAnyState("idle_loop", state1);
+        animator.AddAnyState("Relaxed", state4);
+        animator.AddAnyState("Dead", state2);
+        foreach ((AnimState, string) animationState in this.AnimationStates)
+        {
+            animationState.Item1.AddNextState(state1);
+            animator.AddAnyState(animationState.Item2, animationState.Item1);
+        }
+        return animator;
+    }
 }

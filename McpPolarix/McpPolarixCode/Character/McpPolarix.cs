@@ -4,7 +4,10 @@ using McpPolarix.McpPolarixCode.Extensions;
 using Godot;
 using McpPolarix.McpPolarixCode.Cards;
 using McpPolarix.McpPolarixCode.Relics;
+using MegaCrit.Sts2.Core.Animation;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
@@ -60,9 +63,44 @@ public class Polarix : MoonsCreedPortCharacter
             return icon;
         }
     }
-
+    
+    public override string CustomVisualPath => "characters/polarix/polarix.tscn".ImagePath();
     public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+    
+    
+    protected override List<(AnimState, string)> AnimationStates
+    {
+        get
+        {
+            return new List<(AnimState, string)>()
+            {
+                (new AnimState("Cast"), "Cast"),
+                (new AnimState("MeleeAttack2"), "Attack"),
+                (new AnimState("MeleeAttack3"), "Attack_Dark"),
+                (new AnimState("MeleeAttack1"), "Attack_Light"),
+                (new AnimState("Hurt"), "Hit"),
+                (new AnimState("Cast"), "PowerUp")
+            };
+        }
+    }
+    
+    public override CreatureAnimator GenerateAnimator(MegaSprite controller, Creature creature)
+    {
+        AnimState state1 = new AnimState("Idle", true);
+        AnimState state2 = new AnimState("Death");
+        AnimState state4 = new AnimState("Idle", true);
+        CreatureAnimator animator = new CreatureAnimator(state1, controller);
+        animator.AddAnyState("Idle", state1);
+        animator.AddAnyState("Relaxed", state4);
+        animator.AddAnyState("Dead", state2);
+        foreach ((AnimState, string) animationState in this.AnimationStates)
+        {
+            animationState.Item1.AddNextState(state1);
+            animator.AddAnyState(animationState.Item2, animationState.Item1);
+        }
+        return animator;
+    }
 }

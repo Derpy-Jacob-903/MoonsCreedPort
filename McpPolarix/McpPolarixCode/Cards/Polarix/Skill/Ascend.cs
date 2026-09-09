@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Models.Events;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace McpPolarix.McpPolarixCode.Cards;
@@ -14,15 +16,15 @@ public class Ascend() : PolarixCard(1,
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(9m, ValueProp.Move)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
-        await CreatureCmd.GainBlock(Owner.Creature, base.DynamicVars.Block, play);
+        await PowerCmd.Apply<StrengthPower>(context, Owner.Creature, Owner.Creature.GetPowerAmount<StrengthPower>(), Owner.Creature, this);
     }
+
+    protected override bool ShouldGlowRedInternal => (Owner.Creature.GetPowerAmount<StrengthPower>() <= 1);
 
     protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(3M);
 }

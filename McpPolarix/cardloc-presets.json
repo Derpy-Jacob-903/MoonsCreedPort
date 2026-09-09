@@ -1,11 +1,11 @@
 {
-  "localizationBase": "../McpPolarix/localization/eng",
+  "localizationBase": "McpPolarix/localization/eng",
   "projectId": "mcppolarix",
   "presets": [
     {
       "id": "card",
       "markers": [
-        "PolarixCardModel",
+        "PolarixCard",
 	"CollarlessCard"
       ],
       "fields": [

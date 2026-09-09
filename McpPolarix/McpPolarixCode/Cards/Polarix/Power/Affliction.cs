@@ -13,15 +13,15 @@ public class Affliction() : PolarixCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<SleightOfFleshPower>("Thorns", 3)
+        new PowerVar<SleightOfFleshPower>(3)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
         Log.Warn(this.Id.Entry + ": This card is unimplemented!!");
-        await PowerCmd.Apply<SleightOfFleshPower>(context, Owner.Creature, DynamicVars["Thorns"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SleightOfFleshPower>(context, Owner.Creature, DynamicVars["SleightOfFleshPower"].BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["Thorns"].UpgradeValueBy(1M);
+    protected override void OnUpgrade() => this.DynamicVars["SleightOfFleshPower"].UpgradeValueBy(1M);
 }

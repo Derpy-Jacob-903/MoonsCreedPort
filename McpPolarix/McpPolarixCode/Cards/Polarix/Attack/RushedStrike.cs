@@ -6,13 +6,12 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace McpPolarix.McpPolarixCode.Cards;
 
-public class RushedStrike() : PolarixCard(0,
-    CardType.Attack, CardRarity.Common,
+public class RushedStrike() : PolarixCard(1, CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6m, ValueProp.Move)
+        new DamageVar(10m, ValueProp.Move)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,

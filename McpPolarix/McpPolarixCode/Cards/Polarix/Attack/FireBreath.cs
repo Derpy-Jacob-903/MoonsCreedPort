@@ -4,24 +4,25 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 
 namespace McpPolarix.McpPolarixCode.Cards;
 
 public class FireBreath() : PolarixCard(1,
-    CardType.Attack, CardRarity.Uncommon,
+    CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedDamage(0, (card, creature) => Calc(), 6)
+        ..MakeCalculatedDamage(0, (card, creature) => Calc(card), 6)
     ];
 
-    protected decimal Calc()
+    protected decimal Calc(CardModel card)
     {
         return CombatManager.Instance.History.Entries.OfType<CardDrawnEntry>().Count<CardDrawnEntry>(
-            (Func<CardDrawnEntry, bool>)(e => e.Actor == Owner.Creature && e.HappenedThisTurn(CombatState)));
+            (Func<CardDrawnEntry, bool>)(e => e.Actor == card.Owner.Creature && e.HappenedThisTurn(CombatState)));
     }
     protected override async Task OnPlay(
         PlayerChoiceContext context,
