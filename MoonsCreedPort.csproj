@@ -114,6 +114,8 @@
         <EmbeddedResource Remove="MoonsCreedPortCode\Cards\Arcrane\**" />
         <Compile Remove="MoonsCreedPortCode\Relics\Arcrane\**" />
         <EmbeddedResource Remove="MoonsCreedPortCode\Relics\Arcrane\**" />
+        <Compile Remove="MoonsCreedBosses\**" />
+        <EmbeddedResource Remove="MoonsCreedBosses\**" />
     </ItemGroup>
 
     <ItemGroup>

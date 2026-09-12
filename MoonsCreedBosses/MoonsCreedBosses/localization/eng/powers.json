@@ -1,0 +1,17 @@
+{
+  "MOONSCREEDBOSSES-REPRISAL_POWER.title": "Reprisal",
+  "MOONSCREEDBOSSES-REPRISAL_POWER.description": "Whenever you play an [gold]Upgraded[/gold] card, take [blue]X[/blue] damage.",
+  "MOONSCREEDBOSSES-REPRISAL_POWER.smartDescription": "Whenever you play an [gold]Upgraded[/gold] card, take [blue]{Amount}[/blue] damage.",
+  "MOONSCREEDBOSSES-HEIRLESS_POWER.title": "Heirless",
+  "MOONSCREEDBOSSES-HEIRLESS_POWER.description": "Whenever you play an [gold]Upgraded[/gold] card, take [blue]X[/blue] damage.",
+  "MOONSCREEDBOSSES-HEIRLESS_POWER.smartDescription": "Whenever you play an [gold]Upgraded[/gold] card, take [blue]{Amount}[/blue] damage.",
+  "MOONSCREEDBOSSES-DRAINED_POWER.title": "Drained",
+  "MOONSCREEDBOSSES-DRAINED_POWER.description": "Lose {energyPrefix:energyIcons(1)} next turn.",
+  "MOONSCREEDBOSSES-DRAINED_POWER.smartDescription": "Lose {Amount:energyIcons()} next turn.",
+  "MOONSCREEDBOSSES-FURY_POWER.title": "Fury",
+  "MOONSCREEDBOSSES-FURY_POWER.description": "Whenever this creature receives more than [blue]Y[/blue] attack damage, it gains [blue]X[/blue] [gold]Strength[/gold]",
+  "MOONSCREEDBOSSES-FURY_POWER.smartDescription": "Whenever {OnPlayer:you receive|[gold]{OwnerName}[/gold] receives} receives more than X attack damage, {OnPlayer:you gain|it gains} [blue]{Amount}[/blue] [gold]Strength[/gold]",
+  "MOONSCREEDBOSSES-GRASP_POWER.title": "Grasp",
+  "MOONSCREEDBOSSES-GRASP_POWER.description": "Whenever an enemy of this creature gains HP, it gains [blue]X[/blue] Max HP.",
+  "MOONSCREEDBOSSES-GRASP_POWER.smartDescription": "Whenever {OnPlayer:an enemy|{IsMultiplayer:any |}player} gains HP, {OnPlayer:you gain|it gains} [blue]{Amount}[/blue] Max HP."
+}

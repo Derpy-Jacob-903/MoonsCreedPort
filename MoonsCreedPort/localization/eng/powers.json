@@ -70,5 +70,11 @@
   "MOONSCREEDPORT-CRABBOT_POWER.smartDescription": "Every fourth [gold]Upgraded[/gold] card you play, gain {PlatingPower} Plating.",
   "MOONSCREEDPORT-QUIVER_MATRIX_POWER.title": "Quiver Matrix",
   "MOONSCREEDPORT-QUIVER_MATRIX_POWER.description": "Whenever a card is [gold]Exhausted[/gold], gain {singleStarIcon}.",
-  "MOONSCREEDPORT-QUIVER_MATRIX_POWER.smartDescription": "Whenever a card is [gold]Exhausted[/gold], gain {Amount:starIcons()}."
+  "MOONSCREEDPORT-QUIVER_MATRIX_POWER.smartDescription": "Whenever a card is [gold]Exhausted[/gold], gain {Amount:starIcons()}.",
+  "MOONSCREEDPORT-INCINERATION_POWER.title": "",
+  "MOONSCREEDPORT-INCINERATION_POWER.description": "At the start of your turn, apply 1 Disintegration",
+  "MOONSCREEDPORT-WILDFIRE_POWER.title": "Wildfire",
+  "MOONSCREEDPORT-WILDFIRE_POWER.description": "At the start of your turn, apply 1 Disintegration to yourself and ALL enemies.",
+  "MOONSCREEDPORT-INCINERATION_POWER.smartDescription": "",
+  "MOONSCREEDPORT-WILDFIRE_POWER.smartDescription": ""
 }

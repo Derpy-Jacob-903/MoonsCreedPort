@@ -4,30 +4,28 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using MoonsCreedPort.MoonsCreedPortCode.Character;
 using MoonsCreedPort.MoonsCreedPortCode.Character.Aytek;
 
-namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Aytek;
+namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Collarless;
 
-public class FlameRain() : CollarlessCard(1,
-    CardType.Attack, CardRarity.Uncommon,
+public class FireShield() : CollarlessCard(1,
+    CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(1m, ValueProp.Move),
-        new RepeatVar(3)
+        new BlockVar(8m, ValueProp.Move),
+        new PowerVar<FlameBarrierPower>(3)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
-        if (CombatState != null)
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(play.Card, play).TargetingAllOpponents(this.CombatState)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(context);
+        await CreatureCmd.GainBlock(Owner.Creature, base.DynamicVars.Block, play);
     }
-    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
+
+    protected override void OnUpgrade() => this.DynamicVars.Block.UpgradeValueBy(3M);
 }

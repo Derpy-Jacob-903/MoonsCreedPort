@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McpPolarix", "McpPolarix\Mc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McpAytek", "McpAytek\McpAytek.csproj", "{479A1247-3D3F-44E5-99AC-B6404A383E54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoonsCreedBosses", "MoonsCreedBosses\MoonsCreedBosses.csproj", "{38C41A86-585F-4936-B44E-1D50EC857AF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,5 +41,11 @@ Global
 		{479A1247-3D3F-44E5-99AC-B6404A383E54}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
 		{479A1247-3D3F-44E5-99AC-B6404A383E54}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
 		{479A1247-3D3F-44E5-99AC-B6404A383E54}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{38C41A86-585F-4936-B44E-1D50EC857AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C41A86-585F-4936-B44E-1D50EC857AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C41A86-585F-4936-B44E-1D50EC857AF5}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{38C41A86-585F-4936-B44E-1D50EC857AF5}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{38C41A86-585F-4936-B44E-1D50EC857AF5}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{38C41A86-585F-4936-B44E-1D50EC857AF5}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

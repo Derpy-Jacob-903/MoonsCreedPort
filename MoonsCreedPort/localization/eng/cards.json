@@ -534,6 +534,12 @@
   "MOONSCREEDPORT-BALANCED_LOAD.description": "If you have played a card containing \"Missile\" and a [gold]Gun[/gold] card this turn, gain {Energy:energyIcons()} and draw {Cards:diff()} {Cards:plural:card|cards}.",
   "MOONSCREEDPORT-KILL_PROCESS.title": "KILL PROCESS",
   "MOONSCREEDPORT-KILL_PROCESS.description": "Deal {Damage:diff()} damage X times.\nDouble X if this is the first card played on the enemy this turn.",
-  "MOONSCREEDPORT-FLAME_RAIN.title": "",
-  "MOONSCREEDPORT-FLAME_RAIN.description": ""
+  "MOONSCREEDPORT-FLAME_RAIN.title": "Flame Rain",
+  "MOONSCREEDPORT-FLAME_RAIN.description": "Deal {Damage:diff()} damage to ALL enemies {Repeat:diff()} {Repeat:plural:time|times}.",
+  "MOONSCREEDPORT-FIRE_SHIELD.title": "Fire Shield",
+  "MOONSCREEDPORT-FIRE_SHIELD.description": "Gain {Block:diff()} [gold]Block[/gold].\\nWhenever you are attacked this turn, deal {DamageBack:diff()} damage back.",
+  "MOONSCREEDPORT-STONE_TABLETS.title": "Stone Tablets",
+  "MOONSCREEDPORT-STONE_TABLETS.description": "Add a random Skill into your [gold]Draw Pile[/gold]. It's free to play this combat.",
+  "MOONSCREEDPORT-BLAZING_TEMPO.title": "Blazing Tempo",
+  "MOONSCREEDPORT-BLAZING_TEMPO.description": "Deal {Damage:diff()} damage.\nGain {energyPrefix:energyIcons(1)} for each non-0{energyPrefix:energyIcons(1)} Attack played this turn.{InCombat:\\n(Gain {CalculatedEnergy:energyIcons()}.)|}"
 }
