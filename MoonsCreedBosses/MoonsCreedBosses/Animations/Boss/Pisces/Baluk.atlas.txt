@@ -1,0 +1,8 @@
+Baluk.png
+size:1276,1402
+filter:Linear,Linear
+pma:true
+scale:0.7
+Ana
+bounds:2,2,1272,1398
+offsets:71,2,1435,1435

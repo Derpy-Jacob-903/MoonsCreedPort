@@ -17,7 +17,7 @@ public class AytekGun() : AytekCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(2m, ValueProp.Move),
+        new DamageVar(3m, ValueProp.Move),
         new RepeatVar(3)
     ];
 

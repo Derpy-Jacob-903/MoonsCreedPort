@@ -17,7 +17,7 @@ public abstract class ZodiacEncounterModel() : CustomEncounterModel(RoomType.Bos
         Chaos
     }
 
-    public Element myElement = Element.Blank;
+    public virtual Element myElement => Element.Blank;
     public int actNumber;
     public override bool IsValidForAct(ActModel act) => act.ActNumber() == actNumber;
 }

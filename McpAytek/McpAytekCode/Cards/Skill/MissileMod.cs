@@ -15,25 +15,24 @@ public class MissileMod() : AytekCard(0,
     CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(4m, ValueProp.Move),
-        //new CardsVar(1)
+        new CardsVar(1)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,
         CardPlay play)
     {
+        
         await CreatureCmd.GainBlock(Owner.Creature, base.DynamicVars.Block, play);
         CardPile pile = PileType.Hand.GetPile(Owner);
-        //for (int i = 0; i < DynamicVars.Cards.BaseValue; i++)
-        //{
+        for (int i = 0; i < DynamicVars.Cards.BaseValue; i++)
+        {
             CardModel card = Owner.RunState.Rng.CombatCardSelection.NextItem(pile.Cards.Where(c => c.IsUpgradable && (this.IsUpgraded || c.Tags.Contains(AytekStuff.Missile))));
             if (card == null) return;
             CardCmd.Upgrade(card);
-        //}
+        }
     }
     //protected override void OnUpgrade() => this.DynamicVars.Cards.UpgradeValueBy(1M);
 }

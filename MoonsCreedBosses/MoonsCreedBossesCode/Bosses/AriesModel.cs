@@ -52,46 +52,46 @@ public abstract class AriesModel : CustomMonsterModel
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()
     {
         var twinStrikeAState = new MoveState(
-            "Twin_Strike_A_Aries_" + Sub,
+            "Twin_Strike_A",
             TwinStrike,
             [new MultiAttackIntent(TwinStrikeDamage, TwinStrikeHits)]
         );
         
         var defendBState = new MoveState(
-            "Defend_B_Aquarius_" + Sub,
+            "Defend_B",
             Defend, new DefendIntent());
         
         var twinStrikeCState = new MoveState(
-            "Twin_Strike_C_Aries_" + Sub,
+            "Twin_Strike_C",
             TwinStrike,
             [new MultiAttackIntent(TwinStrikeDamage, TwinStrikeHits)]
         );
         var ironWaveState = new MoveState(
-            "Iron_Wave_D_Aries_" + Sub,
+            "Iron_Wave_D",
             IronWave,
             [new SingleAttackIntent(IronWaveDamage), new DefendIntent()]
         );
         
         // twinStrike or defend at random
         var randState = new RandomBranchState(
-            "RandState_E_Aries_" + Sub
+            "RandState_E"
         );
         var twinStrikeEState = new MoveState(
-            "Twin_Strike_E_Aries_" + Sub,
+            "Twin_Strike_E",
             TwinStrike,
             [new MultiAttackIntent(TwinStrikeDamage, TwinStrikeHits)]
         );
         var defendEState = new MoveState(
-            "Defend_E_Aquarius_" + Sub,
+            "Defend_E",
             Defend, new DefendIntent());
         //both lead to heavyBlade
         var heavyBladeState = new MoveState(
-            "Heavy_Blade_Aquarius_" + Sub,
+            "Heavy_Blade",
             HeavyStrike,
             new SingleAttackIntent(HeavyStrikeDamage)
         );
         var defendGState = new MoveState(
-            "DefendG_Aquarius_" + Sub,
+            "DefendG",
             Defend, new DefendIntent());
         
         

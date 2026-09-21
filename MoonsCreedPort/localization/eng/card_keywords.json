@@ -2,7 +2,7 @@
   "MOONSCREEDPORT-CRUDE.title": "Crude",
   "MOONSCREEDPORT-CRUDE.description": "Cards that are Statuses, [purple]Curses[/purple], Quests, or otherwise have [purple]this Keyword[/purple] are [purple]Crude[/purple]",
   "MOONSCREEDPORT-GUNKEYWORD.title": "Gun",
-  "MOONSCREEDPORT-GUNKEYWORD.description": "Unaffected by [gold]Strength[/gold]. When played, targets a random enemy.",
+  "MOONSCREEDPORT-GUNKEYWORD.description": "When played, targets a random enemy.",
   "MOONSCREEDPORT-ARCRANECAST.title": "Cast",
   "MOONSCREEDPORT-ARCRANECAST.description": "Deals additional damage equal to your [gold]Charge[/gold].",
   "MOONSCREEDPORT-ARCRANEPYRE.title": "Pyre",

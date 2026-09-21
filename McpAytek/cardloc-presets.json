@@ -1,11 +1,11 @@
 {
-  "localizationBase": "../McpAytek/localization/eng",
+  "localizationBase": "/McpAytek/localization/eng",
   "projectId": "mcpaytek",
   "presets": [
     {
       "id": "card",
       "markers": [
-        "AytekCardModel",
+        "AytekCard",
 	"CollarlessCard"
       ],
       "fields": [

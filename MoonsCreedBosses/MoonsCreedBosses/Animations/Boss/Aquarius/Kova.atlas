@@ -1,0 +1,22 @@
+Kova.png
+size:2050,2050
+filter:Linear,Linear
+A1
+bounds:2,2,867,1031
+offsets:955,311,2050,2050
+A2
+bounds:2113,456,577,257
+offsets:324,970,2050,2050
+rotate:90
+Body
+bounds:1566,19,489,454
+offsets:772,966,2050,2050
+Head
+bounds:1566,475,545,558
+offsets:818,1312,2050,2050
+K
+bounds:2057,130,310,324
+offsets:273,1210,2050,2050
+Lower Body
+bounds:871,116,693,917
+offsets:677,121,2050,2050

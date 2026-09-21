@@ -18,7 +18,7 @@ public class CoverFire() : AytekCard(1,
     [
         new DamageVar(2m, ValueProp.Move),
         new RepeatVar(3),
-        new BlockVar(5, ValueProp.Move)
+        new BlockVar(7, ValueProp.Move)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,

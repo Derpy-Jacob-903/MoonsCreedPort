@@ -36,7 +36,7 @@ public abstract class AquariusModel : CustomMonsterModel
     public virtual int DrownHeirless => 0;
     public virtual int HeavyBladeDamage => 22; //=> AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 12, 10);
 
-    protected override string VisualsPath => "res://animations/characters/ironclad.tscn";
+    public override string CustomVisualPath => "res://MoonsCreedBosses/Animations/Boss/Aquarius/kova.tscn";
     public virtual string Sub => "";
 
     public override async Task AfterAddedToRoom()
@@ -48,28 +48,28 @@ public abstract class AquariusModel : CustomMonsterModel
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()
     {
         var randState = new RandomBranchState(
-            "RandState_Aquarius_" + Sub
+            "RandState"
         );
         
         //Damage and Stagger
         var clotheslineAState = new MoveState(
-            "ClotheslineA_Aquarius_" + Sub,
+            "ClotheslineA",
             Clothesline,
             [new SingleAttackIntent(ClotheslineDamage), new DebuffIntent()]
         );
         //Damage and Stagger
         var clotheslineState = new MoveState(
-            "Clothesline_Aquarius_" + Sub,
+            "Clothesline",
             Clothesline,
             [new SingleAttackIntent(ClotheslineDamage), new DebuffIntent()]
         );
         
         //Block
         var defendXState = new MoveState(
-            "Defend_Aquarius_" + Sub,
+            "Defend",
             Defend, new DefendIntent());
         var defendYState = new MoveState(
-            "DefendY_Aquarius_" + Sub,
+            "DefendY",
             Defend, new DefendIntent()
         );
         
@@ -78,9 +78,9 @@ public abstract class AquariusModel : CustomMonsterModel
         var drownYState = SetupDrownState("Y"); //need to override for Act 3 Aquarius
         
         var heavyBladeState = new MoveState(
-            "Heavy_Blade_Aquarius_" + Sub,
+            "Heavy_Blade",
             HeavyBlade,
-            new SingleAttackIntent(ClotheslineDamage)
+            new SingleAttackIntent(HeavyBladeDamage)
         );
         
         clotheslineAState.FollowUpState = randState;
@@ -102,7 +102,7 @@ public abstract class AquariusModel : CustomMonsterModel
     public virtual MoveState SetupDrownState(string s)
     {
         var drownState = new MoveState(
-            "Drown" + s + "_Aquarius_" + Sub,
+            "Drown" + s,
             Drown,
             new AbstractIntent[] { new StatusIntent(DrownDrowning) }
         );
@@ -118,7 +118,10 @@ public abstract class AquariusModel : CustomMonsterModel
         foreach (var target in targets.Where(t => t.IsAlive))
         {
             await Cmd.Wait(0.2f);
-            await PowerCmd.Apply<DrainedPower>(new ThrowingPlayerChoiceContext(), target, 1m, Creature, null);
+            if (Creature.IsPlayer)
+                await PowerCmd.Apply<DrainedPower>(new ThrowingPlayerChoiceContext(), target, 1m, Creature, null);
+            else
+                await PowerCmd.Apply<FriendlyAquariusDebuffPower>(new ThrowingPlayerChoiceContext(), target, 1m, Creature, null);
         }
     }
     
@@ -132,21 +135,40 @@ public abstract class AquariusModel : CustomMonsterModel
 
     protected async Task Drown(IReadOnlyList<Creature> targets)
     {
-        foreach (var playerCreature in targets.Where(t => t.Player != null))
-        {
-            var combatState = playerCreature.CombatState;
-            var statusCards = new CardPileAddResult[DrownDrowning];
-            for (int i = 0; i < DrownDrowning; i++)
+        //if (Creature.Side == CombatSide.Enemy)
+        //{
+            foreach (var playerCreature in targets.Where(t => t.Player != null))
             {
-                if (combatState == null || playerCreature.Player == null) continue;
-                var burn = combatState.CreateCard<Drowning>(playerCreature.Player);
-                burn.UpgradeInternal();
-                burn.FinalizeUpgradeInternal();
-                statusCards[i] = await CardPileCmd.AddGeneratedCardToCombat(burn, PileType.Draw, null, CardPilePosition.Random);
+                var combatState = playerCreature.CombatState;
+                var statusCards = new CardPileAddResult[DrownDrowning];
+                for (int i = 0; i < DrownDrowning; i++)
+                {
+                    if (combatState == null || playerCreature.Player == null) continue;
+                    var burn = makeDrowning(playerCreature.Player);
+                    burn.UpgradeInternal();
+                    burn.FinalizeUpgradeInternal();
+                    statusCards[i] = await CardPileCmd.AddGeneratedCardToCombat(burn, PileType.Draw, null, CardPilePosition.Random);
+                }
+                CardCmd.PreviewCardPileAdd(statusCards, style: CardPreviewStyle.HorizontalLayout);
+                if (DrownHeirless <= 0) continue;
+                if (Creature.IsPlayer)
+                    await PowerCmd.Apply<HeirlessPower>(new ThrowingPlayerChoiceContext(), playerCreature, (decimal)DrownHeirless, Creature, null);
+                else
+                    await PowerCmd.Apply<FriendlyAquariusDebuffPower>(new ThrowingPlayerChoiceContext(), playerCreature, (decimal)DrownHeirless, Creature, null);
+
             }
-            CardCmd.PreviewCardPileAdd(statusCards, style: CardPreviewStyle.HorizontalLayout);
-            if (DrownHeirless > 0) await PowerCmd.Apply<HeirlessPower>(new ThrowingPlayerChoiceContext(), playerCreature, (decimal)DrownHeirless, Creature, null);
+        //}
+    }
+
+    private CardModel makeDrowning(Player player)
+    {
+        if (player.Creature.CombatState != null)
+            throw new NullReferenceException("Can't create a card without a CombatState!");
+        if (Creature.Side == CombatSide.Player)
+        {
+            return player.Creature.CombatState!.CreateCard<Shiv>(player);
         }
+        return player.Creature.CombatState!.CreateCard<Drowning>(player);
     }
 
     private async Task Defend(IReadOnlyList<Creature> targets)
@@ -157,16 +179,26 @@ public abstract class AquariusModel : CustomMonsterModel
     public override CreatureAnimator GenerateAnimator(MegaSprite controller)
     {
         var idle = new AnimState("Idle", true);
-        //var attack = new AnimState("Attack_2");
+        var attack = new AnimState("MeleAttack"); //[sic]
+        var cast = new AnimState("Cast");
+        var cast2 = new AnimState("Cast2");
         var hit = new AnimState("Hit");
-
-        //attack.NextState = idle;
-        hit.NextState = idle;
+        var died = new AnimState("Death");
+        
+        attack.NextState = idle;
+        cast.NextState = idle;
+        cast2.NextState = idle;
+        cast.NextState = idle;
 
         var animator = new CreatureAnimator(idle, controller);
-        //animator.AddAnyState("Beam", attack);
+        
+        animator.AddAnyState("idle_loop", idle);
+        animator.AddAnyState("Dead", died);
+        animator.AddAnyState("Attack", attack);
+        animator.AddAnyState("Cast", cast);
+        animator.AddAnyState("CastTwo", cast2);
         animator.AddAnyState("Hit", hit);
-
+        animator.AddAnyState("Dead", died);
         return animator;
     }
 }

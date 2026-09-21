@@ -17,7 +17,9 @@ namespace MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 public class Drained() : CollarlessCard(-1,
     CardType.Curse, CardRarity.Curse,
     TargetType.Self)
-{public override int MaxUpgradeLevel => 0;
+{
+    
+    public override int MaxUpgradeLevel => 0;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

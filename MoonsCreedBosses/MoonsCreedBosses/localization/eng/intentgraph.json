@@ -1,0 +1,10 @@
+﻿{
+  "branch.MoonsCreedBosses.MoonsCreedBossesCode.Bosses.CapricornModel.MainState.FightMe": "With {MaxEndurance} or more Endurance",
+  "branch.MoonsCreedBosses.MoonsCreedBossesCode.Bosses.CapricornModel.MainState.Strike": "{otherwise}",
+  "branch.MoonsCreedBosses.MoonsCreedBossesCode.Bosses.CapricornOne.MainState.FightMe": "With {MaxEndurance} or more Endurance",
+  "branch.MoonsCreedBosses.MoonsCreedBossesCode.Bosses.CapricornOne.MainState.Strike": "{otherwise}",
+  "branch.MoonsCreedBosses.MoonsCreedBossesCode.Bosses.CapricornTwo.MainState.FightMe": "With {MaxEndurance} or more Endurance",
+  "branch.MoonsCreedBosses.MoonsCreedBossesCode.Bosses.CapricornTwo.MainState.Strike": "{otherwise}",
+  "branch.MoonsCreedBosses.MoonsCreedBossesCode.Bosses.CapricornThree.MainState.FightMe": "With {MaxEndurance} or more Endurance",
+  "branch.MoonsCreedBosses.MoonsCreedBossesCode.Bosses.CapricornThree.MainState.Strike": "{otherwise}"
+}

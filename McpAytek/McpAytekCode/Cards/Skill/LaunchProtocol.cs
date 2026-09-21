@@ -16,10 +16,10 @@ public class LaunchProtocol() : AytekCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedBlock(6, (card, c) => (CombatManager.Instance.History.CardPlaysStarted
+        ..MakeCalculatedBlock(8, (card, c) => (CombatManager.Instance.History.CardPlaysStarted
             .LastOrDefault(e =>
                 e.CardPlay.Card.Owner == card.Owner &&
-                e.CardPlay.Card != card)?.CardPlay.Card.Tags.Contains(AytekStuff.Missile) ?? false) ? 1 : 0, 3)
+                e.CardPlay.Card != card)?.CardPlay.Card.Tags.Contains(AytekStuff.Missile) ?? false) ? 1 : 0, 4)
     ];
     protected override async Task OnPlay(
         PlayerChoiceContext context,

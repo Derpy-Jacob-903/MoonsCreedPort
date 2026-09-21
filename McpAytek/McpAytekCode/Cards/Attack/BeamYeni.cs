@@ -20,7 +20,7 @@ public class Beam() : AytekCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(1, ValueProp.Move),
-        new RepeatVar(3),
+        new RepeatVar(4),
         new PowerVar<VulnerablePower>(1)
     ];
 

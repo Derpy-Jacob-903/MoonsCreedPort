@@ -26,7 +26,7 @@ public class RamBoost() : AytekCard(0,
         PlayerChoiceContext context,
         CardPlay play)
     {
-        await PowerCmd.Apply<VigorPower>(context, Owner.Creature, ResolveEnergyXValue() + DynamicVars["VigorPower"].BaseValue,
+        await PowerCmd.Apply<VigorPower>(context, Owner.Creature, ResolveStarXValue() + DynamicVars["VigorPower"].BaseValue,
             Owner.Creature, this);
     }
 

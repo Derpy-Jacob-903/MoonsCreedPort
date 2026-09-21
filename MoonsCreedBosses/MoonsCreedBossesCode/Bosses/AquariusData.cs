@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Acts;
 using MoonsCreedBosses.MoonsCreedBossesCode.Extensions;
 
 namespace MoonsCreedBosses.MoonsCreedBossesCode.Bosses;
@@ -46,7 +47,8 @@ public class AriesThree : AriesModel
 
 public class AriesOneEncounter() : ZodiacEncounterModel()
 {
-    public override bool IsValidForAct(ActModel act) => act.ActNumber() == 1;
+    public override bool IsValidForAct(ActModel act) => act.ActNumber() == 1 && act is not Underdocks;
+    public override Element myElement => Element.Fire;
     public override string BossNodePath => "res://MoonsCreedBosses/images/map_icons/Aries";
     public override string CustomRunHistoryIconPath => "res://MoonsCreedBosses/images/run_history_icon/Aries.png";
     public override string CustomRunHistoryIconOutlinePath => "res://MoonsCreedBosses/images/run_history_icon/Aries.png";
@@ -55,7 +57,8 @@ public class AriesOneEncounter() : ZodiacEncounterModel()
 }
 public class AriesTwoEncounter() : ZodiacEncounterModel()
 {
-    public override bool IsValidForAct(ActModel act) => act.ActNumber() == 2;
+    public override bool IsValidForAct(ActModel act) => act.ActNumber() == 2 /*&& act is not Hive*/;
+    public override Element myElement => Element.Fire;
     public override string BossNodePath => "res://MoonsCreedBosses/images/map_icons/Aries";
     public override string CustomRunHistoryIconPath => "res://MoonsCreedBosses/images/run_history_icon/Aries.png";
     public override string CustomRunHistoryIconOutlinePath => "res://MoonsCreedBosses/images/run_history_icon/Aries.png";
@@ -65,6 +68,7 @@ public class AriesTwoEncounter() : ZodiacEncounterModel()
 public class AriesThreeEncounter() : ZodiacEncounterModel()
 {
     public override bool IsValidForAct(ActModel act) => act.ActNumber() == 3;
+    public override Element myElement => Element.Fire;
     public override string BossNodePath => "res://MoonsCreedBosses/images/map_icons/Aries";
     public override string CustomRunHistoryIconPath => "res://MoonsCreedBosses/images/run_history_icon/Aries.png";
     public override string CustomRunHistoryIconOutlinePath => "res://MoonsCreedBosses/images/run_history_icon/Aries.png";

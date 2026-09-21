@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyfft81myftu0"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://bogbxhr3hp74m" path="res://MoonsCreedBosses/Animations/Boss/Aquarius/Kova.atlas" id="1_ojjy0"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://c4hwb7p3wtq62" path="res://MoonsCreedBosses/Animations/Boss/Aquarius/Kova.skel" id="2_00g2t"]
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_tt5kk"]
+atlas_res = ExtResource("1_ojjy0")
+skeleton_file_res = ExtResource("2_00g2t")
+
+[node name="Runesmith" type="Node2D"]
+
+[node name="Visuals" type="SpineSprite" parent="."]
+skeleton_data_res = SubResource("SpineSkeletonDataResource_tt5kk")
+bones = true
+preview_skin = "Default"
+preview_animation = "Idle"
+preview_frame = false
+preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(20, 0)
+scale = Vector2(0.3, 0.3)
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -107.0
+offset_top = -369.0
+offset_right = 107.0
+offset_bottom = -0.02999878
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 300)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(12, -500)
+metadata/_edit_lock_ = true

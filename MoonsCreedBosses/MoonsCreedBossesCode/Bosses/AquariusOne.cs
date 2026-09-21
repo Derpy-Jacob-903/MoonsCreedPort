@@ -3,6 +3,7 @@ using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Acts;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.Rooms;
@@ -61,7 +62,8 @@ public class AquariusThree : AquariusModel
 
 public class AquariusOneEncounter() : ZodiacEncounterModel()
 {
-    public override bool IsValidForAct(ActModel act) => act.ActNumber() == 1;
+    public override bool IsValidForAct(ActModel act) => act.ActNumber() == 1 && act is not Overgrowth;
+    public override Element myElement => Element.Air;
     public override string BossNodePath => "res://MoonsCreedBosses/images/map_icons/Aquarius";
     public override string CustomRunHistoryIconPath => "res://MoonsCreedBosses/images/run_history_icon/Aquarius.png";
     public override string CustomRunHistoryIconOutlinePath => "res://MoonsCreedBosses/images/run_history_icon/Aquarius.png";
@@ -70,7 +72,8 @@ public class AquariusOneEncounter() : ZodiacEncounterModel()
 }
 public class AquariusTwoEncounter() : ZodiacEncounterModel()
 {
-    public override bool IsValidForAct(ActModel act) => act.ActNumber() == 2;
+    public override bool IsValidForAct(ActModel act) => act.ActNumber() == 2 /*&& act is not Hive*/;
+    public override Element myElement => Element.Air;
     public override string BossNodePath => "res://MoonsCreedBosses/images/map_icons/Aquarius";
     public override string CustomRunHistoryIconPath => "res://MoonsCreedBosses/images/run_history_icon/Aquarius.png";
     public override string CustomRunHistoryIconOutlinePath => "res://MoonsCreedBosses/images/run_history_icon/Aquarius.png";
@@ -80,6 +83,7 @@ public class AquariusTwoEncounter() : ZodiacEncounterModel()
 public class AquariusThreeEncounter() : ZodiacEncounterModel()
 {
     public override bool IsValidForAct(ActModel act) => act.ActNumber() == 3;
+    public override Element myElement => Element.Air;
     public override string BossNodePath => "res://MoonsCreedBosses/images/map_icons/Aquarius";
     public override string CustomRunHistoryIconPath => "res://MoonsCreedBosses/images/run_history_icon/Aquarius.png";
     public override string CustomRunHistoryIconOutlinePath => "res://MoonsCreedBosses/images/run_history_icon/Aquarius.png";

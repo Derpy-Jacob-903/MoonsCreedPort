@@ -54,7 +54,7 @@ public class AytekStuff
     }
     public static bool IsCrude(CardModel card)
     {
-        return card.Type == CardType.Curse || card.Rarity == CardRarity.Status || card.Rarity == CardRarity.Quest;
+        return card.Type == CardType.Curse || card.Rarity == CardRarity.Status || card.Rarity == CardRarity.Quest || card.Keywords.Contains(Crude);
     }
     public static Creature GetGunTargets(Player player, ICombatState combatState)
     {
@@ -95,6 +95,7 @@ public class AytekStuff
             return false;
         }
     }
+    /*
     [HarmonyPatch(typeof(AbstractModel))]
     public static class ModifyDamageAdditivePatch
     {
@@ -116,25 +117,19 @@ public class AytekStuff
             __result = 0m;
             return false;
         }
-    }
+    }*/
     
-    /*[HarmonyPatch(typeof(CardKeywordExtensions), nameof(CardKeywordExtensions.GetCardText))]
+    [HarmonyPatch(typeof(CardKeywordExtensions), nameof(CardKeywordExtensions.GetCardText))]
     public static class KeywordColorPatch
     {
         [HarmonyPostfix]
         private static void Postfix(CardKeyword keyword, ref string __result)
         {
-            if (keyword is not AytekStuff.)
-            __result = __result.Replace("[gold]", $"[{color}]")
-                .Replace("[/gold]", $"[/{color}]");
+            if (keyword == AytekStuff.Crude)
+                __result = __result.Replace("[gold]", $"[purple]").Replace("[/gold]", $"[/purple]");
         }
-    }*/
+    }
 }
-
-/// <summary>
-/// Blocks a AbstractModel from applying its ModifyDamageAdditive hook on Gun cards.
-/// </summary>
-public interface IGunBlacklist {}
 
 public class TechPointVar(string name, int techPoints) : DynamicVar(name, techPoints)
 {

@@ -1,26 +1,13 @@
 ﻿using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
-using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Ascension;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.MonsterMoves;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
-using MegaCrit.Sts2.Core.Nodes.CommonUi;
-using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.ValueProps;
 using MoonsCreedBosses.MoonsCreedBossesCode.Powers;
-using MoonsCreedPort.MoonsCreedPortCode.Cards.Polarix;
 
 namespace MoonsCreedBosses.MoonsCreedBossesCode.Bosses;
 
@@ -33,6 +20,7 @@ public abstract class CancerModel : CustomMonsterModel
     public virtual int DefendBlock => 0;
     public virtual decimal DefendMult => 0;
     public virtual int RegrowthMaxHpGain => 0;
+    public int _regrowthMaxHpGain => RegrowthMaxHpGain;
     public virtual int BiteDamage => 0;
     public virtual int BiteHits => 3;
     public virtual decimal BiteHealPercent => 0;
@@ -45,8 +33,10 @@ public abstract class CancerModel : CustomMonsterModel
     {
         await base.AfterAddedToRoom();
         await PowerCmd.Apply<GraspPower>(new ThrowingPlayerChoiceContext(), Creature, GraspAmount, Creature, null);
+        await PowerCmd.Apply<CancerVigorPower>(new ThrowingPlayerChoiceContext(), Creature, StrikeMult, Creature, null);
     }
 
+    /// DON'T USE FOR DAMAGE
     public int CalculateDamage(decimal baseBlock, decimal maxHpMult)
     {
         if (_creature is null) return (int)Math.Floor(baseBlock + this.MaxInitialHp * maxHpMult);
@@ -60,28 +50,32 @@ public abstract class CancerModel : CustomMonsterModel
         protected override string IntentPrefix => "MOONSCREEDBOSSES-GAINMAXHP";
 
         protected override string SpritePath => "atlases/intent_atlas.sprites/intent_heal.tres";
+        
+        ///Uses HealIntent's Animation
+        public override string GetAnimation(IEnumerable<Creature> targets, Creature owner) => _cachedAnimationName ??= "HEAL".ToLowerInvariant();
     }
 
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()
     {
-        Creature fuck = this._creature ?? null;
+        
         var strikeState = new MoveState(
-            "Strike_Cancer_" + Sub,
+            "Strike",
             Strike,
-            [new SingleAttackIntent(CalculateDamage(StrikeDamage, StrikeMult))]
+            new SingleAttackIntent(StrikeDamage), new BuffIntent()
         );
         var defendState = new MoveState(
-            "Defend_Cancer_" + Sub,
-            Defend, new DefendIntent());
+            "Defend",
+            Defend, new DefendIntent()
+        );
         var regrowthState = new MoveState(
-            "Regrowth_Cancer_" + Sub,
+            "Regrowth",
             Regrowth,
-            [new GainMaxHpIntent()]
+            new GainMaxHpIntent()
         );
         var twinStrikeState = new MoveState(
-            "Sword_Boomerang_Cancer_" + Sub,
+            "Sword_Boomerang",
             TwinStrike,
-            [new MultiAttackIntent(BiteDamage, BiteHits), new HealIntent()]
+            new HealIntent(), new MultiAttackIntent(BiteDamage, BiteHits), new BuffIntent()
         );
         
         strikeState.FollowUpState = defendState;
@@ -102,10 +96,11 @@ public abstract class CancerModel : CustomMonsterModel
 
     private async Task TwinStrike(IReadOnlyList<Creature> targets)
     {
+        await CreatureCmd.Heal(Creature, CalculateDamage(0, BiteHealPercent));
         await DamageCmd.Attack(BiteDamage).WithHitCount(BiteHits)
             .FromMonster(this).WithHitFx("vfx/vfx_attack_slash")
             .Execute(null);
-        await CreatureCmd.Heal(Creature, CalculateDamage(0, BiteHealPercent));
+        await PowerCmd.Apply<CancerVigorPower>(new ThrowingPlayerChoiceContext(), Creature, StrikeMult, Creature, null);
     }
     
     private async Task Strike(IReadOnlyList<Creature> targets)
@@ -114,6 +109,8 @@ public abstract class CancerModel : CustomMonsterModel
             .FromMonster(this)
             .WithHitFx("vfx/vfx_attack_blunt")
             .Execute(null);
+        
+        await PowerCmd.Apply<CancerVimPower>(new ThrowingPlayerChoiceContext(), Creature, DefendMult, Creature, null);
     }
     
     private async Task Defend(IReadOnlyList<Creature> targets)
